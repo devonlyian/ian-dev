@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap");
+
+:root {
+  /* Dark mode (default) */
+  --dos-bg: #000080;
+  --dos-text: #d4d4d4;
+  --dos-highlight: #ffffff;
+  --dos-yellow: #ffff54;
+  --dos-border: #ffffff;
+  --dos-cyan: #54ffff;
+  --dos-green: #54ff54;
+  --dos-red: #ff5454;
+}
+
+.light {
+  --dos-bg: #f0f0f0;
+  --dos-text: #000000;
+  --dos-highlight: #0000aa;
+  --dos-yellow: #996600;
+  --dos-border: #404040;
+  --dos-cyan: #007090;
+  --dos-green: #007020;
+  --dos-red: #cc0000;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "IBM Plex Mono", "Courier New", Consolas, monospace;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: var(--dos-bg);
+  color: var(--dos-text);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+@media (max-width: 640px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+/* DOS-style scrollbar */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dos-bg);
+  border: 1px solid var(--dos-border);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--dos-text);
+  border: 1px solid var(--dos-border);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--dos-highlight);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--dos-bg);
+}
+
+/* Selection style */
+::selection {
+  background: var(--dos-highlight);
+  color: var(--dos-bg);
+}
+
+/* Cursor blink animation */
+.cursor-blink {
+  display: inline-block;
+  width: 0.6em;
+  height: 1.1em;
+  background-color: var(--dos-highlight);
+  animation: blink 1s step-end infinite;
+  vertical-align: text-bottom;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* DOS box characters support */
+.dos-box {
+  line-height: 1.2;
+  white-space: pre;
+}
+
+/* Utility classes */
+.dos-text {
+  color: var(--dos-text);
+}
+
+.dos-highlight {
+  color: var(--dos-highlight);
+}
+
+.dos-yellow {
+  color: var(--dos-yellow);
+}
+
+.dos-cyan {
+  color: var(--dos-cyan);
+}
+
+.dos-green {
+  color: var(--dos-green);
+}
+
+.dos-red {
+  color: var(--dos-red);
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .dos-box {
+    border: 1px solid #000 !important;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  a::after {
+    content: " (" attr(href) ")";
+    font-size: 10pt;
+    color: #666;
+  }
+}
+
+.print-only {
+  display: none;
+}
+
+/* Mobile navigation buttons */
+.nav-button {
+  background-color: var(--dos-bg);
+  color: var(--dos-highlight);
+  border: 2px solid var(--dos-border);
+  padding: 0.5rem 1rem;
+  font-family: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.1s;
+}
+
+.nav-button:hover,
+.nav-button:focus {
+  background-color: var(--dos-highlight);
+  color: var(--dos-bg);
+}
+
+.nav-button:active {
+  transform: translateY(1px);
+}
+
+/* Input focus */
+input:focus {
+  outline: none;
+}
