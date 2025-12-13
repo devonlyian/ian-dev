@@ -4,25 +4,19 @@ export const contacts: Contact[] = [
   {
     type: "email",
     label: "Email",
-    value: "ian@example.com",
-    url: "mailto:ian@example.com",
+    value: "devonlyian@gmail.com",
+    url: "mailto:devonlyian@gmail.com",
   },
   {
     type: "github",
     label: "GitHub",
-    value: "ian-kim",
-    url: "https://github.com/ian-kim",
+    value: "devonlyian",
+    url: "https://github.com/devonlyian",
   },
   {
     type: "linkedin",
     label: "LinkedIn",
-    value: "ian-kim",
-    url: "https://linkedin.com/in/ian-kim",
-  },
-  {
-    type: "blog",
-    label: "Blog",
-    value: "ian-kim.dev",
-    url: "https://blog.ian-kim.dev",
+    value: "ian-kim-38b0582b0",
+    url: "https://www.linkedin.com/in/ian-kim-38b0582b0/",
   },
 ];

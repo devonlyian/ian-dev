@@ -8,12 +8,12 @@ export const profile: Profile = {
     ko: "백엔드 개발자",
   },
   location: {
-    en: "Seoul, South Korea",
-    ko: "대한민국 서울",
+    en: "Anyang, South Korea",
+    ko: "대한민국 안양시",
   },
-  email: "ian@example.com",
-  github: "https://github.com/ian-kim",
-  linkedin: "https://linkedin.com/in/ian-kim",
+  email: "devonlyian@gmail.com",
+  github: "https://github.com/devonlyian",
+  linkedin: "https://www.linkedin.com/in/ian-kim-38b0582b0/",
   summary: [
     {
       en: "Experienced Backend Developer specializing in Kotlin/Spring ecosystem",
