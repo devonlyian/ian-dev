@@ -1,6 +1,10 @@
-import { contacts } from "@/data/contacts";
+"use client";
+
+import { useContentContext } from "@/contexts/ContentContext";
 
 export default function ContactSection() {
+  const { contacts } = useContentContext();
+
   return (
     <div className="space-y-3">
       <div className="dos-yellow font-bold">CONTACT</div>

@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { Language } from "@/hooks/useLanguage";
+import { Contact, Skill } from "@/types/data";
 
 // Types for parsed content (simple strings, not LocalizedText)
 export interface CareerContent {
@@ -25,6 +26,17 @@ export interface ProjectContent {
     demo?: string;
     blog?: string;
   };
+}
+
+export interface ProfileContent {
+  name: string;
+  nameKo?: string;
+  title: string;
+  location: string;
+  email: string;
+  github: string;
+  linkedin?: string;
+  summary: string[];
 }
 
 const contentDirectory = path.join(process.cwd(), "content");
@@ -116,14 +128,57 @@ export function getProjects(language: Language): ProjectContent[] {
   return projects;
 }
 
+export function getProfile(language: Language): ProfileContent {
+  const filePath = path.join(contentDirectory, language, "profile.md");
+  const fileContents = fs.readFileSync(filePath, "utf8");
+  const { data, content } = matter(fileContents);
+
+  // Parse summary from markdown content (bullet points)
+  const summary = content
+    .split("\n")
+    .filter((line) => line.trim().startsWith("-"))
+    .map((line) => line.trim().replace(/^-\s*/, ""));
+
+  return {
+    name: data.name,
+    nameKo: data.nameKo,
+    title: data.title,
+    location: data.location,
+    email: data.email,
+    github: data.github,
+    linkedin: data.linkedin,
+    summary,
+  };
+}
+
+export function getContacts(): Contact[] {
+  const filePath = path.join(contentDirectory, "contacts.md");
+  const fileContents = fs.readFileSync(filePath, "utf8");
+  const { data } = matter(fileContents);
+
+  return data.contacts as Contact[];
+}
+
+export function getSkills(): Skill[] {
+  const filePath = path.join(contentDirectory, "skills.md");
+  const fileContents = fs.readFileSync(filePath, "utf8");
+  const { data } = matter(fileContents);
+
+  return data.skills as Skill[];
+}
+
 // Get all content for both languages (for server-side preloading)
 export function getAllContent() {
   return {
+    contacts: getContacts(),
+    skills: getSkills(),
     en: {
+      profile: getProfile("en"),
       careers: getCareers("en"),
       projects: getProjects("en"),
     },
     ko: {
+      profile: getProfile("ko"),
       careers: getCareers("ko"),
       projects: getProjects("ko"),
     },

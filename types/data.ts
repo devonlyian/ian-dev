@@ -1,5 +1,6 @@
 import { LocalizedText } from "@/hooks/useLanguage";
 
+// Old Profile interface with LocalizedText (deprecated)
 export interface Profile {
   name: string;
   nameKo?: string;
@@ -10,6 +11,18 @@ export interface Profile {
   linkedin?: string;
   blog?: string;
   summary: LocalizedText[];
+}
+
+// New Profile interface for markdown content (already localized)
+export interface ProfileContent {
+  name: string;
+  nameKo?: string;
+  title: string;
+  location: string;
+  email: string;
+  github: string;
+  linkedin?: string;
+  summary: string[];
 }
 
 // Old Career interface with LocalizedText (for profile.ts compatibility)
@@ -79,11 +92,15 @@ export interface Contact {
 
 // Content data structure for preloaded markdown content
 export interface ContentData {
+  contacts: Contact[];
+  skills: Skill[];
   en: {
+    profile: ProfileContent;
     careers: CareerContent[];
     projects: ProjectContent[];
   };
   ko: {
+    profile: ProfileContent;
     careers: CareerContent[];
     projects: ProjectContent[];
   };

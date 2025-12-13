@@ -1,7 +1,11 @@
-import { profile } from "@/data/profile";
+"use client";
+
+import { useContentContext } from "@/contexts/ContentContext";
 import { neofetchArt } from "@/lib/commands/ascii";
 
 export default function NeofetchSection() {
+  const { profile } = useContentContext();
+
   const info = [
     { label: "OS", value: "Portfolio OS 1.0" },
     { label: "Host", value: profile.name },

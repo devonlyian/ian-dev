@@ -1,8 +1,7 @@
 "use client";
 
-import { profile } from "@/data/profile";
 import { useLanguageContext } from "@/contexts/LanguageContext";
-import { t } from "@/hooks/useLanguage";
+import { useContentContext } from "@/contexts/ContentContext";
 
 function Separator() {
   return (
@@ -14,6 +13,7 @@ function Separator() {
 
 export default function AboutSection() {
   const { language } = useLanguageContext();
+  const { profile } = useContentContext();
 
   return (
     <div className="space-y-2">
@@ -22,20 +22,20 @@ export default function AboutSection() {
         {language === "ko" && profile.nameKo ? profile.nameKo : profile.name}
         {language === "en" && profile.nameKo && ` (${profile.nameKo})`}
       </div>
-      <div className="dos-cyan text-sm sm:text-base">{t(profile.title, language)}</div>
+      <div className="dos-cyan text-sm sm:text-base">{profile.title}</div>
       <Separator />
       <div className="space-y-1.5 mt-3">
         {profile.summary.map((line, index) => (
           <div key={index} className="flex dos-highlight text-sm sm:text-base leading-relaxed">
             <span className="shrink-0 mr-2">•</span>
-            <span>{t(line, language)}</span>
+            <span>{line}</span>
           </div>
         ))}
       </div>
       <div className="mt-4 space-y-1.5">
         <div className="flex flex-col sm:flex-row sm:gap-2">
           <span className="dos-cyan font-bold">Location:</span>
-          <span className="dos-highlight">{t(profile.location, language)}</span>
+          <span className="dos-highlight">{profile.location}</span>
         </div>
         <div className="flex flex-col sm:flex-row sm:gap-2">
           <span className="dos-cyan font-bold">Email:</span>

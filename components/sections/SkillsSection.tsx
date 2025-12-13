@@ -1,7 +1,11 @@
-import { skills } from "@/data/skills";
+"use client";
+
+import { useContentContext } from "@/contexts/ContentContext";
 import ProgressBar from "@/components/ui/ProgressBar";
 
 export default function SkillsSection() {
+  const { skills } = useContentContext();
+
   return (
     <div className="space-y-4">
       <div className="dos-yellow font-bold">TECHNICAL SKILLS</div>

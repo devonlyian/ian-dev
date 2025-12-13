@@ -1,16 +1,12 @@
 "use client";
 
 import { forwardRef } from "react";
-import { profile } from "@/data/profile";
-import { skills } from "@/data/skills";
-import { contacts } from "@/data/contacts";
 import { useLanguageContext } from "@/contexts/LanguageContext";
 import { useContentContext } from "@/contexts/ContentContext";
-import { t } from "@/hooks/useLanguage";
 
 const PrintableResume = forwardRef<HTMLDivElement>((_, ref) => {
   const { language } = useLanguageContext();
-  const { careers, projects } = useContentContext();
+  const { profile, contacts, skills, careers, projects } = useContentContext();
 
     return (
       <div
@@ -24,9 +20,9 @@ const PrintableResume = forwardRef<HTMLDivElement>((_, ref) => {
           {profile.nameKo && (
             <p className="text-lg text-gray-600">{profile.nameKo}</p>
           )}
-          <p className="text-xl text-gray-700">{t(profile.title, language)}</p>
+          <p className="text-xl text-gray-700">{profile.title}</p>
           <div className="flex flex-wrap gap-4 mt-2 text-sm">
-            <span>{t(profile.location, language)}</span>
+            <span>{profile.location}</span>
             <span>{profile.email}</span>
             <span>{profile.github.replace("https://", "")}</span>
           </div>
@@ -39,7 +35,7 @@ const PrintableResume = forwardRef<HTMLDivElement>((_, ref) => {
           </h2>
           <ul className="list-disc list-inside space-y-1">
             {profile.summary.map((item, i) => (
-              <li key={i}>{t(item, language)}</li>
+              <li key={i}>{item}</li>
             ))}
           </ul>
         </section>
