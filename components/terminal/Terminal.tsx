@@ -30,7 +30,7 @@ const Terminal = forwardRef<HTMLDivElement, TerminalProps>(
     return (
       <div
         ref={ref}
-        className="w-full max-w-4xl mx-auto flex flex-col h-[85vh] md:h-[80vh] border-4 border-[var(--dos-border)] bg-[var(--dos-bg)] shadow-lg"
+        className="w-full max-w-4xl mx-auto flex flex-col h-[85vh] md:h-[80vh] border-4 border-dos-border bg-dos-bg shadow-lg"
       >
         <TerminalHeader />
         <TerminalBody history={history}>

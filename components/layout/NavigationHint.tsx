@@ -14,7 +14,7 @@ const quickCommands = [
 
 export default function NavigationHint({ onCommand }: NavigationHintProps) {
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-[var(--dos-bg)] border-t-2 border-[var(--dos-border)] p-2 lg:hidden no-print">
+    <div className="fixed bottom-0 left-0 right-0 bg-dos-bg border-t-2 border-dos-border p-2 lg:hidden no-print">
       <div className="flex justify-center gap-1 flex-wrap">
         {quickCommands.map((cmd) => (
           <button

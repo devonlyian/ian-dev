@@ -36,7 +36,7 @@ export default function ProjectsSection({ onSelectProject }: ProjectsSectionProp
         {projects.map((project) => (
           <div
             key={project.id}
-            className="space-y-1 cursor-pointer border border-transparent hover:border-[var(--dos-cyan)] p-2 -mx-2 transition-colors"
+            className="space-y-1 cursor-pointer border border-transparent hover:border-dos-cyan p-2 -mx-2 transition-colors"
             onClick={() => onSelectProject?.(project.id)}
           >
             <div className="flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-2">
@@ -93,7 +93,7 @@ export function ProjectDetailSection({ projectId }: ProjectDetailSectionProps) {
           {project.techStack.map((tech) => (
             <span
               key={tech}
-              className="bg-[var(--dos-cyan)] text-[var(--dos-bg)] px-1.5 py-0.5 text-sm font-bold"
+              className="bg-dos-cyan text-dos-bg px-1.5 py-0.5 text-sm font-bold"
             >
               {tech}
             </span>

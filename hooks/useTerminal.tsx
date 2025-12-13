@@ -46,14 +46,14 @@ const quickCommands = ["ABOUT", "CAREER", "SKILLS", "PROJECTS", "CONTACT", "HELP
 
 function WelcomeButtons({ onCommand }: { onCommand: (cmd: string) => void }) {
   return (
-    <div className="mt-4 pt-3 border-t border-[var(--dos-border)]">
+    <div className="mt-4 pt-3 border-t border-dos-border">
       <div className="dos-cyan text-sm mb-2">Quick Commands:</div>
       <div className="flex flex-wrap gap-1.5 sm:gap-2">
         {quickCommands.map((cmd) => (
           <button
             key={cmd}
             onClick={() => onCommand(cmd)}
-            className="px-2 py-1 text-sm sm:text-base border border-[var(--dos-border)] bg-[var(--dos-bg)] dos-highlight hover:bg-[var(--dos-highlight)] hover:text-[var(--dos-bg)] transition-colors"
+            className="px-2 py-1 text-sm sm:text-base border border-dos-border bg-dos-bg dos-highlight hover:bg-dos-highlight hover:text-dos-bg transition-colors"
           >
             {cmd}
           </button>

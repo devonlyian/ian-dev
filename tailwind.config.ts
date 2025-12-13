@@ -5,7 +5,6 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: "class",
   theme: {
     extend: {
       fontFamily: {
@@ -13,17 +12,14 @@ const config: Config = {
       },
       colors: {
         dos: {
-          // Dark mode (classic DOS blue)
-          "dark-bg": "#000080",
-          "dark-text": "#AAAAAA",
-          "dark-highlight": "#FFFFFF",
-          "dark-yellow": "#FFFF00",
-          "dark-border": "#FFFFFF",
-          // Light mode
-          "light-bg": "#C0C0C0",
-          "light-text": "#000000",
-          "light-highlight": "#000080",
-          "light-border": "#808080",
+          bg: "var(--dos-bg)",
+          text: "var(--dos-text)",
+          highlight: "var(--dos-highlight)",
+          yellow: "var(--dos-yellow)",
+          border: "var(--dos-border)",
+          cyan: "var(--dos-cyan)",
+          green: "var(--dos-green)",
+          red: "var(--dos-red)",
         },
       },
       animation: {

@@ -65,12 +65,12 @@ export default function LanguageToggle() {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 top-full mt-1 bg-[var(--dos-bg)] border border-[var(--dos-border)] shadow-lg z-50 min-w-[100px]">
+        <div className="absolute right-0 top-full mt-1 bg-dos-bg border border-dos-border shadow-lg z-50 min-w-[100px]">
           {languages.map((lang) => (
             <button
               key={lang.code}
               onClick={() => handleSelect(lang.code)}
-              className={`w-full px-3 py-1.5 text-left text-sm hover:bg-[var(--dos-highlight)] hover:text-[var(--dos-bg)] transition-colors ${
+              className={`w-full px-3 py-1.5 text-left text-sm hover:bg-dos-highlight hover:text-dos-bg transition-colors ${
                 language === lang.code ? "dos-cyan font-bold" : "dos-text"
               }`}
             >

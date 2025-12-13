@@ -51,7 +51,7 @@ export default function CareerSection() {
             {career.techStack.map((tech) => (
               <span
                 key={tech}
-                className="bg-[var(--dos-cyan)] text-[var(--dos-bg)] px-1.5 py-0.5 text-sm font-bold"
+                className="bg-dos-cyan text-dos-bg px-1.5 py-0.5 text-sm font-bold"
               >
                 {tech}
               </span>

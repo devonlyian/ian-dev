@@ -17,7 +17,7 @@ const commands = [
 export default function CommandBar({ onCommand }: CommandBarProps) {
   return (
     <div className="w-full max-w-4xl mx-auto mt-2 no-print">
-      <div className="flex items-center justify-between sm:justify-center sm:gap-3 p-2 border-2 border-[var(--dos-border)] bg-[var(--dos-bg)]">
+      <div className="flex items-center justify-between sm:justify-center sm:gap-3 p-2 border-2 border-dos-border bg-dos-bg">
         <span className="dos-text text-sm shrink-0 mr-1 hidden sm:inline">
           Quick:
         </span>
@@ -25,7 +25,7 @@ export default function CommandBar({ onCommand }: CommandBarProps) {
           <button
             key={cmd.command}
             onClick={() => onCommand(cmd.command)}
-            className="px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs sm:text-base border border-[var(--dos-border)] bg-[var(--dos-bg)] dos-highlight hover:bg-[var(--dos-highlight)] hover:text-[var(--dos-bg)] transition-colors"
+            className="px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs sm:text-base border border-dos-border bg-dos-bg dos-highlight hover:bg-dos-highlight hover:text-dos-bg transition-colors"
           >
             {cmd.label}
           </button>
