@@ -1,19 +1,4 @@
-import { LocalizedText } from "@/hooks/useLanguage";
-
-// Old Profile interface with LocalizedText (deprecated)
-export interface Profile {
-  name: string;
-  nameKo?: string;
-  title: LocalizedText;
-  location: LocalizedText;
-  email: string;
-  github: string;
-  linkedin?: string;
-  blog?: string;
-  summary: LocalizedText[];
-}
-
-// New Profile interface for markdown content (already localized)
+// Profile interface for markdown content
 export interface ProfileContent {
   name: string;
   nameKo?: string;
@@ -25,16 +10,7 @@ export interface ProfileContent {
   summary: string[];
 }
 
-// Old Career interface with LocalizedText (for profile.ts compatibility)
-export interface Career {
-  company: LocalizedText;
-  position: LocalizedText;
-  period: string;
-  description: LocalizedText[];
-  techStack: string[];
-}
-
-// New Career interface for markdown content (already localized)
+// Career interface for markdown content
 export interface CareerContent {
   company: string;
   position: string;
@@ -44,6 +20,7 @@ export interface CareerContent {
   order: number;
 }
 
+// Skill interface
 export interface Skill {
   category: string;
   items: {
@@ -53,22 +30,7 @@ export interface Skill {
   }[];
 }
 
-// Old Project interface with LocalizedText
-export interface Project {
-  id: string;
-  name: string;
-  description: LocalizedText;
-  techStack: string[];
-  role: LocalizedText;
-  highlights: LocalizedText[];
-  links?: {
-    github?: string;
-    demo?: string;
-    blog?: string;
-  };
-}
-
-// New Project interface for markdown content (already localized)
+// Project interface for markdown content
 export interface ProjectContent {
   id: string;
   name: string;

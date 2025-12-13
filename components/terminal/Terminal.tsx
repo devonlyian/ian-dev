@@ -10,6 +10,7 @@ interface TerminalProps {
   history: TerminalEntry[];
   currentInput: string;
   isProcessing: boolean;
+  isGameActive: boolean;
   onInputChange: (value: string) => void;
   onSubmit: (command: string) => void;
   onNavigateHistory: (direction: "up" | "down") => void;
@@ -21,6 +22,7 @@ const Terminal = forwardRef<HTMLDivElement, TerminalProps>(
       history,
       currentInput,
       isProcessing,
+      isGameActive,
       onInputChange,
       onSubmit,
       onNavigateHistory,
@@ -40,6 +42,7 @@ const Terminal = forwardRef<HTMLDivElement, TerminalProps>(
             onSubmit={onSubmit}
             onNavigateHistory={onNavigateHistory}
             isProcessing={isProcessing}
+            isGameActive={isGameActive}
           />
         </TerminalBody>
       </div>

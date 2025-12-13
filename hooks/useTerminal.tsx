@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useCallback, useEffect, useRef, ReactNode } from "react";
+import { useState, useCallback, useEffect, useRef, useMemo, ReactNode } from "react";
 import { TerminalState, TerminalEntry } from "@/types/terminal";
 import { ThemeMode } from "@/types/terminal";
 import { executeCommand, CommandContext } from "@/lib/commands/commandExecutor";
 import { generateId } from "@/lib/utils";
 import { welcomeBanner, welcomeMessage } from "@/lib/commands/ascii";
+import SnakeGame from "@/components/games/SnakeGame";
 
 function AutoScaleBanner() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -218,10 +219,20 @@ export function useTerminal({ setTheme, triggerPrint, renderSection }: UseTermin
     });
   }, []);
 
+  // Detect if game is active by checking if last output contains SnakeGame
+  const isGameActive = useMemo(() => {
+    const lastOutput = state.history.find((entry) => entry.type === "output");
+    if (!lastOutput?.content) return false;
+    // Check if content is a React element with SnakeGame type
+    const content = lastOutput.content as React.ReactElement;
+    return content?.type === SnakeGame;
+  }, [state.history]);
+
   return {
     history: state.history,
     currentInput: state.currentInput,
     isProcessing: state.isProcessing,
+    isGameActive,
     runCommand,
     setCurrentInput,
     navigateHistory,

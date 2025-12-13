@@ -5,7 +5,19 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap");
 
 :root {
-  /* Dark mode (default) */
+  /* Dark theme (default) - Modern dark mode */
+  --dos-bg: #0d0d0d;
+  --dos-text: #e0e0e0;
+  --dos-highlight: #ffffff;
+  --dos-yellow: #ffd700;
+  --dos-border: #404040;
+  --dos-cyan: #00d4d4;
+  --dos-green: #00d400;
+  --dos-red: #ff4444;
+}
+
+/* DOS theme - Classic MS-DOS blue */
+.dos {
   --dos-bg: #000080;
   --dos-text: #d4d4d4;
   --dos-highlight: #ffffff;
@@ -16,6 +28,7 @@
   --dos-red: #ff5454;
 }
 
+/* Light theme */
 .light {
   --dos-bg: #f0f0f0;
   --dos-text: #000000;
@@ -25,6 +38,30 @@
   --dos-cyan: #007090;
   --dos-green: #007020;
   --dos-red: #cc0000;
+}
+
+/* Amber theme - Classic monochrome amber monitor */
+.amber {
+  --dos-bg: #1a1100;
+  --dos-text: #ff9900;
+  --dos-highlight: #ffcc00;
+  --dos-yellow: #ffdd44;
+  --dos-border: #ff8800;
+  --dos-cyan: #ffbb33;
+  --dos-green: #ffaa22;
+  --dos-red: #ff6600;
+}
+
+/* Green theme - Classic monochrome green terminal */
+.green {
+  --dos-bg: #001100;
+  --dos-text: #33ff33;
+  --dos-highlight: #66ff66;
+  --dos-yellow: #99ff66;
+  --dos-border: #00ff00;
+  --dos-cyan: #00ffaa;
+  --dos-green: #00ff00;
+  --dos-red: #ff6633;
 }
 
 * {

@@ -11,7 +11,6 @@ const commands = [
   { label: "PROJECTS", command: "PROJECTS" },
   { label: "CONTACT", command: "CONTACT" },
   { label: "HELP", command: "HELP" },
-  { label: "CLS", command: "CLS" },
 ];
 
 export default function CommandBar({ onCommand }: CommandBarProps) {

@@ -3,15 +3,17 @@ const commands = [
   { name: "ABOUT", desc: "Display information about me" },
   { name: "CAREER", desc: "Show my work experience" },
   { name: "SKILLS", desc: "List my technical skills" },
-  { name: "PROJECTS", desc: "Show my projects" },
+  { name: "PROJECTS [id]", desc: "Show my projects" },
   { name: "CONTACT", desc: "Display contact information" },
   { name: "CLS", desc: "Clear the screen" },
   { name: "DIR", desc: "List available sections" },
   { name: "TYPE <section>", desc: "Display section content" },
-  { name: "MODE <dark|light>", desc: "Change display mode" },
+  { name: "MODE <theme>", desc: "Change theme (dos/dark/light/amber/green)" },
   { name: "PRINT", desc: "Print resume as PDF" },
   { name: "VER", desc: "Display version information" },
   { name: "NEOFETCH", desc: "Display system info" },
+  { name: "HISTORY", desc: "Show command history" },
+  { name: "SNAKE", desc: "Play Snake game" },
 ];
 
 export default function HelpSection() {

@@ -26,9 +26,10 @@ import ContactSection from "@/components/sections/ContactSection";
 import DirSection from "@/components/sections/DirSection";
 import VersionSection from "@/components/sections/VersionSection";
 import NeofetchSection from "@/components/sections/NeofetchSection";
+import SnakeGame from "@/components/games/SnakeGame";
 
 function HomeContent() {
-  const { theme, setTheme, toggleTheme, mounted } = useTheme();
+  const { theme, setTheme, mounted, availableThemes } = useTheme();
   const printRef = useRef<HTMLDivElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
   const runCommandRef = useRef<(cmd: string) => void>(() => {});
@@ -44,6 +45,10 @@ function HomeContent() {
 
   const handleSelectProject = useCallback((projectId: string) => {
     runCommandRef.current(`PROJECTS ${projectId}`);
+  }, []);
+
+  const handleExitGame = useCallback(() => {
+    runCommandRef.current("CLS");
   }, []);
 
   const renderSection = useCallback((section: string): ReactNode => {
@@ -72,10 +77,12 @@ function HomeContent() {
         return <VersionSection />;
       case "neofetch":
         return <NeofetchSection />;
+      case "snake":
+        return <SnakeGame onExit={handleExitGame} />;
       default:
         return null;
     }
-  }, [handleSelectProject]);
+  }, [handleSelectProject, handleExitGame]);
 
   const terminal = useTerminal({
     setTheme,
@@ -102,7 +109,7 @@ function HomeContent() {
       {/* Top bar */}
       <div className="flex justify-end gap-2 mb-2 no-print">
         <LanguageToggle />
-        <ThemeToggle theme={theme} onToggle={toggleTheme} />
+        <ThemeToggle theme={theme} setTheme={setTheme} availableThemes={availableThemes} />
         <PrintButton onClick={triggerPrint} />
       </div>
 
@@ -112,6 +119,7 @@ function HomeContent() {
         history={terminal.history}
         currentInput={terminal.currentInput}
         isProcessing={terminal.isProcessing}
+        isGameActive={terminal.isGameActive}
         onInputChange={terminal.setCurrentInput}
         onSubmit={terminal.runCommand}
         onNavigateHistory={terminal.navigateHistory}

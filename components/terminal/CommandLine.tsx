@@ -9,6 +9,7 @@ interface CommandLineProps {
   onSubmit: (command: string) => void;
   onNavigateHistory: (direction: "up" | "down") => void;
   isProcessing: boolean;
+  isGameActive: boolean;
 }
 
 export default function CommandLine({
@@ -17,6 +18,7 @@ export default function CommandLine({
   onSubmit,
   onNavigateHistory,
   isProcessing,
+  isGameActive,
 }: CommandLineProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -77,10 +79,13 @@ export default function CommandLine({
           "CONTACT",
           "CLS",
           "DIR",
+          "TYPE",
           "MODE",
           "PRINT",
           "VER",
           "NEOFETCH",
+          "HISTORY",
+          "SNAKE",
         ];
         const input = currentInput.toUpperCase();
         const match = commands.find((cmd) => cmd.startsWith(input) && cmd !== input);
@@ -94,6 +99,15 @@ export default function CommandLine({
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     onInputChange(e.target.value);
   };
+
+  // Show game mode message instead of input when game is active
+  if (isGameActive) {
+    return (
+      <div className="flex items-center gap-1 min-h-[1.5rem] py-4 my-2">
+        <span className="dos-yellow">Press ESC to exit game</span>
+      </div>
+    );
+  }
 
   return (
     <div className="flex items-center gap-1 min-h-[1.5rem] py-4 my-2">
