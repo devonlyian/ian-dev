@@ -3,7 +3,7 @@ export default function TerminalHeader() {
     <div className="flex items-center justify-between px-2 py-1 bg-dos-highlight text-dos-bg select-none">
       <div className="flex items-center gap-2">
         <span className="text-sm sm:text-base font-bold truncate">
-          <span className="hidden sm:inline">MS-DOS Prompt - </span>PORTFOLIO
+          <span className="hidden sm:inline">MS-DOS Prompt - </span>IAN-DEV
         </span>
       </div>
     </div>

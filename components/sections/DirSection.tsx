@@ -9,7 +9,7 @@ const sections = [
 export default function DirSection() {
   return (
     <div className="space-y-1">
-      <div className="dos-text">Directory of C:\PORTFOLIO</div>
+      <div className="dos-text">Directory of C:\IAN-DEV</div>
       <div className="dos-text mt-2">{"─".repeat(20)}</div>
 
       {sections.map((section) => (
