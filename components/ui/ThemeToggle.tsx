@@ -78,12 +78,18 @@ export default function ThemeToggle({ theme, setTheme, availableThemes }: ThemeT
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 top-full mt-1 bg-dos-bg border border-dos-border shadow-lg z-50 min-w-[100px]">
+        <div
+          role="menu"
+          aria-label="Theme options"
+          className="absolute right-0 top-full mt-1 bg-dos-bg border border-dos-border shadow-lg z-50 min-w-[100px]"
+        >
           {availableThemes.map((t) => (
             <button
               key={t}
+              role="menuitem"
               onClick={() => handleSelect(t)}
-              className={`w-full px-3 py-1.5 text-left text-sm hover:bg-dos-highlight hover:text-dos-bg transition-colors ${
+              aria-current={theme === t ? "true" : undefined}
+              className={`w-full px-3 py-1.5 text-left text-sm hover:bg-dos-highlight hover:text-dos-bg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-dos-cyan ${
                 theme === t ? "dos-cyan font-bold" : "dos-text"
               }`}
             >

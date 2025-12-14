@@ -41,10 +41,12 @@ export interface ProfileContent {
 
 const contentDirectory = path.join(process.cwd(), "content");
 
+type FrontmatterData = Record<string, unknown>;
+
 // Generic helper to read markdown files from a directory
 function getMarkdownData<T>(
   relativePath: string[],
-  parser: (data: any, content: string) => T
+  parser: (data: FrontmatterData, content: string) => T
 ): T[] {
   const targetDir = path.join(contentDirectory, ...relativePath);
 
@@ -66,7 +68,7 @@ function getMarkdownData<T>(
 // Generic helper to read a single markdown file
 function getSingleMarkdownData<T>(
   relativePath: string[],
-  parser: (data: any, content: string) => T
+  parser: (data: FrontmatterData, content: string) => T
 ): T {
   const filePath = path.join(contentDirectory, ...relativePath);
   const fileContents = fs.readFileSync(filePath, "utf8");
@@ -82,7 +84,7 @@ const parseListFromContent = (content: string): string[] => {
     .map((line) => line.trim().replace(/^-\s*/, ""));
 };
 
-const parseProjectContent = (data: any, content: string): ProjectContent => {
+const parseProjectContent = (data: FrontmatterData, content: string): ProjectContent => {
   const lines = content.split("\n");
   let description = "";
   const highlights: string[] = [];
@@ -106,26 +108,26 @@ const parseProjectContent = (data: any, content: string): ProjectContent => {
   }
 
   return {
-    id: data.id,
-    name: data.name,
+    id: data.id as string,
+    name: data.name as string,
     description,
-    techStack: data.techStack || [],
-    role: data.role,
+    techStack: (data.techStack as string[]) || [],
+    role: data.role as string,
     highlights,
-    links: data.links,
-  } as ProjectContent;
+    links: data.links as ProjectContent["links"],
+  };
 };
 
 export function getCareers(language: Language): CareerContent[] {
   const careers = getMarkdownData<CareerContent>(
     [language, "careers"],
     (data, content) => ({
-      company: data.company,
-      position: data.position,
-      period: data.period,
+      company: data.company as string,
+      position: data.position as string,
+      period: data.period as string,
       description: parseListFromContent(content),
-      techStack: data.techStack || [],
-      order: data.order || 0,
+      techStack: (data.techStack as string[]) || [],
+      order: (data.order as number) || 0,
     })
   );
 
@@ -143,24 +145,24 @@ export function getProfile(language: Language): ProfileContent {
   return getSingleMarkdownData<ProfileContent>(
     [language, "profile.md"],
     (data, content) => ({
-      name: data.name,
-      nameKo: data.nameKo,
-      title: data.title,
-      location: data.location,
-      email: data.email,
-      github: data.github,
-      linkedin: data.linkedin,
+      name: data.name as string,
+      nameKo: data.nameKo as string | undefined,
+      title: data.title as string,
+      location: data.location as string,
+      email: data.email as string,
+      github: data.github as string,
+      linkedin: data.linkedin as string | undefined,
       summary: parseListFromContent(content),
     })
   );
 }
 
 export function getContacts(): Contact[] {
-  return getSingleMarkdownData<Contact[]>(["contacts.md"], (data) => data.contacts);
+  return getSingleMarkdownData<Contact[]>(["contacts.md"], (data) => data.contacts as Contact[]);
 }
 
 export function getSkills(): Skill[] {
-  return getSingleMarkdownData<Skill[]>(["skills.md"], (data) => data.skills);
+  return getSingleMarkdownData<Skill[]>(["skills.md"], (data) => data.skills as Skill[]);
 }
 
 // Get all content for both languages (for server-side preloading)

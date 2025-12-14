@@ -2,14 +2,7 @@
 
 import { useLanguageContext } from "@/contexts/LanguageContext";
 import { useContentContext } from "@/contexts/ContentContext";
-
-function Separator() {
-  return (
-    <div className="dos-yellow overflow-hidden whitespace-nowrap">
-      {"═".repeat(60)}
-    </div>
-  );
-}
+import { SeparatorLine } from "@/components/ui/SeparatorLine";
 
 interface ProjectsSectionProps {
   onSelectProject?: (projectId: string) => void;
@@ -21,11 +14,11 @@ export default function ProjectsSection({ onSelectProject }: ProjectsSectionProp
 
   return (
     <div className="space-y-3">
-      <Separator />
+      <SeparatorLine />
       <div className="dos-highlight text-base sm:text-lg font-bold">
         {language === "ko" ? "프로젝트" : "PROJECTS"}
       </div>
-      <Separator />
+      <SeparatorLine />
       <div className="dos-cyan text-sm">
         {language === "ko"
           ? "클릭하거나 'PROJECTS <이름>' 입력시 상세 정보 표시"
@@ -78,10 +71,10 @@ export function ProjectDetailSection({ projectId }: ProjectDetailSectionProps) {
 
   return (
     <div className="space-y-3">
-      <Separator />
+      <SeparatorLine />
       <div className="dos-highlight text-base sm:text-lg font-bold">{project.name}</div>
       <div className="dos-cyan text-sm sm:text-base">{project.role}</div>
-      <Separator />
+      <SeparatorLine />
 
       <div className="dos-highlight text-sm sm:text-base mt-2">{project.description}</div>
 

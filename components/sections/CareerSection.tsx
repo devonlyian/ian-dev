@@ -2,22 +2,7 @@
 
 import { useLanguageContext } from "@/contexts/LanguageContext";
 import { useContentContext } from "@/contexts/ContentContext";
-
-function Separator() {
-  return (
-    <div className="dos-yellow overflow-hidden whitespace-nowrap">
-      {"═".repeat(60)}
-    </div>
-  );
-}
-
-function Divider() {
-  return (
-    <div className="dos-cyan overflow-hidden whitespace-nowrap mt-4">
-      {"─".repeat(40)}
-    </div>
-  );
-}
+import { SeparatorLine, Divider } from "@/components/ui/SeparatorLine";
 
 export default function CareerSection() {
   const { language } = useLanguageContext();
@@ -25,11 +10,11 @@ export default function CareerSection() {
 
   return (
     <div className="space-y-3">
-      <Separator />
+      <SeparatorLine />
       <div className="dos-highlight text-base sm:text-lg font-bold">
         {language === "ko" ? "경력 사항" : "WORK EXPERIENCE"}
       </div>
-      <Separator />
+      <SeparatorLine />
 
       {careers.map((career, index) => (
         <div key={index} className="space-y-2 mt-4">

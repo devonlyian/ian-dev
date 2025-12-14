@@ -2,14 +2,7 @@
 
 import { useLanguageContext } from "@/contexts/LanguageContext";
 import { useContentContext } from "@/contexts/ContentContext";
-
-function Separator() {
-  return (
-    <div className="dos-yellow overflow-hidden whitespace-nowrap">
-      {"═".repeat(60)}
-    </div>
-  );
-}
+import { SeparatorLine } from "@/components/ui/SeparatorLine";
 
 export default function AboutSection() {
   const { language } = useLanguageContext();
@@ -17,13 +10,13 @@ export default function AboutSection() {
 
   return (
     <div className="space-y-2">
-      <Separator />
+      <SeparatorLine />
       <div className="dos-highlight text-base sm:text-lg font-bold">
         {language === "ko" && profile.nameKo ? profile.nameKo : profile.name}
         {language === "en" && profile.nameKo && ` (${profile.nameKo})`}
       </div>
       <div className="dos-cyan text-sm sm:text-base">{profile.title}</div>
-      <Separator />
+      <SeparatorLine />
       <div className="space-y-1.5 mt-3">
         {profile.summary.map((line, index) => (
           <div key={index} className="flex dos-highlight text-sm sm:text-base leading-relaxed">

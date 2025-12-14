@@ -62,6 +62,7 @@ export function useSnakeGame(onExit: () => void) {
   });
 
   const directionRef = useRef<Direction>(state.direction);
+  const lastMoveDirectionRef = useRef<Direction>(state.direction); // 실제 이동한 방향
   const gameLoopRef = useRef<NodeJS.Timeout | null>(null);
 
   // Calculate speed based on score
@@ -76,6 +77,10 @@ export function useSnakeGame(onExit: () => void) {
 
       const head = prev.snake[0];
       const direction = directionRef.current;
+
+      // 실제 이동 방향 업데이트
+      lastMoveDirectionRef.current = direction;
+
       let newHead: Position;
 
       switch (direction) {
@@ -145,13 +150,13 @@ export function useSnakeGame(onExit: () => void) {
 
   // Handle direction change
   const changeDirection = useCallback((newDirection: Direction) => {
-    const current = directionRef.current;
-    // Prevent 180-degree turns
+    // 실제 마지막으로 이동한 방향을 기준으로 180도 회전 방지
+    const lastMove = lastMoveDirectionRef.current;
     if (
-      (current === "UP" && newDirection === "DOWN") ||
-      (current === "DOWN" && newDirection === "UP") ||
-      (current === "LEFT" && newDirection === "RIGHT") ||
-      (current === "RIGHT" && newDirection === "LEFT")
+      (lastMove === "UP" && newDirection === "DOWN") ||
+      (lastMove === "DOWN" && newDirection === "UP") ||
+      (lastMove === "LEFT" && newDirection === "RIGHT") ||
+      (lastMove === "RIGHT" && newDirection === "LEFT")
     ) {
       return;
     }
@@ -163,6 +168,7 @@ export function useSnakeGame(onExit: () => void) {
     const newState = getInitialState();
     newState.highScore = state.highScore;
     directionRef.current = "RIGHT";
+    lastMoveDirectionRef.current = "RIGHT";
     setState(newState);
   }, [state.highScore]);
 
@@ -241,5 +247,6 @@ export function useSnakeGame(onExit: () => void) {
     gridHeight: GRID_HEIGHT,
     restart,
     togglePause,
+    changeDirection,
   };
 }

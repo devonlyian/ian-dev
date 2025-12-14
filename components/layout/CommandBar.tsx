@@ -15,21 +15,29 @@ const commands = [
 
 export default function CommandBar({ onCommand }: CommandBarProps) {
   return (
-    <div className="w-full max-w-4xl mx-auto mt-2 no-print">
-      <div className="flex items-center justify-between sm:justify-center sm:gap-3 p-2 border-2 border-dos-border bg-dos-bg">
-        <span className="dos-text text-sm shrink-0 mr-1 hidden sm:inline">
+    <nav
+      aria-label="Quick navigation commands"
+      className="w-full max-w-4xl mx-auto mt-2 no-print"
+    >
+      <div
+        role="toolbar"
+        aria-label="Command buttons"
+        className="flex items-center justify-between sm:justify-center sm:gap-3 p-2 border-2 border-dos-border bg-dos-bg"
+      >
+        <span className="dos-text text-sm shrink-0 mr-1 hidden sm:inline" aria-hidden="true">
           Quick:
         </span>
         {commands.map((cmd) => (
           <button
             key={cmd.command}
             onClick={() => onCommand(cmd.command)}
-            className="px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs sm:text-base border border-dos-border bg-dos-bg dos-highlight hover:bg-dos-highlight hover:text-dos-bg transition-colors"
+            aria-label={`Execute ${cmd.label} command`}
+            className="px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs sm:text-base border border-dos-border bg-dos-bg dos-highlight hover:bg-dos-highlight hover:text-dos-bg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-dos-cyan"
           >
             {cmd.label}
           </button>
         ))}
       </div>
-    </div>
+    </nav>
   );
 }

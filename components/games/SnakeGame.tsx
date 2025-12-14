@@ -62,31 +62,89 @@ export default function SnakeGame({ onExit }: SnakeGameProps) {
         <span className="dos-green">High Score: {game.highScore}</span>
       </div>
 
-      {/* Game grid */}
-      <div className="dos-highlight text-center whitespace-pre leading-tight">
-        {renderGrid().map((row, i) => (
-          <div key={i}>{row}</div>
-        ))}
+      {/* Game grid with overlay */}
+      <div className="relative">
+        <div className="dos-highlight text-center whitespace-pre leading-tight">
+          {renderGrid().map((row, i) => (
+            <div key={i}>{row}</div>
+          ))}
+        </div>
+
+        {/* Game status overlay */}
+        {(game.gameOver || game.isPaused) && (
+          <div className="absolute inset-0 flex items-center justify-center bg-dos-bg/80">
+            {game.gameOver ? (
+              <div className="text-center">
+                <div className="dos-red text-lg mb-2">GAME OVER!</div>
+                <div className="dos-text">Final Score: {game.score}</div>
+                <div className="dos-cyan mt-2 hidden sm:block">[SPACE] or [R] to restart</div>
+              </div>
+            ) : (
+              <div className="text-center">
+                <div className="dos-yellow text-lg">PAUSED</div>
+                <div className="dos-cyan hidden sm:block">[SPACE] to continue</div>
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
-      {/* Game status */}
-      {game.gameOver && (
-        <div className="mt-4 text-center">
-          <div className="dos-red text-lg mb-2">GAME OVER!</div>
-          <div className="dos-text">Final Score: {game.score}</div>
-          <div className="dos-cyan mt-2">[SPACE] or [R] to restart</div>
+      {/* Mobile Touch Controls */}
+      <div className="mt-4 sm:hidden">
+        {/* Exit button */}
+        <div className="flex justify-center mb-3">
+          <button
+            onClick={onExit}
+            className="px-4 py-2 border-2 border-dos-red bg-dos-bg dos-red text-sm active:bg-dos-red active:text-dos-bg touch-manipulation"
+            aria-label="Exit game"
+          >
+            ✕ EXIT
+          </button>
         </div>
-      )}
-
-      {game.isPaused && !game.gameOver && (
-        <div className="mt-4 text-center">
-          <div className="dos-yellow text-lg">PAUSED</div>
-          <div className="dos-cyan">[SPACE] to continue</div>
+        {/* Direction controls */}
+        <div className="flex flex-col items-center gap-1">
+          <button
+            onClick={() => game.changeDirection("UP")}
+            className="w-14 h-14 border-2 border-dos-border bg-dos-bg dos-highlight text-2xl active:bg-dos-highlight active:text-dos-bg touch-manipulation"
+            aria-label="Move up"
+          >
+            ▲
+          </button>
+          <div className="flex gap-1">
+            <button
+              onClick={() => game.changeDirection("LEFT")}
+              className="w-14 h-14 border-2 border-dos-border bg-dos-bg dos-highlight text-2xl active:bg-dos-highlight active:text-dos-bg touch-manipulation"
+              aria-label="Move left"
+            >
+              ◀
+            </button>
+            <button
+              onClick={() => game.isPaused || game.gameOver ? (game.gameOver ? game.restart() : game.togglePause()) : game.togglePause()}
+              className="w-14 h-14 border-2 border-dos-border bg-dos-bg dos-cyan text-xs active:bg-dos-highlight active:text-dos-bg touch-manipulation"
+              aria-label={game.gameOver ? "Restart" : game.isPaused ? "Resume" : "Pause"}
+            >
+              {game.gameOver ? "PLAY" : game.isPaused ? "GO" : "❚❚"}
+            </button>
+            <button
+              onClick={() => game.changeDirection("RIGHT")}
+              className="w-14 h-14 border-2 border-dos-border bg-dos-bg dos-highlight text-2xl active:bg-dos-highlight active:text-dos-bg touch-manipulation"
+              aria-label="Move right"
+            >
+              ▶
+            </button>
+          </div>
+          <button
+            onClick={() => game.changeDirection("DOWN")}
+            className="w-14 h-14 border-2 border-dos-border bg-dos-bg dos-highlight text-2xl active:bg-dos-highlight active:text-dos-bg touch-manipulation"
+            aria-label="Move down"
+          >
+            ▼
+          </button>
         </div>
-      )}
+      </div>
 
-      {/* Controls */}
-      <div className="mt-4 dos-text text-sm">
+      {/* Desktop Controls */}
+      <div className="mt-4 dos-text text-sm hidden sm:block">
         <div className="text-center mb-2 dos-cyan">─── Controls ───</div>
         <div className="flex justify-center gap-8">
           <div>
