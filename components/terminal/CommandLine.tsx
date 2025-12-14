@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, KeyboardEvent, ChangeEvent } from "react";
 import PromptLine from "./PromptLine";
+import { getAvailableCommands } from "@/lib/commands/commandExecutor";
 
 interface CommandLineProps {
   currentInput: string;
@@ -69,28 +70,38 @@ export default function CommandLine({
         break;
       case "Tab":
         e.preventDefault();
-        // Simple autocomplete
-        const commands = [
-          "HELP",
-          "ABOUT",
-          "CAREER",
-          "SKILLS",
-          "PROJECTS",
-          "CONTACT",
-          "CLS",
-          "DIR",
-          "TYPE",
-          "MODE",
-          "PRINT",
-          "VER",
-          "NEOFETCH",
-          "HISTORY",
-          "SNAKE",
-        ];
         const input = currentInput.toUpperCase();
-        const match = commands.find((cmd) => cmd.startsWith(input) && cmd !== input);
-        if (match) {
-          onInputChange(match);
+        if (!input) return;
+
+        // Get all commands including aliases
+        const availableCommands = getAvailableCommands();
+        const candidates = new Set<string>();
+
+        availableCommands.forEach((cmd) => {
+          if (cmd.name.startsWith(input)) candidates.add(cmd.name);
+          cmd.aliases.forEach((alias) => {
+            if (alias.startsWith(input)) candidates.add(alias);
+          });
+        });
+
+        const matches = Array.from(candidates).sort();
+
+        if (matches.length === 1) {
+          // Exact match found
+          onInputChange(matches[0]);
+        } else if (matches.length > 1) {
+          // Find common prefix if multiple matches
+          const commonPrefix = matches.reduce((prefix, current) => {
+            let i = 0;
+            while (i < prefix.length && i < current.length && prefix[i] === current[i]) {
+              i++;
+            }
+            return prefix.substring(0, i);
+          });
+
+          if (commonPrefix.length > input.length) {
+            onInputChange(commonPrefix);
+          }
         }
         break;
     }

@@ -1,5 +1,13 @@
+import { IBM_Plex_Mono } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
+
+const ibmPlexMono = IBM_Plex_Mono({
+  weight: ["400", "500", "700"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-ibm-plex-mono",
+});
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio.iankim.dev";
 
@@ -104,7 +112,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-screen">{children}</body>
+      <body className={`${ibmPlexMono.variable} min-h-screen font-mono`}>{children}</body>
     </html>
   );
 }

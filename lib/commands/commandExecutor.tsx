@@ -36,6 +36,11 @@ export function executeCommand(
   return executeFromRegistry(input, fullContext);
 }
 
+export function getAvailableCommands() {
+  ensureInitialized();
+  return getAllCommands();
+}
+
 // Re-export for convenience
 export { getAllCommands } from "./registry";
 export type { LegacyCommandContext as CommandContext };

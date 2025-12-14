@@ -15,24 +15,14 @@ import { ContentProvider } from "@/contexts/ContentContext";
 import { ContentData } from "@/types/data";
 
 // Section components
-import HelpSection from "@/components/sections/HelpSection";
-import AboutSection from "@/components/sections/AboutSection";
-import CareerSection from "@/components/sections/CareerSection";
-import SkillsSection from "@/components/sections/SkillsSection";
-import ProjectsSection, {
-  ProjectDetailSection,
-} from "@/components/sections/ProjectsSection";
-import ContactSection from "@/components/sections/ContactSection";
-import DirSection from "@/components/sections/DirSection";
-import VersionSection from "@/components/sections/VersionSection";
-import NeofetchSection from "@/components/sections/NeofetchSection";
-import SnakeGame from "@/components/games/SnakeGame";
+import { getSectionComponent } from "@/components/sections/sectionRegistry";
+
 
 function HomeContent() {
   const { theme, setTheme, mounted, availableThemes } = useTheme();
   const printRef = useRef<HTMLDivElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
-  const runCommandRef = useRef<(cmd: string) => void>(() => {});
+  const runCommandRef = useRef<(cmd: string) => void>(() => { });
 
   const handlePrint = useReactToPrint({
     contentRef: printRef,
@@ -52,36 +42,10 @@ function HomeContent() {
   }, []);
 
   const renderSection = useCallback((section: string): ReactNode => {
-    // Handle project detail
-    if (section.startsWith("project:")) {
-      const projectId = section.replace("project:", "");
-      return <ProjectDetailSection projectId={projectId} />;
-    }
-
-    switch (section) {
-      case "help":
-        return <HelpSection />;
-      case "about":
-        return <AboutSection />;
-      case "career":
-        return <CareerSection />;
-      case "skills":
-        return <SkillsSection />;
-      case "projects":
-        return <ProjectsSection onSelectProject={handleSelectProject} />;
-      case "contact":
-        return <ContactSection />;
-      case "dir":
-        return <DirSection />;
-      case "version":
-        return <VersionSection />;
-      case "neofetch":
-        return <NeofetchSection />;
-      case "snake":
-        return <SnakeGame onExit={handleExitGame} />;
-      default:
-        return null;
-    }
+    return getSectionComponent(section, {
+      onSelectProject: handleSelectProject,
+      onExitGame: handleExitGame,
+    });
   }, [handleSelectProject, handleExitGame]);
 
   const terminal = useTerminal({
