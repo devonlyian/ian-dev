@@ -228,11 +228,21 @@ export function useTerminal({ setTheme, triggerPrint, renderSection }: UseTermin
     return content?.type === SnakeGame;
   }, [state.history]);
 
+  // Detect if project detail page is active by checking last command
+  const isProjectDetail = useMemo(() => {
+    const lastCommand = state.history.find((entry) => entry.type === "command");
+    if (!lastCommand?.content || typeof lastCommand.content !== "string") return false;
+    const cmd = lastCommand.content.toUpperCase().trim();
+    // Check if command is "PROJECTS <id>" (has argument)
+    return cmd.startsWith("PROJECTS ") || cmd.startsWith("PROJECT ") || cmd.startsWith("PROJ ");
+  }, [state.history]);
+
   return {
     history: state.history,
     currentInput: state.currentInput,
     isProcessing: state.isProcessing,
     isGameActive,
+    isProjectDetail,
     runCommand,
     setCurrentInput,
     navigateHistory,

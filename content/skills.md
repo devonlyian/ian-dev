@@ -1,70 +1,73 @@
 ---
 skills:
-  - category: Languages
+  - category: Backend
     items:
       - name: Kotlin
-        level: 90
-        years: 4
-      - name: Java
-        level: 85
-        years: 6
-      - name: TypeScript
-        level: 65
-        years: 2
-      - name: Python
-        level: 60
-        years: 2
-  - category: Frameworks
-    items:
-      - name: Spring Boot
-        level: 90
-        years: 5
-      - name: Spring WebFlux
-        level: 75
-        years: 2
-      - name: JPA/Hibernate
         level: 80
-        years: 4
-  - category: Infrastructure
-    items:
-      - name: Kubernetes
+        years: 2
+      - name: Java
         level: 75
         years: 3
-      - name: Docker
-        level: 85
-        years: 4
-      - name: AWS
+      - name: Spring Framework
         level: 70
         years: 3
-      - name: Terraform
-        level: 60
+      - name: QueryDSL
+        level: 75
+        years: 3
+  - category: DevOps
+    items:
+      - name: Docker
+        level: 80
         years: 2
-  - category: Databases
+      - name: AWS (EKS, EC2, S3, RDS)
+        level: 70
+        years: 1
+      - name: Kubernetes
+        level: 65
+        years: 1
+      - name: Terraform
+        level: 65
+        years: 1
+      - name: ArgoCD
+        level: 65
+        years: 1
+  - category: Database
     items:
       - name: PostgreSQL
-        level: 85
-        years: 4
+        level: 75
+        years: 1
       - name: MySQL
-        level: 80
-        years: 5
-      - name: Redis
         level: 75
         years: 3
-      - name: MongoDB
-        level: 60
+      - name: Redis
+        level: 75
         years: 2
-  - category: Tools & Others
+  - category: AI
     items:
-      - name: Git
+      - name: Claude Code
         level: 90
-        years: 6
-      - name: Jenkins/CI-CD
+        years: 1
+      - name: Codex CLI
         level: 80
-        years: 4
-      - name: Kafka
-        level: 70
-        years: 2
-      - name: Prometheus/Grafana
+        years: 1
+      - name: Gemini CLI
+        level: 80
+        years: 1
+  - category: Others
+    items:
+      - name: Flutter
+        level: 65
+        years: 1
+      - name: Python
         level: 65
         years: 2
+      - name: OpenCV
+        level: 65
+        years: 2
+      - name: Git
+        level: 90
+        years: 3
+      - name: Brity RPA
+        level: 90
+        years: 1
 ---

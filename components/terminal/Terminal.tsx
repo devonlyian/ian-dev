@@ -11,9 +11,11 @@ interface TerminalProps {
   currentInput: string;
   isProcessing: boolean;
   isGameActive: boolean;
+  isProjectDetail?: boolean;
   onInputChange: (value: string) => void;
   onSubmit: (command: string) => void;
   onNavigateHistory: (direction: "up" | "down") => void;
+  onBackspace?: () => void;
 }
 
 const Terminal = forwardRef<HTMLDivElement, TerminalProps>(
@@ -23,9 +25,11 @@ const Terminal = forwardRef<HTMLDivElement, TerminalProps>(
       currentInput,
       isProcessing,
       isGameActive,
+      isProjectDetail,
       onInputChange,
       onSubmit,
       onNavigateHistory,
+      onBackspace,
     },
     ref
   ) => {
@@ -47,8 +51,10 @@ const Terminal = forwardRef<HTMLDivElement, TerminalProps>(
             onInputChange={onInputChange}
             onSubmit={onSubmit}
             onNavigateHistory={onNavigateHistory}
+            onBackspace={onBackspace}
             isProcessing={isProcessing}
             isGameActive={isGameActive}
+            isProjectDetail={isProjectDetail}
           />
         </TerminalBody>
       </div>

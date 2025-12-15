@@ -9,8 +9,10 @@ interface CommandLineProps {
   onInputChange: (value: string) => void;
   onSubmit: (command: string) => void;
   onNavigateHistory: (direction: "up" | "down") => void;
+  onBackspace?: () => void;
   isProcessing: boolean;
   isGameActive: boolean;
+  isProjectDetail?: boolean;
 }
 
 export default function CommandLine({
@@ -18,8 +20,10 @@ export default function CommandLine({
   onInputChange,
   onSubmit,
   onNavigateHistory,
+  onBackspace,
   isProcessing,
   isGameActive,
+  isProjectDetail,
 }: CommandLineProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -52,6 +56,13 @@ export default function CommandLine({
       case "Enter":
         if (currentInput.trim() || currentInput === "") {
           onSubmit(currentInput.trim());
+        }
+        break;
+      case "Backspace":
+        // Go back to projects list when input is empty and on project detail page
+        if (currentInput === "" && isProjectDetail && onBackspace) {
+          e.preventDefault();
+          onBackspace();
         }
         break;
       case "ArrowUp":

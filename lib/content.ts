@@ -21,6 +21,7 @@ export interface ProjectContent {
   techStack: string[];
   role: string;
   highlights: string[];
+  order: number;
   links?: {
     github?: string;
     demo?: string;
@@ -114,6 +115,7 @@ const parseProjectContent = (data: FrontmatterData, content: string): ProjectCon
     techStack: (data.techStack as string[]) || [],
     role: data.role as string,
     highlights,
+    order: (data.order as number) || 0,
     links: data.links as ProjectContent["links"],
   };
 };
@@ -135,10 +137,12 @@ export function getCareers(language: Language): CareerContent[] {
 }
 
 export function getProjects(language: Language): ProjectContent[] {
-  return getMarkdownData<ProjectContent>(
+  const projects = getMarkdownData<ProjectContent>(
     [language, "projects"],
     parseProjectContent
   );
+
+  return projects.sort((a, b) => a.order - b.order);
 }
 
 export function getProfile(language: Language): ProfileContent {

@@ -8,7 +8,7 @@ export default function VersionSection() {
         Ian Kim Portfolio System
       </div>
       <div className="dos-text">
-        Version 1.0.0 (Build 2024.12)
+        Version 1.0.0 (Build 2025.12)
       </div>
       <div className="dos-text mt-2">
         Powered by Next.js, React, and TypeScript

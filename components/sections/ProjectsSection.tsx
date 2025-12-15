@@ -49,9 +49,10 @@ export default function ProjectsSection({ onSelectProject }: ProjectsSectionProp
 
 interface ProjectDetailSectionProps {
   projectId: string;
+  onBack?: () => void;
 }
 
-export function ProjectDetailSection({ projectId }: ProjectDetailSectionProps) {
+export function ProjectDetailSection({ projectId, onBack }: ProjectDetailSectionProps) {
   const { language } = useLanguageContext();
   const { projects } = useContentContext();
 
@@ -154,6 +155,17 @@ export function ProjectDetailSection({ projectId }: ProjectDetailSectionProps) {
               </div>
             )}
           </div>
+        </div>
+      )}
+
+      {onBack && (
+        <div className="mt-6 pt-4 border-t border-dos-border">
+          <button
+            onClick={onBack}
+            className="px-3 py-1.5 border border-dos-border bg-dos-bg dos-cyan hover:bg-dos-cyan hover:text-dos-bg transition-colors text-sm"
+          >
+            {language === "ko" ? "[← 목록으로]" : "[← Back to List]"}
+          </button>
         </div>
       )}
     </div>
