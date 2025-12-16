@@ -28,11 +28,19 @@ const PrintableResume = forwardRef<HTMLDivElement>((_, ref) => {
         lineHeight: "1.5",
       }}
     >
-      {/* Header - 2-column layout */}
+      {/* Header - 3-column layout with photo */}
       <header className="pb-4 mb-4 border-b-2 border-gray-800">
-        <div className="flex justify-between items-start">
-          {/* Left: Name, Title */}
-          <div>
+        <div className="flex justify-between items-start gap-4">
+          {/* Left: Photo placeholder */}
+          <div
+            className="w-24 h-24 border border-gray-300 flex items-center justify-center text-gray-400 text-xs flex-shrink-0"
+          >
+            {/* TODO: Add photo */}
+            PHOTO
+          </div>
+
+          {/* Center: Name, Title */}
+          <div className="flex-1">
             <h1 className="text-2xl font-bold text-gray-900 tracking-tight">
               {profile.name}
             </h1>
@@ -120,7 +128,7 @@ const PrintableResume = forwardRef<HTMLDivElement>((_, ref) => {
       {/* Projects */}
       <section className="mb-4">
         <h2 className="text-sm font-bold uppercase tracking-wider text-gray-700 mb-2 border-b border-gray-300 pb-1">
-          {language === "ko" ? "주요 프로젝트" : "KEY PROJECTS"}
+          {language === "ko" ? "프로젝트" : "PROJECTS"}
         </h2>
         {projects.map((project) => (
           <div key={project.id} className="mb-3">
@@ -149,7 +157,7 @@ const PrintableResume = forwardRef<HTMLDivElement>((_, ref) => {
           {language === "ko" ? "연락처" : "CONTACT"}
         </h2>
         <div className="flex flex-wrap gap-4 text-sm">
-          {contacts.map((contact) => (
+          {contacts.filter((contact) => contact.type !== "github").map((contact) => (
             <span key={contact.type}>
               <span className="font-medium">{contact.label}:</span>{" "}
               {contact.value}

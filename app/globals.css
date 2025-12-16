@@ -180,7 +180,7 @@ body {
 @media print {
   @page {
     size: A4;
-    margin: 15mm 20mm;
+    margin: 15mm;
   }
 
   body {
@@ -190,6 +190,10 @@ body {
     line-height: 1.4 !important;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
+  }
+
+  .print-footer {
+    display: none;
   }
 
   .no-print {
