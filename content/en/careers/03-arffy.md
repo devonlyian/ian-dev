@@ -4,11 +4,7 @@ position: Backend Developer
 period: 2023.04 - 2024.08
 techStack:
   - Kotlin
-  - Spring Boot 2.7
-  - Spring Security
-  - Spring Data JPA
-  - QueryDSL
-  - OAuth 2.0
+  - Spring Boot 2
   - MySQL
   - AWS EC2/S3/RDS
   - Docker

@@ -6,11 +6,14 @@ techStack:
   - Kotlin
   - Spring Boot 3
   - PostgreSQL
-  - AWS EKS
-  - RabbitMQ
   - Redis
-  - Flutter
+  - RabbitMQ
+  - Docker
+  - Kubernetes
+  - AWS EKS, RDS, MQ, ElastiCache, EC2
   - Terraform
+  - ArgoCD
+  - Flutter
 order: 1
 ---
 

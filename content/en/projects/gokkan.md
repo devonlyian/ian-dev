@@ -4,11 +4,7 @@ name: Gokkan
 role: Team Lead / Backend Developer
 techStack:
   - Java 11
-  - Spring Boot 2.7
-  - Spring Security
-  - Spring Data JPA
-  - QueryDSL
-  - OAuth 2.0
+  - Spring Boot 2
   - WebSocket (SockJS, STOMP)
   - MySQL
   - Redis

@@ -10,5 +10,4 @@ linkedin: https://www.linkedin.com/in/ian-kim-38b0582b0/
 
 - Exploring various technologies, currently focused on solving complex business logic as a developer
 - Value growing together with the team through efficient collaboration and communication, actively accepting feedback
-- Strong expertise in Spring Boot-based server development and automation systems utilizing AI and RPA
 - Enjoy new technologies and challenges, always aiming for development with both efficiency and quality

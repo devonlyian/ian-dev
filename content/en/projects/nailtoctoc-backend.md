@@ -5,16 +5,17 @@ role: Backend Developer / DevOps
 techStack:
   - Kotlin
   - Spring Boot 3
-  - Spring Cloud Gateway
   - PostgreSQL
-  - AWS EKS
-  - RabbitMQ
   - Redis
-  - ArgoCD
+  - RabbitMQ
+  - Docker
+  - Kubernetes
+  - AWS EKS, RDS, MQ, ElastiCache, EC2
   - Terraform
+  - ArgoCD
 order: 1
 links:
-  demo: https://api.nailtoctoc.com
+  demo: https://apps.apple.com/kr/app/%EB%84%A4%EC%9D%BC%ED%86%A1%ED%86%A1/id6746323705
 ---
 
 MSA-based backend platform for nail printing service
