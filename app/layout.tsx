@@ -1,4 +1,4 @@
-import { IBM_Plex_Mono } from "next/font/google";
+import { IBM_Plex_Mono, Noto_Sans_KR } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
 
@@ -7,6 +7,14 @@ const ibmPlexMono = IBM_Plex_Mono({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-ibm-plex-mono",
+});
+
+const notoSansKr = Noto_Sans_KR({
+  weight: ["400", "500", "700"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-noto-sans-kr",
+  preload: false,
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ianonly.dev";
@@ -112,7 +120,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${ibmPlexMono.variable} min-h-screen font-mono`}>{children}</body>
+      <body className={`${ibmPlexMono.variable} ${notoSansKr.variable} min-h-screen font-mono`}>{children}</body>
     </html>
   );
 }

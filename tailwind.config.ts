@@ -9,6 +9,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         dos: ['"IBM Plex Mono"', '"Courier New"', "Consolas", "monospace"],
+        sans: ['"Noto Sans KR"', "system-ui", "sans-serif"],
       },
       colors: {
         dos: {
