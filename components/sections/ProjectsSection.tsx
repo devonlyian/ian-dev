@@ -118,7 +118,7 @@ export function ProjectDetailSection({ projectId, onBack }: ProjectDetailSection
           <div className="space-y-1.5 mt-2">
             {Object.entries(project.links).map(([key, url]) => (
               <div key={key} className="flex flex-col sm:flex-row sm:gap-2">
-                <span className="dos-cyan font-bold">{key}:</span>
+                <span className="dos-cyan font-bold whitespace-nowrap">{key}:</span>
                 <a
                   href={url}
                   target="_blank"
