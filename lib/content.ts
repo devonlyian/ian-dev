@@ -22,11 +22,7 @@ export interface ProjectContent {
   role: string;
   highlights: string[];
   order: number;
-  links?: {
-    github?: string;
-    demo?: string;
-    blog?: string;
-  };
+  links?: Record<string, string>;
 }
 
 export interface ProfileContent {
@@ -116,7 +112,7 @@ const parseProjectContent = (data: FrontmatterData, content: string): ProjectCon
     role: data.role as string,
     highlights,
     order: (data.order as number) || 0,
-    links: data.links as ProjectContent["links"],
+    links: data.links as Record<string, string>,
   };
 };
 

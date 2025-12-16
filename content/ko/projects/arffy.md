@@ -8,7 +8,7 @@ techStack:
   - MySQL
   - AWS EC2/S3/RDS
   - Docker
-order: 6
+order: 3
 links:
   github: https://github.com/devonlyian/store
 ---
@@ -17,9 +17,8 @@ links:
 
 ## Highlights
 
-- JWT를 이용한 Token 인증 방식 구현
-- OAuth 2.0을 이용한 카카오톡 소셜 로그인 구현
-- 포트원 API 활용 결제 시스템 구현
-- 동시성 이슈 해결을 위한 DB 비관적 락 적용
-- JPA Converter를 이용한 개인정보 암호화 저장
-- 실 서비스 운영 (2023.12 ~ 2024.08)
+- **실 서비스 운영**: 2023.12 ~ 2024.08 (9개월) 운영 경험
+- **동시성 제어**: 비관적 락 적용으로 재고 차감 및 결제 중복 방지
+- **보안**: JPA Converter 활용 개인정보 암호화 저장
+- **인증**: JWT 토큰 인증 + OAuth 2.0 카카오 소셜 로그인
+- **결제**: 포트원 API 연동 신용카드/간편결제 시스템 구현

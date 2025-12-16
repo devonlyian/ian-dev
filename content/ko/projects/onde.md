@@ -14,7 +14,7 @@ techStack:
   - AWS EC2/S3/RDS
   - Docker
   - GitHub Actions
-order: 8
+order: 5
 links:
   github: https://github.com/devonlyian/tHere
 ---
@@ -23,8 +23,8 @@ links:
 
 ## Highlights
 
-- Spring Batch를 이용한 Soft Delete 후 일괄 삭제 기능 구현
-- AWS S3 연동 이미지 저장 기능 구현
-- 여정 북마크 및 댓글 기능 API 구현
-- QueryDSL을 활용한 쿼리 성능 최적화
-- CI/CD 및 서버 배포 완료
+- **Batch 처리**: Spring Batch Soft Delete 데이터 일괄 정리 배치 구현
+- **쿼리 최적화**: QueryDSL 동적 쿼리로 복잡한 검색 조건 처리
+- **파일 저장**: AWS S3 연동 이미지 업로드/조회 구현
+- **API 개발**: 여정 북마크 및 댓글 기능 REST API 구현
+- **CI/CD**: GitHub Actions 자동 빌드/배포 파이프라인 구축

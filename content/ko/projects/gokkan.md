@@ -11,7 +11,7 @@ techStack:
   - AWS EC2/S3/RDS
   - Docker
   - Jenkins
-order: 7
+order: 6
 links:
   github: https://github.com/TEAM-GOKKAN/server
 ---
@@ -20,9 +20,8 @@ links:
 
 ## Highlights
 
-- 팀장으로서 프로젝트 리드 및 일정 관리
-- 웹소켓(SockJS, STOMP)을 이용한 실시간 경매 응찰 기능 구현
-- 전문가 검수 시스템을 통한 상품 등록 프로세스 구현
-- OAuth 2.0을 이용한 소셜 로그인 구현
-- 포트원 API 활용 결제 시스템 구현
-- CI/CD 및 서버 배포 완료
+- **팀 리딩**: 팀장으로서 프로젝트 일정 관리 및 기술 의사결정
+- **실시간 처리**: WebSocket(SockJS, STOMP) 실시간 경매 응찰 시스템 구현
+- **도메인 설계**: 전문가 검수 → 상품 등록 → 경매 프로세스 설계
+- **결제/인증**: 포트원 결제 + OAuth 2.0 소셜 로그인 연동
+- **CI/CD**: Jenkins 자동 빌드/배포 파이프라인 구축

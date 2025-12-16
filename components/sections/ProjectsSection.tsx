@@ -3,6 +3,7 @@
 import { useLanguageContext } from "@/contexts/LanguageContext";
 import { useContentContext } from "@/contexts/ContentContext";
 import { SeparatorLine } from "@/components/ui/SeparatorLine";
+import { parseMarkdownBold } from "@/lib/utils";
 
 interface ProjectsSectionProps {
   onSelectProject?: (projectId: string) => void;
@@ -103,7 +104,7 @@ export function ProjectDetailSection({ projectId, onBack }: ProjectDetailSection
           {project.highlights.map((highlight, i) => (
             <div key={i} className="flex dos-highlight text-sm sm:text-base leading-relaxed">
               <span className="shrink-0 mr-2">•</span>
-              <span>{highlight}</span>
+              <span>{parseMarkdownBold(highlight)}</span>
             </div>
           ))}
         </div>
@@ -115,45 +116,19 @@ export function ProjectDetailSection({ projectId, onBack }: ProjectDetailSection
             {language === "ko" ? "[링크]" : "[Links]"}
           </div>
           <div className="space-y-1.5 mt-2">
-            {project.links.github && (
-              <div className="flex flex-col sm:flex-row sm:gap-2">
-                <span className="dos-cyan font-bold">GitHub:</span>
+            {Object.entries(project.links).map(([key, url]) => (
+              <div key={key} className="flex flex-col sm:flex-row sm:gap-2">
+                <span className="dos-cyan font-bold">{key}:</span>
                 <a
-                  href={project.links.github}
+                  href={url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="dos-green hover:underline break-all"
                 >
-                  {project.links.github}
+                  {url}
                 </a>
               </div>
-            )}
-            {project.links.demo && (
-              <div className="flex flex-col sm:flex-row sm:gap-2">
-                <span className="dos-cyan font-bold">Demo:</span>
-                <a
-                  href={project.links.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="dos-green hover:underline break-all"
-                >
-                  {project.links.demo}
-                </a>
-              </div>
-            )}
-            {project.links.blog && (
-              <div className="flex flex-col sm:flex-row sm:gap-2">
-                <span className="dos-cyan font-bold">Blog:</span>
-                <a
-                  href={project.links.blog}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="dos-green hover:underline break-all"
-                >
-                  {project.links.blog}
-                </a>
-              </div>
-            )}
+            ))}
           </div>
         </div>
       )}
