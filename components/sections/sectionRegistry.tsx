@@ -15,6 +15,7 @@ import SnakeGame from "@/components/games/SnakeGame";
 export interface SectionCallbacks {
   onSelectProject: (id: string) => void;
   onExitGame: () => void;
+  onBackToProjects: () => void;
 }
 
 export function getSectionComponent(
@@ -24,7 +25,7 @@ export function getSectionComponent(
   // Handle project detail
   if (section.startsWith("project:")) {
     const projectId = section.replace("project:", "");
-    return <ProjectDetailSection projectId={projectId} />;
+    return <ProjectDetailSection projectId={projectId} onBack={callbacks.onBackToProjects} />;
   }
 
   switch (section) {

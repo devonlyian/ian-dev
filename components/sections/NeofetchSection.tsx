@@ -10,7 +10,6 @@ export default function NeofetchSection() {
     { label: "OS", value: "Portfolio OS 1.0" },
     { label: "Host", value: profile.name },
     { label: "Kernel", value: "Next.js 15" },
-    { label: "Uptime", value: "6+ yrs" },
     { label: "Shell", value: "MS-DOS" },
     { label: "DE", value: "React 19" },
     { label: "CPU", value: "Kotlin/Spring" },

@@ -9,7 +9,7 @@ const ibmPlexMono = IBM_Plex_Mono({
   variable: "--font-ibm-plex-mono",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://portfolio.iankim.dev";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ianonly.dev";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

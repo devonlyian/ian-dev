@@ -41,12 +41,17 @@ function HomeContent() {
     runCommandRef.current("CLS");
   }, []);
 
+  const handleBackToProjects = useCallback(() => {
+    runCommandRef.current("PROJECTS");
+  }, []);
+
   const renderSection = useCallback((section: string): ReactNode => {
     return getSectionComponent(section, {
       onSelectProject: handleSelectProject,
       onExitGame: handleExitGame,
+      onBackToProjects: handleBackToProjects,
     });
-  }, [handleSelectProject, handleExitGame]);
+  }, [handleSelectProject, handleExitGame, handleBackToProjects]);
 
   const terminal = useTerminal({
     setTheme,
@@ -84,9 +89,11 @@ function HomeContent() {
         currentInput={terminal.currentInput}
         isProcessing={terminal.isProcessing}
         isGameActive={terminal.isGameActive}
+        isProjectDetail={terminal.isProjectDetail}
         onInputChange={terminal.setCurrentInput}
         onSubmit={terminal.runCommand}
         onNavigateHistory={terminal.navigateHistory}
+        onBackspace={handleBackToProjects}
       />
 
       {/* Command buttons */}

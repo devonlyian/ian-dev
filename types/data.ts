@@ -38,6 +38,7 @@ export interface ProjectContent {
   techStack: string[];
   role: string;
   highlights: string[];
+  order: number;
   links?: {
     github?: string;
     demo?: string;
