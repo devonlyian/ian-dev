@@ -11,8 +11,8 @@ techStack:
 order: 3
 ---
 
-- Backend development for vintage lighting store
-- Database design and user-related API development
-- Implemented KakaoTalk social login using OAuth 2.0
-- Implemented payment system using PortOne API
-- Production service operation (2023.12 ~ 2024.08)
+- Full backend design and implementation for vintage lighting store, 9 months of production service operation (2023.12 ~ 2024.08)
+- Resolved order concurrency issues with pessimistic locking, preventing duplicate payments
+- Enhanced security with JPA Converter for encrypted personal information storage
+- Implemented JWT token authentication and OAuth 2.0 Kakao social login
+- Integrated PortOne API for credit card and simple payment system
