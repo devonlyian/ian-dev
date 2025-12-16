@@ -29,17 +29,16 @@
   --dos-red: #ff5555;
 }
 
-/* Light theme */
-/* Light theme */
+/* Light theme - Word/Notion style for professional documents */
 .light {
-  --dos-bg: #f8f9fa;
-  --dos-text: #1a1a1a;
-  --dos-highlight: #0066cc;
-  --dos-yellow: #b45309;
-  --dos-border: #dee2e6;
-  --dos-cyan: #0e7490;
-  --dos-green: #15803d;
-  --dos-red: #dc2626;
+  --dos-bg: #ffffff;
+  --dos-text: #1f2937;
+  --dos-highlight: #37352f;
+  --dos-yellow: #9a6700;
+  --dos-border: #e5e5e5;
+  --dos-cyan: #0969da;
+  --dos-green: #1a7f37;
+  --dos-red: #cf222e;
 }
 
 /* Amber theme - Classic monochrome amber monitor */
@@ -179,10 +178,18 @@ body {
 
 /* Print styles */
 @media print {
+  @page {
+    size: A4;
+    margin: 15mm 20mm;
+  }
+
   body {
     background: white !important;
-    color: black !important;
-    font-size: 12pt;
+    color: #1f2937 !important;
+    font-size: 10pt !important;
+    line-height: 1.4 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
   .no-print {
@@ -191,21 +198,32 @@ body {
 
   .print-only {
     display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
   }
 
   .dos-box {
     border: 1px solid #000 !important;
   }
 
+  /* Page break control */
+  h2, h3 {
+    page-break-after: avoid;
+  }
+
+  section {
+    page-break-inside: avoid;
+  }
+
+  /* Clean link styles for print */
   a {
-    text-decoration: none;
-    color: black;
+    text-decoration: none !important;
+    color: inherit !important;
   }
 
   a::after {
-    content: " (" attr(href) ")";
-    font-size: 10pt;
-    color: #666;
+    content: none !important;
   }
 }
 
