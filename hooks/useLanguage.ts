@@ -11,7 +11,7 @@ const isValidLanguage = (value: unknown): value is Language =>
 export function useLanguage() {
   const { value: language, setValue, mounted } = useLocalStorage<Language>({
     key: "portfolio-language",
-    defaultValue: "en",
+    defaultValue: "ko",
     validate: isValidLanguage,
   });
 
