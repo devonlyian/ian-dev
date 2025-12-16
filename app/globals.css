@@ -17,51 +17,55 @@
 }
 
 /* DOS theme - Classic MS-DOS blue */
+/* DOS theme - Classic MS-DOS blue */
 .dos {
-  --dos-bg: #000080;
-  --dos-text: #d4d4d4;
+  --dos-bg: #0000aa;
+  --dos-text: #aaaaaa;
   --dos-highlight: #ffffff;
-  --dos-yellow: #ffff54;
+  --dos-yellow: #ffff55;
   --dos-border: #ffffff;
-  --dos-cyan: #54ffff;
-  --dos-green: #54ff54;
-  --dos-red: #ff5454;
+  --dos-cyan: #55ffff;
+  --dos-green: #55ff55;
+  --dos-red: #ff5555;
 }
 
 /* Light theme */
+/* Light theme */
 .light {
-  --dos-bg: #f0f0f0;
-  --dos-text: #000000;
-  --dos-highlight: #0000aa;
-  --dos-yellow: #996600;
-  --dos-border: #404040;
-  --dos-cyan: #007090;
-  --dos-green: #007020;
-  --dos-red: #cc0000;
+  --dos-bg: #f8f9fa;
+  --dos-text: #1a1a1a;
+  --dos-highlight: #0066cc;
+  --dos-yellow: #b45309;
+  --dos-border: #dee2e6;
+  --dos-cyan: #0e7490;
+  --dos-green: #15803d;
+  --dos-red: #dc2626;
 }
 
 /* Amber theme - Classic monochrome amber monitor */
+/* Amber theme - Classic monochrome amber monitor */
 .amber {
-  --dos-bg: #1a1100;
-  --dos-text: #ff9900;
-  --dos-highlight: #ffcc00;
-  --dos-yellow: #ffdd44;
-  --dos-border: #ff8800;
-  --dos-cyan: #ffbb33;
-  --dos-green: #ffaa22;
-  --dos-red: #ff6600;
+  --dos-bg: #1a1000;
+  --dos-text: #ffb000;
+  --dos-highlight: #ffe066;
+  --dos-yellow: #ffdb4d;
+  --dos-border: #664400;
+  --dos-cyan: #ffce00;
+  --dos-green: #ff9900;
+  --dos-red: #cc5500;
 }
 
 /* Green theme - Classic monochrome green terminal */
+/* Green theme - Classic monochrome green terminal */
 .green {
   --dos-bg: #001100;
-  --dos-text: #33ff33;
-  --dos-highlight: #66ff66;
-  --dos-yellow: #99ff66;
-  --dos-border: #00ff00;
-  --dos-cyan: #00ffaa;
+  --dos-text: #00ff00;
+  --dos-highlight: #ccffcc;
+  --dos-yellow: #aaffaa;
+  --dos-border: #005500;
+  --dos-cyan: #00dd00;
   --dos-green: #00ff00;
-  --dos-red: #ff6633;
+  --dos-red: #00aa00;
 }
 
 * {
@@ -130,10 +134,12 @@ body {
 }
 
 @keyframes blink {
+
   0%,
   50% {
     opacity: 1;
   }
+
   51%,
   100% {
     opacity: 0;
@@ -279,6 +285,7 @@ a:focus-visible,
 
 /* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {

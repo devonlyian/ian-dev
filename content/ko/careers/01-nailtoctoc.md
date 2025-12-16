@@ -17,8 +17,8 @@ techStack:
 order: 1
 ---
 
-- MSA 백엔드 시스템 설계 및 구현 (7개 마이크로서비스)
-- AWS EKS 기반 인프라 구축 및 운영
-- GitOps(ArgoCD) 기반 Blue-Green 자동 배포 파이프라인 구축
-- Flutter Windows 키오스크 앱 개발
-- Terraform을 활용한 IaC 구축
+- 7개 마이크로서비스(Gateway, User, Product, Order, Payment, Admin, Worker) 설계 및 구현으로 도메인별 독립 배포 환경 구축
+- AWS EKS 기반 Kubernetes 인프라 구축, PostgreSQL Read/Write Replica 분리로 읽기 성능 최적화
+- ArgoCD GitOps Blue-Green 배포로 무중단 배포 파이프라인 구축, 배포 실패 시 자동 롤백 지원
+- RabbitMQ 기반 비동기 메시지 처리 시스템 구현으로 서비스 간 결합도 감소
+- Terraform IaC로 인프라 코드화, 환경 복제 및 관리 효율화

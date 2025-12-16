@@ -3,6 +3,7 @@
 import { useLanguageContext } from "@/contexts/LanguageContext";
 import { useContentContext } from "@/contexts/ContentContext";
 import { SeparatorLine, Divider } from "@/components/ui/SeparatorLine";
+import { parseMarkdownBold } from "@/lib/utils";
 
 export default function CareerSection() {
   const { language } = useLanguageContext();
@@ -28,7 +29,7 @@ export default function CareerSection() {
             {career.description.map((desc, i) => (
               <div key={i} className="flex dos-highlight text-sm sm:text-base leading-relaxed">
                 <span className="shrink-0 mr-2">•</span>
-                <span>{desc}</span>
+                <span>{parseMarkdownBold(desc)}</span>
               </div>
             ))}
           </div>

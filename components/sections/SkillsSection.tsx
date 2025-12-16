@@ -1,7 +1,6 @@
 "use client";
 
 import { useContentContext } from "@/contexts/ContentContext";
-import ProgressBar from "@/components/ui/ProgressBar";
 
 export default function SkillsSection() {
   const { skills } = useContentContext();
@@ -17,13 +16,18 @@ export default function SkillsSection() {
           {category.items.map((skill) => (
             <div
               key={skill.name}
-              className="flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-2"
+              className="flex flex-col sm:flex-row sm:items-start gap-0.5 sm:gap-2"
             >
-              <span className="dos-highlight sm:w-36 shrink-0">{skill.name}</span>
-              <div className="flex items-center gap-2">
-                <ProgressBar value={skill.level} width={20} />
-                {skill.years && (
-                  <span className="dos-cyan text-sm">({skill.years}y)</span>
+              <div className="flex items-center gap-1 sm:w-40 shrink-0">
+                {skill.highlight && <span className="dos-cyan">★</span>}
+                <span className={skill.highlight ? "dos-cyan font-bold" : "dos-highlight"}>
+                  {skill.name}
+                </span>
+              </div>
+              <div className="flex items-center gap-2 ml-4 sm:ml-0">
+                <span className="dos-yellow text-sm">({skill.years}y)</span>
+                {skill.note && (
+                  <span className="dos-highlight text-sm">- {skill.note}</span>
                 )}
               </div>
             </div>

@@ -3,6 +3,7 @@
 import { useLanguageContext } from "@/contexts/LanguageContext";
 import { useContentContext } from "@/contexts/ContentContext";
 import { SeparatorLine } from "@/components/ui/SeparatorLine";
+import { parseMarkdownBold } from "@/lib/utils";
 
 export default function AboutSection() {
   const { language } = useLanguageContext();
@@ -21,7 +22,7 @@ export default function AboutSection() {
         {profile.summary.map((line, index) => (
           <div key={index} className="flex dos-highlight text-sm sm:text-base leading-relaxed">
             <span className="shrink-0 mr-2">•</span>
-            <span>{line}</span>
+            <span>{parseMarkdownBold(line)}</span>
           </div>
         ))}
       </div>

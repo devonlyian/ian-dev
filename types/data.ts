@@ -25,8 +25,10 @@ export interface Skill {
   category: string;
   items: {
     name: string;
-    level: number; // 1-100 for progress bar
+    level?: number; // 1-100 for progress bar (optional)
     years?: number;
+    highlight?: boolean; // 강조 표시
+    note?: string; // 추가 설명
   }[];
 }
 
@@ -39,11 +41,7 @@ export interface ProjectContent {
   role: string;
   highlights: string[];
   order: number;
-  links?: {
-    github?: string;
-    demo?: string;
-    blog?: string;
-  };
+  links?: Record<string, string>;
 }
 
 export interface Contact {

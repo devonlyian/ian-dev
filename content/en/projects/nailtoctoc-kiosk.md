@@ -14,8 +14,8 @@ Flutter-based kiosk application for nail printing service
 
 ## Highlights
 
-- Developed Flutter Windows-based kiosk application
-- Integrated OpenCV-based finger detection and camera control module
-- Multi-language support (Korean, English, Japanese, Chinese)
-- Payment system integration (Credit Card, Samsung Pay, Apple Pay)
-- Hardware control module integration (Nail Printer, Finger Fixture)
+- **Windows Desktop App**: Flutter Windows-based kiosk application development
+- **Image Processing**: OpenCV-based finger detection and camera control module integration
+- **Multi-language**: Support for 4 languages (Korean, English, Japanese, Chinese)
+- **Payment Integration**: Credit card payment system integration
+- **Hardware Control**: Nail printer, finger fixture module integration
