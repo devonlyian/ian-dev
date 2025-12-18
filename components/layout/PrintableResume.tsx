@@ -31,13 +31,12 @@ const PrintableResume = forwardRef<HTMLDivElement>((_, ref) => {
       {/* Header - 3-column layout with photo */}
       <header className="pb-4 mb-4 border-b-2 border-gray-800">
         <div className="flex justify-between items-start gap-4">
-          {/* Left: Photo placeholder */}
-          <div
-            className="w-24 h-24 border border-gray-300 flex items-center justify-center text-gray-400 text-xs flex-shrink-0"
-          >
-            {/* TODO: Add photo */}
-            PHOTO
-          </div>
+          {/* Left: Profile Photo */}
+          <img
+            src="/profile-photo.jpg"
+            alt="Profile Photo"
+            className="w-24 h-24 object-cover flex-shrink-0"
+          />
 
           {/* Center: Name, Title */}
           <div className="flex-1">
