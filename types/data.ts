@@ -1,3 +1,10 @@
+export type Language = "en" | "ko";
+
+export interface LocalizedText {
+  en: string;
+  ko: string;
+}
+
 // Profile interface for markdown content
 export interface ProfileContent {
   name: string;

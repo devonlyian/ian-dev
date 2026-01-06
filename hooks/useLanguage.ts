@@ -2,8 +2,9 @@
 
 import { useCallback } from "react";
 import { useLocalStorage } from "./useLocalStorage";
+import { Language } from "@/types/data";
 
-export type Language = "en" | "ko";
+export type { Language };
 
 const isValidLanguage = (value: unknown): value is Language =>
   value === "en" || value === "ko";
@@ -30,15 +31,10 @@ export function useLanguage() {
   return { language, setLanguage, toggleLanguage, mounted };
 }
 
-export interface LocalizedText {
-  en: string;
-  ko: string;
-}
-
-export function t(text: LocalizedText, lang: Language): string {
+export function t(text: { en: string; ko: string }, lang: Language): string {
   return text[lang];
 }
 
-export function tArray(texts: LocalizedText[], lang: Language): string[] {
+export function tArray(texts: { en: string; ko: string }[], lang: Language): string[] {
   return texts.map((text) => text[lang]);
 }

@@ -5,84 +5,15 @@ import { TerminalState, TerminalEntry } from "@/types/terminal";
 import { ThemeMode } from "@/types/terminal";
 import { executeCommand, CommandContext } from "@/lib/commands/commandExecutor";
 import { generateId } from "@/lib/utils";
-import { welcomeBanner, welcomeMessage } from "@/lib/commands/ascii";
+import WelcomeScreen from "@/components/terminal/WelcomeScreen";
 import SnakeGame from "@/components/games/SnakeGame";
-
-function AutoScaleBanner() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const preRef = useRef<HTMLPreElement>(null);
-  const [fontSize, setFontSize] = useState(16);
-
-  useEffect(() => {
-    const updateSize = () => {
-      if (containerRef.current && preRef.current) {
-        const containerWidth = containerRef.current.offsetWidth;
-        // ASCII art is about 49 characters wide
-        const charCount = 49;
-        // Calculate font size to fit (0.6 is approx character width ratio for monospace)
-        const newSize = (containerWidth * 0.6) / (charCount * 0.6);
-        setFontSize(newSize);
-      }
-    };
-
-    updateSize();
-    window.addEventListener("resize", updateSize);
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
-
-  return (
-    <div ref={containerRef} className="w-full flex justify-center">
-      <pre
-        ref={preRef}
-        className="dos-yellow whitespace-pre text-center"
-        style={{ fontSize: `${fontSize}px` }}
-      >
-        {welcomeBanner}
-      </pre>
-    </div>
-  );
-}
-
-const quickCommands = ["ABOUT", "CAREER", "SKILLS", "PROJECTS", "CONTACT", "HELP"];
-
-function WelcomeButtons({ onCommand }: { onCommand: (cmd: string) => void }) {
-  return (
-    <div className="mt-4 pt-3 border-t border-dos-border">
-      <div className="dos-cyan text-sm mb-2">Quick Commands:</div>
-      <div className="flex flex-wrap gap-1.5 sm:gap-2">
-        {quickCommands.map((cmd) => (
-          <button
-            key={cmd}
-            onClick={() => onCommand(cmd)}
-            className="px-2 py-1 text-sm sm:text-base border border-dos-border bg-dos-bg dos-highlight hover:bg-dos-highlight hover:text-dos-bg transition-colors"
-          >
-            {cmd}
-          </button>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 function createWelcomeEntries(onCommand?: (cmd: string) => void): TerminalEntry[] {
   return [
     {
       id: generateId(),
       type: "system",
-      content: (
-        <AutoScaleBanner />
-      ),
-      timestamp: new Date(),
-    },
-    {
-      id: generateId(),
-      type: "system",
-      content: (
-        <div>
-          <pre className="dos-highlight whitespace-pre-wrap">{welcomeMessage}</pre>
-          {onCommand && <WelcomeButtons onCommand={onCommand} />}
-        </div>
-      ),
+      content: <WelcomeScreen onCommand={onCommand} />,
       timestamp: new Date(),
     },
   ];

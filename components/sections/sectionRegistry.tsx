@@ -11,6 +11,7 @@ import DirSection from "@/components/sections/DirSection";
 import VersionSection from "@/components/sections/VersionSection";
 import NeofetchSection from "@/components/sections/NeofetchSection";
 import SnakeGame from "@/components/games/SnakeGame";
+import { SECTIONS, isProjectSection, getProjectId } from "@/lib/constants/sections";
 
 export interface SectionCallbacks {
   onSelectProject: (id: string) => void;
@@ -22,33 +23,33 @@ export function getSectionComponent(
   section: string,
   callbacks: SectionCallbacks
 ): ReactNode {
-  // Handle project detail
-  if (section.startsWith("project:")) {
-    const projectId = section.replace("project:", "");
+  if (isProjectSection(section)) {
+    const projectId = getProjectId(section);
+    if (!projectId) return null;
     return <ProjectDetailSection projectId={projectId} onBack={callbacks.onBackToProjects} />;
   }
 
   switch (section) {
-    case "help":
+    case SECTIONS.HELP:
       return <HelpSection />;
-    case "about":
+    case SECTIONS.ABOUT:
       return <AboutSection />;
-    case "career":
+    case SECTIONS.CAREER:
       return <CareerSection />;
-    case "skills":
+    case SECTIONS.SKILLS:
       return <SkillsSection />;
-    case "projects":
+    case SECTIONS.PROJECTS:
       return <ProjectsSection onSelectProject={callbacks.onSelectProject} />;
-    case "contact":
+    case SECTIONS.CONTACT:
       return <ContactSection />;
-    case "dir":
-    case "ls":
+    case SECTIONS.DIR:
+    case SECTIONS.LS:
       return <DirSection />;
-    case "version":
+    case SECTIONS.VERSION:
       return <VersionSection />;
-    case "neofetch":
+    case SECTIONS.NEOFETCH:
       return <NeofetchSection />;
-    case "snake":
+    case SECTIONS.SNAKE:
       return <SnakeGame onExit={callbacks.onExitGame} />;
     default:
       return null;

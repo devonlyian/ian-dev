@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, KeyboardEvent, ChangeEvent } from "react";
 import PromptLine from "./PromptLine";
-import { getAvailableCommands } from "@/lib/commands/commandExecutor";
+import { autocomplete } from "@/lib/commands/autocomplete";
 
 interface CommandLineProps {
   currentInput: string;
@@ -28,17 +28,15 @@ export default function CommandLine({
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    // Focus input on mount
     if (inputRef.current && !isProcessing) {
       inputRef.current.focus();
     }
   }, [isProcessing]);
 
-  // Focus on click, but not when selecting text
   const handleTerminalClick = () => {
     const selection = window.getSelection();
     if (selection && selection.toString().length > 0) {
-      return; // Don't focus if text is selected
+      return;
     }
     if (inputRef.current && !isProcessing) {
       inputRef.current.focus();
@@ -59,7 +57,6 @@ export default function CommandLine({
         }
         break;
       case "Backspace":
-        // Go back to projects list when input is empty and on project detail page
         if (currentInput === "" && isProjectDetail && onBackspace) {
           e.preventDefault();
           onBackspace();
@@ -81,38 +78,9 @@ export default function CommandLine({
         break;
       case "Tab":
         e.preventDefault();
-        const input = currentInput.toUpperCase();
-        if (!input) return;
-
-        // Get all commands including aliases
-        const availableCommands = getAvailableCommands();
-        const candidates = new Set<string>();
-
-        availableCommands.forEach((cmd) => {
-          if (cmd.name.startsWith(input)) candidates.add(cmd.name);
-          cmd.aliases.forEach((alias) => {
-            if (alias.startsWith(input)) candidates.add(alias);
-          });
-        });
-
-        const matches = Array.from(candidates).sort();
-
-        if (matches.length === 1) {
-          // Exact match found
-          onInputChange(matches[0]);
-        } else if (matches.length > 1) {
-          // Find common prefix if multiple matches
-          const commonPrefix = matches.reduce((prefix, current) => {
-            let i = 0;
-            while (i < prefix.length && i < current.length && prefix[i] === current[i]) {
-              i++;
-            }
-            return prefix.substring(0, i);
-          });
-
-          if (commonPrefix.length > input.length) {
-            onInputChange(commonPrefix);
-          }
+        const result = autocomplete(currentInput);
+        if (result.match) {
+          onInputChange(result.match);
         }
         break;
     }
@@ -122,7 +90,6 @@ export default function CommandLine({
     onInputChange(e.target.value);
   };
 
-  // Show game mode message instead of input when game is active
   if (isGameActive) {
     return (
       <div className="flex items-center gap-1 min-h-[1.5rem] py-4 my-2">

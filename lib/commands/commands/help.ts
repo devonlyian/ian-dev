@@ -1,5 +1,6 @@
 import { Command, CommandContext, CommandResult } from "@/types/terminal";
 import { getAllCommands } from "../registry";
+import { SECTIONS } from "@/lib/constants/sections";
 
 export const helpCommand: Command = {
   name: "HELP",
@@ -11,7 +12,7 @@ export const helpCommand: Command = {
   execute: (_args: string[], context: CommandContext): CommandResult => {
     return {
       type: "success",
-      content: context.renderSection("help"),
+      content: context.renderSection(SECTIONS.HELP),
     };
   },
 };

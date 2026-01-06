@@ -1,4 +1,5 @@
 import { Command, CommandContext, CommandResult, ThemeMode } from "@/types/terminal";
+import { SECTIONS } from "@/lib/constants/sections";
 
 const AVAILABLE_THEMES: ThemeMode[] = ["dos", "dark", "light", "amber", "green"];
 
@@ -80,7 +81,7 @@ export const versionCommand: Command = {
   execute: (_args: string[], context: CommandContext): CommandResult => {
     return {
       type: "success",
-      content: context.renderSection("version"),
+      content: context.renderSection(SECTIONS.VERSION),
     };
   },
 };
@@ -95,7 +96,7 @@ export const neofetchCommand: Command = {
   execute: (_args: string[], context: CommandContext): CommandResult => {
     return {
       type: "success",
-      content: context.renderSection("neofetch"),
+      content: context.renderSection(SECTIONS.NEOFETCH),
     };
   },
 };

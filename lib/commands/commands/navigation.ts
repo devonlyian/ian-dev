@@ -1,4 +1,5 @@
 import { Command, CommandContext, CommandResult } from "@/types/terminal";
+import { SECTIONS, projectSection, TYPE_VALID_SECTIONS } from "@/lib/constants/sections";
 
 export const aboutCommand: Command = {
   name: "ABOUT",
@@ -10,7 +11,7 @@ export const aboutCommand: Command = {
   execute: (_args: string[], context: CommandContext): CommandResult => {
     return {
       type: "success",
-      content: context.renderSection("about"),
+      content: context.renderSection(SECTIONS.ABOUT),
     };
   },
 };
@@ -25,7 +26,7 @@ export const careerCommand: Command = {
   execute: (_args: string[], context: CommandContext): CommandResult => {
     return {
       type: "success",
-      content: context.renderSection("career"),
+      content: context.renderSection(SECTIONS.CAREER),
     };
   },
 };
@@ -40,7 +41,7 @@ export const skillsCommand: Command = {
   execute: (_args: string[], context: CommandContext): CommandResult => {
     return {
       type: "success",
-      content: context.renderSection("skills"),
+      content: context.renderSection(SECTIONS.SKILLS),
     };
   },
 };
@@ -57,12 +58,12 @@ export const projectsCommand: Command = {
     if (args[0]) {
       return {
         type: "success",
-        content: context.renderSection(`project:${args[0].toLowerCase()}`),
+        content: context.renderSection(projectSection(args[0].toLowerCase())),
       };
     }
     return {
       type: "success",
-      content: context.renderSection("projects"),
+      content: context.renderSection(SECTIONS.PROJECTS),
     };
   },
 };
@@ -77,7 +78,7 @@ export const contactCommand: Command = {
   execute: (_args: string[], context: CommandContext): CommandResult => {
     return {
       type: "success",
-      content: context.renderSection("contact"),
+      content: context.renderSection(SECTIONS.CONTACT),
     };
   },
 };
@@ -92,7 +93,7 @@ export const dirCommand: Command = {
   execute: (_args: string[], context: CommandContext): CommandResult => {
     return {
       type: "success",
-      content: context.renderSection("dir"),
+      content: context.renderSection(SECTIONS.DIR),
     };
   },
 };
@@ -113,11 +114,10 @@ export const typeCommand: Command = {
       };
     }
     const section = args[0].toLowerCase();
-    const validSections = ["about", "career", "skills", "projects", "contact"];
-    if (!validSections.includes(section)) {
+    if (!TYPE_VALID_SECTIONS.includes(section as typeof TYPE_VALID_SECTIONS[number])) {
       return {
         type: "error",
-        content: `File not found - ${args[0]}\nAvailable: ${validSections.join(", ")}`,
+        content: `File not found - ${args[0]}\nAvailable: ${TYPE_VALID_SECTIONS.join(", ")}`,
       };
     }
     return {

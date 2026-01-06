@@ -1,4 +1,5 @@
 import { Command, CommandContext, CommandResult } from "@/types/terminal";
+import { SECTIONS } from "@/lib/constants/sections";
 
 export const snakeCommand: Command = {
   name: "SNAKE",
@@ -10,7 +11,7 @@ export const snakeCommand: Command = {
   execute: (_args: string[], context: CommandContext): CommandResult => {
     return {
       type: "success",
-      content: context.renderSection("snake"),
+      content: context.renderSection(SECTIONS.SNAKE),
     };
   },
 };

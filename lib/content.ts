@@ -1,8 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { Language } from "@/hooks/useLanguage";
-import { Contact, Skill } from "@/types/data";
+import { Language, Contact, Skill } from "@/types/data";
 
 // Types for parsed content (simple strings, not LocalizedText)
 export interface CareerContent {

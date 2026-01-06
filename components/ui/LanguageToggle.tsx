@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useCallback } from "react";
 import { useLanguageContext } from "@/contexts/LanguageContext";
 import { Language } from "@/hooks/useLanguage";
+import { useOutsideClick } from "@/hooks/useOutsideClick";
 
 const GlobeIcon = () => (
   <svg
@@ -33,19 +34,8 @@ export default function LanguageToggle() {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    }
-
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => document.removeEventListener("mousedown", handleClickOutside);
-    }
-  }, [isOpen]);
+  const closeDropdown = useCallback(() => setIsOpen(false), []);
+  useOutsideClick(dropdownRef, closeDropdown, isOpen);
 
   const handleSelect = (code: Language) => {
     setLanguage(code);

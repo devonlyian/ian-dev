@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useCallback } from "react";
 import { ThemeMode } from "@/types/terminal";
+import { useOutsideClick } from "@/hooks/useOutsideClick";
 
 interface ThemeToggleProps {
   theme: ThemeMode;
@@ -46,19 +47,8 @@ export default function ThemeToggle({ theme, setTheme, availableThemes }: ThemeT
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    }
-
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => document.removeEventListener("mousedown", handleClickOutside);
-    }
-  }, [isOpen]);
+  const closeDropdown = useCallback(() => setIsOpen(false), []);
+  useOutsideClick(dropdownRef, closeDropdown, isOpen);
 
   const handleSelect = (t: ThemeMode) => {
     setTheme(t);
