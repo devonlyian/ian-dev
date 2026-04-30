@@ -203,11 +203,11 @@ export const languageText: Record<Language, LanguageText> = {
       },
     },
     experiences: {
-      "대리 / 백엔드 개발자":
+      "Backend Developer / 대리":
         "7개 마이크로서비스 설계와 구현, AWS EKS Kubernetes 인프라 구축, PostgreSQL Read/Write Replica 분리, ArgoCD GitOps Blue-Green 배포, RabbitMQ 기반 비동기 처리를 담당했습니다.",
-      "주임 / 백엔드 개발자":
+      "Backend Developer / 주임":
         "3개 고객사 프로젝트의 백엔드 API를 설계하고 구현했으며, Clova OCR과 OpenAI API 기반 데이터 처리, Pinecone 협업 추천, RPA 자동화 솔루션을 납품했습니다.",
-      "백엔드 개발자":
+      "Backend Developer":
         "빈티지 조명 스토어 백엔드를 전체 설계하고 9개월간 운영했으며, 비관적 락, 개인정보 암호화, JWT/Kakao OAuth, 포트원 결제를 구현했습니다.",
     },
     services: {
