@@ -5,7 +5,6 @@ import {
   siArgo,
   siDocker,
   siGithubactions,
-  siJenkins,
   siKubernetes,
   siKotlin,
   siMysql,
@@ -16,11 +15,11 @@ import {
   siSpringboot,
   siTerraform,
 } from "simple-icons";
-import { Bot, BrainCircuit, Cloud, FileScan, Workflow } from "lucide-react";
+import { Bot, Cloud, Code2 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { portfolio } from "@/lib/portfolio-data";
 
-type TechnologyIconType = SimpleIcon | "cloud" | "bot" | "brain" | "scan" | "workflow";
+type TechnologyIconType = SimpleIcon | "cloud" | "bot" | "code";
 
 const technologyIcons: Record<string, TechnologyIconType> = {
   Kotlin: siKotlin,
@@ -35,12 +34,9 @@ const technologyIcons: Record<string, TechnologyIconType> = {
   AWS: "cloud",
   Terraform: siTerraform,
   ArgoCD: siArgo,
-  Jenkins: siJenkins,
   "GitHub Actions": siGithubactions,
-  "OpenAI API": "bot",
-  Pinecone: "brain",
-  "Clova OCR": "scan",
-  "Brity RPA": "workflow",
+  Codex: "code",
+  "Claude Code": "bot",
 };
 
 function TechnologyIcon({ technology }: { technology: string }) {
@@ -54,16 +50,8 @@ function TechnologyIcon({ technology }: { technology: string }) {
     return <Bot className="h-7 w-7 stroke-[2.4]" aria-hidden="true" />;
   }
 
-  if (icon === "brain") {
-    return <BrainCircuit className="h-7 w-7 stroke-[2.4]" aria-hidden="true" />;
-  }
-
-  if (icon === "scan") {
-    return <FileScan className="h-7 w-7 stroke-[2.4]" aria-hidden="true" />;
-  }
-
-  if (icon === "workflow") {
-    return <Workflow className="h-7 w-7 stroke-[2.4]" aria-hidden="true" />;
+  if (icon === "code") {
+    return <Code2 className="h-7 w-7 stroke-[2.4]" aria-hidden="true" />;
   }
 
   if (!icon) {
