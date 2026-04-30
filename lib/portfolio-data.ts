@@ -83,16 +83,6 @@ export const portfolio = {
       "Backend developer with Kotlin/Spring expertise, from MSA design to AWS EKS infrastructure and GitOps-based CI/CD pipelines.",
       "I care about clear communication, maintainable operations, and continuously learning new tools that improve development productivity.",
     ],
-    certifications: [
-      "Kotlin and Spring Boot MSA development",
-      "AWS EKS, Terraform, and GitOps deployment",
-      "RabbitMQ, Redis, PostgreSQL operations",
-    ],
-    stats: [
-      { value: "47+", label: "Endpoints audited" },
-      { value: "2026", label: "Recent migration" },
-      { value: "2", label: "Prod/dev stacks" },
-    ],
   },
   technologies: [
     "Kotlin",
