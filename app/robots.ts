@@ -1,15 +1,12 @@
-import { MetadataRoute } from "next";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ianonly.dev";
+import type { MetadataRoute } from "next";
+import { portfolio } from "@/lib/portfolio-data";
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: [
-      {
-        userAgent: "*",
-        allow: "/",
-      },
-    ],
-    sitemap: `${siteUrl}/sitemap.xml`,
+    rules: {
+      userAgent: "*",
+      allow: "/",
+    },
+    sitemap: `${portfolio.owner.siteUrl}/sitemap.xml`,
   };
 }

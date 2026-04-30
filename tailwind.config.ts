@@ -1,41 +1,30 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: "class",
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./lib/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
-      fontFamily: {
-        dos: ['"IBM Plex Mono"', '"Courier New"', "Consolas", "monospace"],
-        sans: ['"Noto Sans KR"', "system-ui", "sans-serif"],
-      },
       colors: {
-        dos: {
-          bg: "var(--dos-bg)",
-          text: "var(--dos-text)",
-          highlight: "var(--dos-highlight)",
-          yellow: "var(--dos-yellow)",
-          border: "var(--dos-border)",
-          cyan: "var(--dos-cyan)",
-          green: "var(--dos-green)",
-          red: "var(--dos-red)",
-        },
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        card: "var(--card)",
+        "card-foreground": "var(--card-foreground)",
+        muted: "var(--muted)",
+        "muted-foreground": "var(--muted-foreground)",
+        border: "var(--border)",
+        brand: "var(--brand)",
+        "brand-light": "var(--brand-light)",
       },
-      animation: {
-        blink: "blink 1s step-end infinite",
-        typing: "typing 2s steps(40, end)",
+      fontFamily: {
+        sans: ["var(--font-bricolage)", "var(--font-noto)", "system-ui", "sans-serif"],
       },
-      keyframes: {
-        blink: {
-          "0%, 50%": { opacity: "1" },
-          "51%, 100%": { opacity: "0" },
-        },
-        typing: {
-          from: { width: "0" },
-          to: { width: "100%" },
-        },
+      boxShadow: {
+        soft: "0 18px 60px rgba(0, 0, 0, 0.08)",
       },
     },
   },

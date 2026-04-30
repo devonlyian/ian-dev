@@ -2,69 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 :root {
-  /* Dark theme (default) - Modern dark mode */
-  --dos-bg: #0d0d0d;
-  --dos-text: #e0e0e0;
-  --dos-highlight: #ffffff;
-  --dos-yellow: #ffd700;
-  --dos-border: #404040;
-  --dos-cyan: #00d4d4;
-  --dos-green: #00d400;
-  --dos-red: #ff4444;
+  --radius: 0.75rem;
+  --brand: #cf8700;
+  --brand-light: #f5a500;
+  --background: #fefaef;
+  --foreground: #070707;
+  --card: #fff8e8;
+  --card-foreground: #0a0a0a;
+  --muted: #f4ebd8;
+  --muted-foreground: #72706b;
+  --border: #e7decb;
 }
 
-/* DOS theme - Classic MS-DOS blue */
-/* DOS theme - Classic MS-DOS blue */
-.dos {
-  --dos-bg: #0000aa;
-  --dos-text: #aaaaaa;
-  --dos-highlight: #ffffff;
-  --dos-yellow: #ffff55;
-  --dos-border: #ffffff;
-  --dos-cyan: #55ffff;
-  --dos-green: #55ff55;
-  --dos-red: #ff5555;
-}
-
-/* Light theme - Word/Notion style for professional documents */
-.light {
-  --dos-bg: #ffffff;
-  --dos-text: #1f2937;
-  --dos-highlight: #37352f;
-  --dos-yellow: #9a6700;
-  --dos-border: #e5e5e5;
-  --dos-cyan: #0969da;
-  --dos-green: #1a7f37;
-  --dos-red: #cf222e;
-}
-
-/* Amber theme - Classic monochrome amber monitor */
-/* Amber theme - Classic monochrome amber monitor */
-.amber {
-  --dos-bg: #1a1000;
-  --dos-text: #ffb000;
-  --dos-highlight: #ffe066;
-  --dos-yellow: #ffdb4d;
-  --dos-border: #664400;
-  --dos-cyan: #ffce00;
-  --dos-green: #ff9900;
-  --dos-red: #cc5500;
-}
-
-/* Green theme - Classic monochrome green terminal */
-/* Green theme - Classic monochrome green terminal */
-.green {
-  --dos-bg: #001100;
-  --dos-text: #00ff00;
-  --dos-highlight: #ccffcc;
-  --dos-yellow: #aaffaa;
-  --dos-border: #005500;
-  --dos-cyan: #00dd00;
-  --dos-green: #00ff00;
-  --dos-red: #00aa00;
+.dark {
+  --background: #0a0a0a;
+  --foreground: #f2f2f2;
+  --card: #121212;
+  --card-foreground: #fefaef;
+  --muted: #181818;
+  --muted-foreground: #929292;
+  --border: #ffffff16;
 }
 
 * {
@@ -72,248 +30,138 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 body {
-  font-family: var(--font-ibm-plex-mono), "Courier New", Consolas, monospace;
-  font-size: 16px;
-  line-height: 1.5;
-  background-color: var(--dos-bg);
-  color: var(--dos-text);
-  overflow-x: hidden;
   min-height: 100vh;
+  background: var(--background);
+  color: var(--foreground);
 }
 
-@media (max-width: 640px) {
-  body {
-    font-size: 14px;
+@media (pointer: fine) and (min-width: 768px) {
+  body,
+  body * {
+    cursor: none !important;
   }
 }
 
-/* DOS-style scrollbar */
-::-webkit-scrollbar {
-  width: 16px;
-  height: 16px;
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--dos-bg);
-  border: 1px solid var(--dos-border);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--dos-text);
-  border: 1px solid var(--dos-border);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--dos-highlight);
-}
-
-::-webkit-scrollbar-corner {
-  background: var(--dos-bg);
-}
-
-/* Selection style */
 ::selection {
-  background: var(--dos-highlight);
-  color: var(--dos-bg);
+  background: #f5a500;
+  color: #0a0a0a;
 }
 
-/* Cursor blink animation */
-.cursor-blink {
-  display: inline-block;
-  width: 0.6em;
-  height: 1.1em;
-  background-color: var(--dos-highlight);
-  animation: blink 1s step-end infinite;
-  vertical-align: text-bottom;
-  margin-left: 2px;
+.noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-@keyframes blink {
-
-  0%,
-  50% {
-    opacity: 1;
-  }
-
-  51%,
-  100% {
-    opacity: 0;
-  }
+.display-xl {
+  font-size: clamp(2.75rem, 13vw, 18rem);
+  line-height: 0.82;
+  letter-spacing: -0.055em;
+  font-weight: 900;
 }
 
-/* DOS box characters support */
-.dos-box {
-  line-height: 1.2;
-  white-space: pre;
+.hero-name {
+  font-size: clamp(5.9rem, 11.8vw, 11rem);
+  line-height: 0.76;
+  letter-spacing: -0.05em;
+  font-weight: 900;
 }
 
-/* Utility classes */
-.dos-text {
-  color: var(--dos-text);
-}
-
-.dos-highlight {
-  color: var(--dos-highlight);
-}
-
-.dos-yellow {
-  color: var(--dos-yellow);
-}
-
-.dos-cyan {
-  color: var(--dos-cyan);
-}
-
-.dos-green {
-  color: var(--dos-green);
-}
-
-.dos-red {
-  color: var(--dos-red);
-}
-
-/* Print styles */
-@media print {
-  @page {
-    size: A4;
-    margin: 15mm;
-  }
-
-  body {
-    background: white !important;
-    color: #1f2937 !important;
-    font-size: 10pt !important;
-    line-height: 1.4 !important;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-
-  .print-footer {
-    display: none;
-  }
-
-  .no-print {
-    display: none !important;
-  }
-
-  .print-only {
-    display: block !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    max-width: none !important;
-  }
-
-  .dos-box {
-    border: 1px solid #000 !important;
-  }
-
-  /* Page break control */
-  h2, h3 {
-    page-break-after: avoid;
-  }
-
-  section {
-    page-break-inside: avoid;
-  }
-
-  /* Clean link styles for print */
-  a {
-    text-decoration: none !important;
-    color: inherit !important;
-  }
-
-  a::after {
-    content: none !important;
+@media (max-width: 767px) {
+  .hero-name {
+    font-size: clamp(2.55rem, 10.8vw, 4.25rem);
+    line-height: 0.9;
+    letter-spacing: -0.045em;
   }
 }
 
-.print-only {
-  display: none;
+.hero-name-outline {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--foreground);
+  text-stroke: 2px var(--foreground);
 }
 
-/* Mobile navigation buttons */
-.nav-button {
-  background-color: var(--dos-bg);
-  color: var(--dos-highlight);
-  border: 2px solid var(--dos-border);
-  padding: 0.5rem 1rem;
-  font-family: inherit;
-  font-size: 0.875rem;
-  cursor: pointer;
-  transition: all 0.1s;
+.hero-subline {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: clamp(2.2rem, 4vw, 4.25rem);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  font-weight: 700;
 }
 
-.nav-button:hover,
-.nav-button:focus {
-  background-color: var(--dos-highlight);
-  color: var(--dos-bg);
+.display-lg {
+  font-size: clamp(3rem, 11vw, 11rem);
+  line-height: 0.88;
+  letter-spacing: -0.05em;
+  font-weight: 900;
 }
 
-.nav-button:active {
-  transform: translateY(1px);
+.section-heading {
+  font-size: clamp(3.1rem, 4.1vw, 4.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+  font-weight: 900;
 }
 
-/* Input focus */
-input:focus {
-  outline: none;
-}
-
-/* Accessibility: Screen reader only */
-.sr-only {
-  position: absolute;
-  width: 1px;
+.section-rule {
   height: 1px;
-  padding: 0;
-  margin: -1px;
+  width: 100%;
+  background: var(--border);
+}
+
+@keyframes tech-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-tech-marquee {
+  animation: tech-marquee 42s linear infinite;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.magnetic {
+  transform: translate3d(0, 0, 0);
+}
+
+.lenis,
+.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
 }
 
-/* Skip link for keyboard navigation */
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 0;
-  padding: 8px 16px;
-  background: var(--dos-highlight);
-  color: var(--dos-bg);
-  z-index: 100;
-  transition: top 0.2s;
-}
-
-.skip-link:focus {
-  top: 0;
-}
-
-/* Focus visible styles */
-*:focus-visible {
-  outline: 2px solid var(--dos-cyan);
-  outline-offset: 2px;
-}
-
-/* Button and interactive element focus */
-button:focus-visible,
-a:focus-visible,
-[role="button"]:focus-visible {
-  outline: 2px solid var(--dos-cyan);
-  outline-offset: 2px;
-}
-
-/* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }

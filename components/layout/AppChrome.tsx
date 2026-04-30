@@ -1,0 +1,27 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+import { Toaster } from "sonner";
+import { Preloader } from "./Preloader";
+import { SectionIndicator } from "./SectionIndicator";
+import { SiteHeader } from "./SiteHeader";
+import { SmoothCursor } from "./SmoothCursor";
+import { SmoothScroll } from "./SmoothScroll";
+
+export function AppChrome({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const isProjectDetail = pathname.startsWith("/projects/");
+
+  return (
+    <>
+      <div className="noise-overlay pointer-events-none fixed inset-0 z-50 h-full w-full opacity-[0.035] mix-blend-overlay" />
+      <SmoothScroll />
+      <SmoothCursor />
+      <Preloader />
+      <SiteHeader />
+      {!isProjectDetail ? <SectionIndicator /> : null}
+      {children}
+      <Toaster position="bottom-right" richColors />
+    </>
+  );
+}

@@ -1,14 +1,24 @@
-import { MetadataRoute } from "next";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ianonly.dev";
+import type { MetadataRoute } from "next";
+import { portfolio, projects } from "@/lib/portfolio-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const base = portfolio.owner.siteUrl;
+
   return [
     {
-      url: siteUrl,
+      url: base,
       lastModified: new Date(),
-      changeFrequency: "monthly",
       priority: 1,
     },
+    {
+      url: `${base}/projects`,
+      lastModified: new Date(),
+      priority: 0.8,
+    },
+    ...projects.map((project) => ({
+      url: `${base}/projects/${project.slug}`,
+      lastModified: new Date(),
+      priority: 0.7,
+    })),
   ];
 }
