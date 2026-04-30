@@ -3,6 +3,7 @@
 import type { SimpleIcon } from "simple-icons";
 import {
   siArgo,
+  siClaude,
   siDocker,
   siGithubactions,
   siKubernetes,
@@ -15,11 +16,11 @@ import {
   siSpringboot,
   siTerraform,
 } from "simple-icons";
-import { Bot, Cloud, Code2 } from "lucide-react";
+import { Cloud } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { portfolio } from "@/lib/portfolio-data";
 
-type TechnologyIconType = SimpleIcon | "cloud" | "bot" | "code";
+type TechnologyIconType = SimpleIcon | "cloud" | "gpt";
 
 const technologyIcons: Record<string, TechnologyIconType> = {
   Kotlin: siKotlin,
@@ -35,8 +36,8 @@ const technologyIcons: Record<string, TechnologyIconType> = {
   Terraform: siTerraform,
   ArgoCD: siArgo,
   "GitHub Actions": siGithubactions,
-  Codex: "code",
-  "Claude Code": "bot",
+  Codex: "gpt",
+  "Claude Code": siClaude,
 };
 
 function TechnologyIcon({ technology }: { technology: string }) {
@@ -46,12 +47,23 @@ function TechnologyIcon({ technology }: { technology: string }) {
     return <Cloud className="h-7 w-7 stroke-[2.4]" aria-hidden="true" />;
   }
 
-  if (icon === "bot") {
-    return <Bot className="h-7 w-7 stroke-[2.4]" aria-hidden="true" />;
-  }
-
-  if (icon === "code") {
-    return <Code2 className="h-7 w-7 stroke-[2.4]" aria-hidden="true" />;
+  if (icon === "gpt") {
+    return (
+      <svg viewBox="0 0 24 24" className="h-7 w-7" role="img" aria-label="GPT icon">
+        <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2" />
+        <text
+          x="12"
+          y="14.4"
+          fill="currentColor"
+          fontSize="6.2"
+          fontWeight="900"
+          letterSpacing="-0.35"
+          textAnchor="middle"
+        >
+          GPT
+        </text>
+      </svg>
+    );
   }
 
   if (!icon) {
