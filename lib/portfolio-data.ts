@@ -359,7 +359,7 @@ export const experiences: Experience[] = [
   {
     period: "2025.02 — 2025.12",
     location: "Seoul, Korea",
-    title: "Backend Developer / Assistant Manager",
+    title: "대리 / 백엔드 개발자",
     company: "NailTocToc",
     status: "MSA",
     summary:
@@ -369,7 +369,7 @@ export const experiences: Experience[] = [
   {
     period: "2024.08 — 2025.02",
     location: "Seoul, Korea",
-    title: "Backend Developer / Junior Manager",
+    title: "주임 / 백엔드 개발자",
     company: "Mining5000",
     status: "Delivered",
     summary:
@@ -379,7 +379,7 @@ export const experiences: Experience[] = [
   {
     period: "2023.04 — 2024.08",
     location: "Korea",
-    title: "Backend Developer",
+    title: "백엔드 개발자",
     company: "Arffy",
     status: "Production",
     summary:
