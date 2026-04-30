@@ -2,38 +2,45 @@
 
 import type { SimpleIcon } from "simple-icons";
 import {
-  siDjango,
+  siArgo,
   siDocker,
-  siFlutter,
+  siGithubactions,
+  siJenkins,
+  siKubernetes,
   siKotlin,
-  siNextdotjs,
+  siMysql,
   siOpenjdk,
   siPostgresql,
-  siPython,
-  siReact,
+  siRabbitmq,
   siRedis,
   siSpringboot,
-  siTypescript,
+  siTerraform,
 } from "simple-icons";
-import { Cloud } from "lucide-react";
+import { Bot, BrainCircuit, Cloud, FileScan, Workflow } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { portfolio } from "@/lib/portfolio-data";
 
-const technologyIcons: Record<string, SimpleIcon | "cloud"> = {
+type TechnologyIconType = SimpleIcon | "cloud" | "bot" | "brain" | "scan" | "workflow";
+
+const technologyIcons: Record<string, TechnologyIconType> = {
   Kotlin: siKotlin,
   "Spring Boot": siSpringboot,
   Java: siOpenjdk,
   PostgreSQL: siPostgresql,
+  MySQL: siMysql,
   Redis: siRedis,
+  RabbitMQ: siRabbitmq,
   Docker: siDocker,
+  Kubernetes: siKubernetes,
   AWS: "cloud",
-  OCI: "cloud",
-  Flutter: siFlutter,
-  "Next.js": siNextdotjs,
-  React: siReact,
-  TypeScript: siTypescript,
-  Python: siPython,
-  Django: siDjango,
+  Terraform: siTerraform,
+  ArgoCD: siArgo,
+  Jenkins: siJenkins,
+  "GitHub Actions": siGithubactions,
+  "OpenAI API": "bot",
+  Pinecone: "brain",
+  "Clova OCR": "scan",
+  "Brity RPA": "workflow",
 };
 
 function TechnologyIcon({ technology }: { technology: string }) {
@@ -41,6 +48,22 @@ function TechnologyIcon({ technology }: { technology: string }) {
 
   if (icon === "cloud") {
     return <Cloud className="h-7 w-7 stroke-[2.4]" aria-hidden="true" />;
+  }
+
+  if (icon === "bot") {
+    return <Bot className="h-7 w-7 stroke-[2.4]" aria-hidden="true" />;
+  }
+
+  if (icon === "brain") {
+    return <BrainCircuit className="h-7 w-7 stroke-[2.4]" aria-hidden="true" />;
+  }
+
+  if (icon === "scan") {
+    return <FileScan className="h-7 w-7 stroke-[2.4]" aria-hidden="true" />;
+  }
+
+  if (icon === "workflow") {
+    return <Workflow className="h-7 w-7 stroke-[2.4]" aria-hidden="true" />;
   }
 
   if (!icon) {
