@@ -57,8 +57,8 @@ export const languageText: Record<Language, LanguageText> = {
         "I work closest to backend systems, infrastructure, and the product edges where",
         "reliability actually shows up.",
         "Most of my recent work has involved",
-        "Kotlin, Spring Boot, PostgreSQL, and OCI",
-        "I care about contract preservation, deployment paths, and production debugging.",
+        "Claude Code, Codex, and harness engineering",
+        "I focus on tightening development automation and repeatable verification flows.",
       ],
     },
     projects: {
@@ -86,8 +86,8 @@ export const languageText: Record<Language, LanguageText> = {
         "저는 백엔드 시스템, 인프라, 그리고 제품의 경계에서 주로 일합니다.",
         "안정성이 실제로 보이는 지점",
         "최근에는 주로",
-        "Kotlin, Spring Boot, PostgreSQL, OCI",
-        "계약 유지, 배포 경로, 운영 디버깅을 중요하게 봅니다.",
+        "Claude Code, Codex, 하네스 엔지니어링",
+        "개발 자동화와 반복 가능한 검증 흐름을 더 단단하게 만드는 데 집중하고 있습니다.",
       ],
     },
     projects: {
