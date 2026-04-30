@@ -62,83 +62,12 @@ export const languageText: Record<Language, LanguageText> = {
       ],
     },
     projects: {
-      taglines: {
-        "reading-garden": "Django-to-Kotlin migration with production contract preservation.",
-        pawtogether: "Pet community backend designed around practical product boundaries.",
-        "bug-bounty-platform": "Submission-ready backend with report, reward, and program flows.",
-        "oracle-a1-automation": "Local-first OCI automation with public docs separated from private ops.",
-      },
-      descriptions: {
-        "reading-garden":
-          "A backend migration and operations project focused on keeping an existing Flutter app stable while replacing core server behavior.",
-        pawtogether:
-          "An early-stage backend architecture for social login, community features, scheduled jobs, local media, and maintainable deployment.",
-        "bug-bounty-platform":
-          "A scoped backend implementation built against an assignment spec, with attention on correctness, documentation, and deliverability.",
-        "oracle-a1-automation":
-          "A personal infrastructure automation project for OCI A1 workflows, operational docs, and safe local tooling.",
-      },
-      caseStudies: {
-        "reading-garden": {
-          overview:
-            "Reading Garden is a production backend modernization effort with a mobile client, legacy API expectations, and operational deployment constraints.",
-          challenge:
-            "The difficult part was not simply rewriting endpoints. The system had legacy Django behavior, Flutter runtime assumptions, image storage paths, and production data that had to continue working without surprising users.",
-          solution:
-            "The migration used compatibility tests, endpoint contract checks, live health probes, and deployment scripts that made production and development behavior explicit.",
-          impact:
-            "The result is a backend that can evolve with Kotlin and Spring Boot while retaining the behavior the existing app depends on.",
-        },
-        pawtogether: {
-          overview:
-            "PawTogether is a clean backend foundation for a pet community product, with social auth and media handling kept deliberately simple.",
-          challenge:
-            "The key risk was overbuilding too early. The backend needed enough structure for growth without adding infrastructure that would slow down a first release.",
-          solution:
-            "The design favors app-side social login, Spring Security resource server patterns, scheduled jobs, local disk media on A1, and explicit backup requirements.",
-          impact:
-            "The project has a clearer domain split and a backend stack that can ship quickly before being expanded into heavier infrastructure.",
-        },
-        "bug-bounty-platform": {
-          overview:
-            "The platform models program specifications, vulnerability report submission, reward handling, and API documentation.",
-          challenge:
-            "The main challenge was matching the written requirements exactly and separating finished scope from speculative enhancements.",
-          solution:
-            "Implementation work was driven from the assignment document, with targeted fixes for report and reward behavior and a final submission checklist.",
-          impact:
-            "The codebase became easier to evaluate because the implemented scope maps directly to the submitted requirements.",
-        },
-        "oracle-a1-automation": {
-          overview:
-            "The project keeps repeatable A1 operations in code while separating local-only operational details from public repository documentation.",
-          challenge:
-            "The sensitive parts were operational context, instance principal behavior, and avoiding accidental publication of local server details.",
-          solution:
-            "The repository uses an A1-only branch strategy, local ops docs, ignored private notes, and conservative automation boundaries.",
-          impact:
-            "The automation is easier to maintain because public and private responsibilities are explicit.",
-        },
-      },
+      taglines: {},
+      descriptions: {},
+      caseStudies: {},
     },
-    experiences: {
-      "Backend Developer":
-        "Building production-minded backends, migration tooling, and deployment workflows across personal and client-style projects.",
-      "Platform Builder":
-        "Designed API contracts, deployment paths, and operational documentation for services that need to be maintained after launch.",
-      "Backend Engineer":
-        "Worked through data modeling, API behavior, authentication, and debugging tasks where correctness mattered more than surface polish.",
-    },
-    services: {
-      "Backend API Development":
-        "Design and build APIs with clear contracts, practical data models, and deployment-aware behavior.",
-      "Migration and Modernization":
-        "Move legacy behavior into newer stacks without breaking the clients and workflows already depending on it.",
-      "Deployment and Operations":
-        "Set up deploy flows, health checks, logs, and local docs so systems are easier to run after the first release.",
-      "Product-Facing Backend Support":
-        "Trace bugs across app and server boundaries, preserve intended behavior, and make fixes that survive real use.",
-    },
+    experiences: {},
+    services: {},
     contact: {
       body: "Always open to a practical build, a backend cleanup, or a production problem that needs a calm pair of hands.",
       copied: "Email copied",
@@ -163,71 +92,123 @@ export const languageText: Record<Language, LanguageText> = {
     },
     projects: {
       taglines: {
-        "reading-garden": "운영 계약을 유지하며 Django 백엔드를 Kotlin으로 옮긴 마이그레이션.",
-        pawtogether: "실제 제품 경계를 기준으로 설계한 반려동물 커뮤니티 백엔드.",
-        "bug-bounty-platform": "리포트, 리워드, 프로그램 흐름을 제출 가능한 수준으로 구현한 백엔드.",
-        "oracle-a1-automation": "공개 문서와 개인 운영 정보를 분리한 로컬 우선 OCI 자동화.",
+        "nailtoctoc-backend": "네일 프린팅 서비스를 위한 MSA 기반 백엔드 플랫폼.",
+        "nailtoctoc-kiosk": "네일 프린팅 워크플로를 위한 Flutter Windows 키오스크 앱.",
+        arffy: "20세기 유럽 빈티지 조명과 소품을 판매하는 온라인 스토어.",
+        "amp-recommendation": "AMP 원우 회사 정보를 기반으로 협업 가능성을 추천하고 기획서를 생성하는 시스템.",
+        onde: "여행 사진을 여정 순서로 저장하고 공유할 수 있는 서비스.",
+        gokkan: "빈티지 가구를 실시간 경매로 사고 팔 수 있는 서비스.",
+        "document-approval": "RPA와 서버를 연동한 교내 문서 결재 자동화 시스템.",
+        "accounting-commission": "여행사 송객수수료 계산과 수령증 작성, 매칭 결과 작성을 자동화한 시스템.",
       },
       descriptions: {
-        "reading-garden":
-          "기존 Flutter 앱을 안정적으로 유지하면서 핵심 서버 동작을 교체하는 데 초점을 둔 백엔드 마이그레이션과 운영 작업입니다.",
-        pawtogether:
-          "소셜 로그인, 커뮤니티 기능, 스케줄 작업, 로컬 미디어, 배포 유지보수를 고려해 초기에 과하게 복잡해지지 않도록 잡은 백엔드 구조입니다.",
-        "bug-bounty-platform":
-          "과제 명세를 기준으로 리포트와 리워드, 프로그램 흐름을 구현하고 정확성, 문서화, 제출 가능성을 챙긴 백엔드 작업입니다.",
-        "oracle-a1-automation":
-          "OCI A1 워크플로, 운영 문서, 로컬 도구를 안전하게 다루기 위한 개인 인프라 자동화 프로젝트입니다.",
+        "nailtoctoc-backend":
+          "7개 마이크로서비스를 도메인 기반으로 분리하고 AWS EKS, Terraform, ArgoCD GitOps, RabbitMQ, Redis, PostgreSQL을 활용해 백엔드와 운영 인프라를 구축했습니다.",
+        "nailtoctoc-kiosk":
+          "카메라 제어, OpenCV 기반 손가락 감지, 다국어 지원, 결제 연동, 네일 프린터와 핑거 픽스처 모듈 연동을 포함한 키오스크 앱을 개발했습니다.",
+        arffy:
+          "빈티지 조명 스토어의 백엔드를 설계하고 9개월간 운영하면서 재고 동시성, 개인정보 암호화, JWT/OAuth 인증, 포트원 결제를 구현했습니다.",
+        "amp-recommendation":
+          "Pinecone 벡터 검색과 OpenAI API를 활용해 협업 가능성이 높은 회사를 추천하고 협업 기획서를 자동 생성하는 백엔드를 구현했습니다.",
+        onde:
+          "여정 순서 기반 사진 저장/공유를 위해 Spring Batch 정리 배치, QueryDSL 동적 검색, S3 이미지 업로드, 북마크와 댓글 API를 구현했습니다.",
+        gokkan:
+          "팀장과 백엔드 개발자로 일정과 기술 의사결정을 맡고, WebSocket 실시간 경매 응찰, 상품 검수 흐름, 결제, 소셜 로그인을 구현했습니다.",
+        "document-approval":
+          "Redis 캐싱, JavaMail과 Thymeleaf 메일 템플릿, Brity RPA 연동을 통해 결재 요청과 최종 문서 번호 발번을 자동화했습니다.",
+        "accounting-commission":
+          "Clova OCR, OpenAI API, Brity RPA를 연동해 여권/항공편/영수증 이미지 처리, 매출 매칭, 수수료 계산과 수령증 생성을 자동화했습니다.",
       },
       caseStudies: {
-        "reading-garden": {
+        "nailtoctoc-backend": {
           overview:
-            "Reading Garden은 모바일 클라이언트, 레거시 API 기대값, 배포 제약을 함께 고려해야 했던 운영 중 백엔드 현대화 작업입니다.",
+            "NailTocToc MSA Backend는 네일 프린팅 서비스를 위한 백엔드 플랫폼으로, Gateway, User, Product, Order, Payment, Admin, Worker 7개 마이크로서비스로 구성했습니다.",
           challenge:
-            "어려운 점은 단순히 엔드포인트를 다시 쓰는 것이 아니었습니다. Django 시절의 동작, Flutter 런타임 가정, 이미지 저장 경로, 운영 데이터가 사용자에게 티 나지 않게 계속 맞아야 했습니다.",
+            "도메인별 독립 배포, 안정적인 API 라우팅, 비동기 처리, 읽기 부하 분산, 환경 복제가 가능한 인프라 구성이 필요했습니다.",
           solution:
-            "호환성 테스트, 엔드포인트 계약 검증, live health probe, 배포 스크립트를 통해 운영과 개발 환경의 동작을 명확하게 만들었습니다.",
+            "Spring Cloud Gateway 인증/인가와 라우팅, RabbitMQ 메시징, PostgreSQL Read/Write Replica, AWS EKS, Terraform IaC, ArgoCD Blue-Green 배포를 구축했습니다.",
           impact:
-            "기존 앱이 의존하던 동작을 유지하면서도 Kotlin과 Spring Boot 기반으로 계속 발전시킬 수 있는 백엔드가 되었습니다.",
+            "도메인별 독립 배포와 서비스 간 결합도 감소, 읽기 성능 최적화, 자동 롤백 가능한 GitOps 배포 흐름을 확보했습니다.",
         },
-        pawtogether: {
+        "nailtoctoc-kiosk": {
           overview:
-            "PawTogether는 반려동물 커뮤니티 제품을 위한 백엔드 기반 작업으로, 소셜 인증과 미디어 처리를 의도적으로 단순하게 유지했습니다.",
+            "NailTocToc Kiosk는 네일 프린팅 현장에서 사용하는 Windows 데스크톱 키오스크 앱입니다.",
           challenge:
-            "가장 큰 리스크는 초기에 너무 많이 만드는 것이었습니다. 첫 릴리스를 늦추지 않으면서도 이후 확장할 수 있는 구조가 필요했습니다.",
+            "데스크톱 하드웨어, 카메라, 손가락 감지, 결제, 다국어 UI, 프린터 제어가 하나의 고객 플로우 안에서 안정적으로 동작해야 했습니다.",
           solution:
-            "앱 사이드 소셜 로그인, Spring Security Resource Server 패턴, 스케줄 작업, A1 로컬 디스크 미디어, 명시적인 백업 정책을 우선했습니다.",
+            "Flutter Windows 앱을 개발하고 OpenCV 기반 손가락 감지, 카메라 제어, 4개 언어 지원, 신용카드 결제, 네일 프린터와 픽스처 모듈 연동을 구현했습니다.",
           impact:
-            "도메인 경계가 더 분명해졌고, 무거운 인프라로 확장하기 전에 빠르게 출시할 수 있는 백엔드 스택이 되었습니다.",
+            "사용자가 현장에서 네일 프린팅 과정을 진행할 수 있는 완성도 있는 키오스크 앱 흐름을 만들었습니다.",
         },
-        "bug-bounty-platform": {
+        arffy: {
           overview:
-            "이 플랫폼은 프로그램 명세, 취약점 리포트 제출, 리워드 처리, API 문서화를 모델링한 과제형 백엔드입니다.",
+            "Arffy는 20세기 유럽 빈티지 조명과 소품을 판매하는 온라인 스토어입니다.",
           challenge:
-            "핵심은 작성된 요구사항을 정확히 맞추고, 완료된 범위와 추측성 개선을 분리하는 것이었습니다.",
+            "실제 결제와 재고 차감이 있는 커머스 서비스에서 중복 결제와 재고 동시성 문제를 막고, 개인정보를 안전하게 보관해야 했습니다.",
           solution:
-            "과제 문서를 기준으로 구현 범위를 고정하고, 리포트와 리워드 동작을 targeted fix로 정리한 뒤 제출 체크리스트까지 맞췄습니다.",
+            "비관적 락으로 재고 차감과 결제 중복을 방지하고, JPA Converter로 개인정보를 암호화했으며, JWT와 Kakao OAuth, 포트원 결제를 연동했습니다.",
           impact:
-            "구현된 범위가 제출 요구사항과 직접 연결되어 평가하기 쉬운 코드베이스가 되었습니다.",
+            "9개월간 운영 가능한 스토어 백엔드와 안전한 인증/결제/개인정보 처리 흐름을 만들었습니다.",
         },
-        "oracle-a1-automation": {
+        "amp-recommendation": {
           overview:
-            "이 프로젝트는 반복 가능한 A1 운영을 코드로 관리하면서, 로컬 전용 운영 정보와 공개 저장소 문서를 분리합니다.",
+            "AMP Recommendation은 AMP 원우들의 회사 정보를 기반으로 협업 가능성이 높은 회사를 추천하고 협업 기획서를 자동 생성하는 시스템입니다.",
           challenge:
-            "운영 맥락, instance principal 동작, 개인 서버 정보가 공개 문서에 섞이지 않도록 관리하는 것이 민감한 부분이었습니다.",
+            "회사 정보를 벡터 검색 가능한 형태로 만들고, 추천 결과가 바로 협업 기획서 작성으로 이어져야 했습니다.",
           solution:
-            "A1 전용 브랜치 전략, 로컬 운영 문서, ignore된 개인 메모, 보수적인 자동화 경계를 사용했습니다.",
+            "Pinecone과 코사인 유사도 기반 추천 알고리즘, OpenAI API 기반 기획서 생성, 회사/매칭/협업 기록 스키마와 REST API를 구현했습니다.",
           impact:
-            "공개 책임과 개인 운영 책임이 분명해져 자동화를 더 안전하게 유지할 수 있게 되었습니다.",
+            "벡터 검색과 LLM 생성을 실제 협업 후보 탐색과 기획서 작성 흐름으로 연결했습니다.",
+        },
+        onde: {
+          overview:
+            "ONDe는 여행하면서 찍은 사진을 여정 순서로 저장하고 공유할 수 있는 서비스입니다.",
+          challenge:
+            "이미지 저장, 여정 검색, 삭제 데이터 정리, 북마크와 댓글 같은 소셜 기능을 함께 지원해야 했습니다.",
+          solution:
+            "Spring Batch로 Soft Delete 데이터를 정리하고, QueryDSL 동적 쿼리와 AWS S3 이미지 업로드/조회, 여정 북마크와 댓글 REST API를 구현했습니다.",
+          impact:
+            "여행 콘텐츠를 저장하고 조회하는 핵심 API와 유지보수 가능한 데이터 정리 흐름을 만들었습니다.",
+        },
+        gokkan: {
+          overview:
+            "Gokkan은 빈티지 가구를 경매를 통해 사고 팔 수 있는 서비스입니다.",
+          challenge:
+            "전문가 검수부터 상품 등록, 실시간 경매, 결제, 소셜 로그인, 배포 자동화까지 하나의 서비스 흐름으로 설계해야 했습니다.",
+          solution:
+            "팀장으로 일정과 기술 의사결정을 맡고, WebSocket(SockJS, STOMP) 실시간 응찰, 포트원 결제, OAuth 로그인, Jenkins 배포 파이프라인을 구현했습니다.",
+          impact:
+            "실시간 경매 응찰과 상품 검수부터 결제까지 이어지는 백엔드 흐름을 완성했습니다.",
+        },
+        "document-approval": {
+          overview:
+            "Document Approval은 교내 문서 결재 프로세스를 자동화하기 위해 RPA와 서버를 연동한 시스템입니다.",
+          challenge:
+            "결재자 정보 관리, 다음 결재자 메일 전송, 결재 요청 템플릿, 최종 문서 번호 발번을 반복 작업 없이 처리해야 했습니다.",
+          solution:
+            "Redis로 문서 정보와 결재자 리스트를 관리하고, JavaMail API와 Thymeleaf로 메일 템플릿을 만들었으며, Brity RPA로 최종 문서 번호 발번을 연동했습니다.",
+          impact:
+            "수작업 중심의 결재 흐름을 자동화해 반복 작업을 줄이고 결재 진행을 더 일관되게 만들었습니다.",
+        },
+        "accounting-commission": {
+          overview:
+            "Accounting Commission은 여행사의 송객수수료 계산과 수령증 작성, 매칭 결과 작성을 자동화해 회계법인의 기장 업무를 지원하는 시스템입니다.",
+          challenge:
+            "여권, 항공편, 영수증 이미지와 여행사 매출내역을 수작업으로 읽고 매칭하는 과정이 오래 걸렸습니다.",
+          solution:
+            "Clova OCR로 이미지 텍스트를 추출하고, OpenAI API로 사진 종류를 분류해 JSON으로 구조화했으며, 매칭 로직과 Brity RPA 수령증 생성을 구현했습니다.",
+          impact:
+            "데이터 처리 시간을 80% 단축하고 반복적인 회계 지원 작업을 더 일관되게 만들었습니다.",
         },
       },
     },
     experiences: {
+      "Backend Developer / Assistant Manager":
+        "7개 마이크로서비스 설계와 구현, AWS EKS Kubernetes 인프라 구축, PostgreSQL Read/Write Replica 분리, ArgoCD GitOps Blue-Green 배포, RabbitMQ 기반 비동기 처리를 담당했습니다.",
+      "Backend Developer / Junior Manager":
+        "3개 고객사 프로젝트의 백엔드 API를 설계하고 구현했으며, Clova OCR과 OpenAI API 기반 데이터 처리, Pinecone 협업 추천, RPA 자동화 솔루션을 납품했습니다.",
       "Backend Developer":
-        "개인 프로젝트와 클라이언트형 작업에서 운영을 전제로 한 백엔드, 마이그레이션 도구, 배포 흐름을 만들고 있습니다.",
-      "Platform Builder":
-        "출시 이후에도 유지보수해야 하는 서비스를 위해 API 계약, 배포 경로, 운영 문서를 설계했습니다.",
-      "Backend Engineer":
-        "겉보기 완성도보다 정확성이 중요한 데이터 모델링, API 동작, 인증, 디버깅 작업을 다뤘습니다.",
+        "빈티지 조명 스토어 백엔드를 전체 설계하고 9개월간 운영했으며, 비관적 락, 개인정보 암호화, JWT/Kakao OAuth, 포트원 결제를 구현했습니다.",
     },
     services: {
       "Backend API Development":

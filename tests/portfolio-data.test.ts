@@ -27,17 +27,17 @@ describe("portfolio data contract", () => {
   });
 
   it("returns project detail data by slug", () => {
-    const project = getProjectBySlug("reading-garden");
+    const project = getProjectBySlug("nailtoctoc-backend");
 
-    expect(project?.title).toBe("Reading Garden");
+    expect(project?.title).toBe("NailTocToc MSA Backend");
     expect(project?.caseStudy.challenge.length).toBeGreaterThan(40);
   });
 
   it("returns previous and next project links for detail pages", () => {
-    const adjacent = getAdjacentProjects("pawtogether");
+    const adjacent = getAdjacentProjects("arffy");
 
-    expect(adjacent.previous?.slug).toBe("reading-garden");
-    expect(adjacent.next?.slug).toBe("bug-bounty-platform");
+    expect(adjacent.previous?.slug).toBe("nailtoctoc-kiosk");
+    expect(adjacent.next?.slug).toBe("amp-recommendation");
   });
 
   it("contains owner identity separate from project data", () => {
