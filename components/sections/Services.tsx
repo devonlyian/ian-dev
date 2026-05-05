@@ -73,8 +73,10 @@ export function Services() {
                 <span
                   id={panelId}
                   aria-hidden={!isOpen}
-                  className={`col-span-2 row-start-3 block overflow-hidden transition-[max-height,opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] md:col-span-1 md:row-start-auto ${
-                    isOpen ? "max-h-96 translate-y-0 opacity-100" : "max-h-0 translate-y-3 opacity-0"
+                  className={`col-span-2 row-start-3 block overflow-hidden transition-[max-height,opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] md:col-span-1 md:row-start-auto md:max-h-none ${
+                    isOpen
+                      ? "max-h-96 translate-y-0 opacity-100"
+                      : "max-h-0 translate-y-3 opacity-0 md:translate-y-2"
                   }`}
                 >
                   <span className="mb-8 block text-xl font-medium leading-relaxed text-muted-foreground">
