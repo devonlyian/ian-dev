@@ -8,7 +8,7 @@ techStack:
   - Pinecone
   - OpenAI API
   - MySQL
-order: 4
+order: 5
 ---
 
 System that recommends companies with high collaboration potential based on AMP alumni company information and automatically generates collaboration proposals

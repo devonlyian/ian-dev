@@ -11,7 +11,7 @@ techStack:
   - AWS EC2/S3/RDS
   - Docker
   - Jenkins
-order: 6
+order: 7
 links:
   github: https://github.com/TEAM-GOKKAN/server
 ---

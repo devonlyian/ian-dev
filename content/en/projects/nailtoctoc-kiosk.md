@@ -7,7 +7,7 @@ techStack:
   - Dart
   - OpenCV
   - Windows
-order: 2
+order: 3
 ---
 
 Flutter-based kiosk application for nail printing service

@@ -8,7 +8,7 @@ techStack:
   - Clova OCR
   - OpenAI API
   - Brity RPA
-order: 8
+order: 9
 ---
 
 여행사의 송객수수료 계산과 수령증 작성 및 매칭 결과 작성 과정을 자동화하여 회계법인의 기장 업무를 지원하는 시스템

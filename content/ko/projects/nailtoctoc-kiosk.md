@@ -7,7 +7,7 @@ techStack:
   - Dart
   - OpenCV
   - Windows
-order: 2
+order: 3
 ---
 
 네일 프린팅 서비스를 위한 Flutter 기반 키오스크 애플리케이션

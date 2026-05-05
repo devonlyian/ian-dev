@@ -8,7 +8,7 @@ techStack:
   - Clova OCR
   - OpenAI API
   - Brity RPA
-order: 8
+order: 9
 ---
 
 System that automates travel agency commission calculation and receipt generation to support accounting firm bookkeeping
