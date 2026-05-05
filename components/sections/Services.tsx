@@ -31,7 +31,7 @@ export function Services() {
             >
               <button
                 type="button"
-                className="group grid w-full min-h-36 gap-6 py-10 text-left transition-colors hover:bg-card/30 md:grid-cols-[4rem_1fr_auto] md:items-center md:py-14"
+                className="group grid w-full min-h-36 grid-cols-[1fr_auto] gap-x-6 gap-y-5 py-10 text-left transition-colors hover:bg-card/30 md:grid-cols-[4rem_0.9fr_1fr_auto] md:items-start md:py-14"
                 aria-expanded={isOpen}
                 aria-controls={panelId}
                 onClick={() => {
@@ -42,18 +42,39 @@ export function Services() {
                 }}
                 data-cursor="link"
               >
-                <span className="font-serif text-sm italic text-muted-foreground/40 tabular-nums">
+                <span className="col-span-2 font-serif text-sm italic text-muted-foreground/40 tabular-nums md:col-span-1">
                   {(index + 1).toString().padStart(2, "0")}
                 </span>
                 <span
-                  className={`text-3xl font-black uppercase leading-[0.95] tracking-[-0.045em] transition-colors md:text-5xl ${
+                  className={`col-start-1 row-start-2 text-3xl font-black uppercase leading-[0.95] tracking-[-0.045em] transition-colors md:col-start-auto md:row-start-auto md:text-5xl ${
                     isOpen ? "text-brand" : "text-foreground group-hover:text-brand"
                   }`}
                 >
                   {service.title}
                 </span>
                 <span
-                  className={`flex h-12 w-12 items-center justify-center rounded-full border text-foreground transition-all ${
+                  id={panelId}
+                  aria-hidden={!isOpen}
+                  className={`col-span-2 row-start-3 block overflow-hidden transition-[max-height,opacity,transform] duration-500 ease-out md:col-span-1 md:row-start-auto ${
+                    isOpen ? "max-h-96 translate-y-0 opacity-100" : "max-h-0 -translate-y-2 opacity-0"
+                  }`}
+                >
+                  <span className="mb-8 block text-xl font-medium leading-relaxed text-muted-foreground">
+                    {text.services[service.title] ?? service.description}
+                  </span>
+                  <span className="flex flex-wrap gap-2">
+                    {service.stack.map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full border border-border bg-background px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-muted-foreground"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </span>
+                </span>
+                <span
+                  className={`col-start-2 row-start-2 flex h-12 w-12 items-center justify-center rounded-full border text-foreground transition-all md:col-start-auto md:row-start-auto ${
                     isOpen
                       ? "border-brand bg-brand text-[#0A0A0A]"
                       : "border-border group-hover:border-brand group-hover:bg-brand group-hover:text-[#0A0A0A]"
@@ -62,35 +83,6 @@ export function Services() {
                   <ChevronDown className={`h-5 w-5 transition-transform ${isOpen ? "rotate-180" : ""}`} aria-hidden="true" />
                 </span>
               </button>
-
-              <div
-                id={panelId}
-                className={`grid overflow-hidden transition-[grid-template-rows,opacity] duration-500 ease-out ${
-                  isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                }`}
-              >
-                <div className="min-h-0">
-                  <div className="grid gap-8 pb-12 md:grid-cols-[4rem_1fr_auto] md:pb-14">
-                    <div className="hidden md:block" />
-                    <div className="max-w-4xl">
-                      <p className="mb-8 text-xl font-medium leading-relaxed text-muted-foreground">
-                        {text.services[service.title] ?? service.description}
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {service.stack.map((item) => (
-                          <span
-                            key={item}
-                            className="rounded-full border border-border bg-background px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider text-muted-foreground"
-                          >
-                            {item}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="hidden w-12 md:block" />
-                  </div>
-                </div>
-              </div>
             </article>
           );
         })}
