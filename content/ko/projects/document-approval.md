@@ -10,7 +10,7 @@ techStack:
   - MySQL
   - JavaMail API
   - Brity RPA
-order: 7
+order: 8
 ---
 
 교내 문서 결재 프로세스를 자동화하기 위해 RPA와 서버를 연동하여 결재 요청 및 처리, 문서 번호 발번까지 수행하는 시스템

@@ -8,7 +8,7 @@ techStack:
   - MySQL
   - AWS EC2/S3/RDS
   - Docker
-order: 3
+order: 4
 links:
   github: https://github.com/devonlyian/store
 ---

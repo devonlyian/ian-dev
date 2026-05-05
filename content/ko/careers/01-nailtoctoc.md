@@ -14,7 +14,7 @@ techStack:
   - Terraform
   - ArgoCD
   - Flutter
-order: 1
+order: 2
 ---
 
 - 7개 마이크로서비스(Gateway, User, Product, Order, Payment, Admin, Worker) 설계 및 구현으로 도메인별 독립 배포 환경 구축

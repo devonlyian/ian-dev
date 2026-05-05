@@ -13,7 +13,7 @@ techStack:
   - AWS EKS, RDS, MQ, ElastiCache, EC2
   - Terraform
   - ArgoCD
-order: 1
+order: 2
 links:
   App Store: https://apps.apple.com/kr/app/%EB%84%A4%EC%9D%BC%ED%86%A1%ED%86%A1/id6746323705
   Play Store: https://play.google.com/store/apps/details?id=com.nailtoctoc.nailtoctoc&pcampaignid=web_share

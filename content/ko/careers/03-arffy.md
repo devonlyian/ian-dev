@@ -8,7 +8,7 @@ techStack:
   - MySQL
   - AWS EC2/S3/RDS
   - Docker
-order: 3
+order: 4
 ---
 
 - 빈티지 조명 판매 스토어 백엔드 전체 설계 및 구현, 9개월간 실 서비스 운영 (2023.12 ~ 2024.08)

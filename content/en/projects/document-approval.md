@@ -10,7 +10,7 @@ techStack:
   - MySQL
   - JavaMail API
   - Brity RPA
-order: 7
+order: 8
 ---
 
 System that automates document approval process by integrating RPA with server for approval requests, processing, and document number issuance

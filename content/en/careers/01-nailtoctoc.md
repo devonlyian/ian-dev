@@ -14,7 +14,7 @@ techStack:
   - Terraform
   - ArgoCD
   - Flutter
-order: 1
+order: 2
 ---
 
 - Designed and implemented 7 microservices (Gateway, User, Product, Order, Payment, Admin, Worker) enabling independent domain-based deployment

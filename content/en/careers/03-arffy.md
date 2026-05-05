@@ -8,7 +8,7 @@ techStack:
   - MySQL
   - AWS EC2/S3/RDS
   - Docker
-order: 3
+order: 4
 ---
 
 - Full backend design and implementation for vintage lighting store, 9 months of production service operation (2023.12 ~ 2024.08)

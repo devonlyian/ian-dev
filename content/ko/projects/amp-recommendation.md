@@ -8,7 +8,7 @@ techStack:
   - Pinecone
   - OpenAI API
   - MySQL
-order: 4
+order: 5
 ---
 
 AMP 원우들의 회사 정보를 기반으로 협업 가능성이 높은 회사를 추천하고, 협업 기획서를 자동 생성하는 시스템
