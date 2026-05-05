@@ -30,7 +30,16 @@ describe("portfolio data contract", () => {
     const project = getProjectBySlug("nailtoctoc-backend");
 
     expect(project?.title).toBe("NailTocToc MSA Backend");
-    expect(project?.caseStudy.challenge.length).toBeGreaterThan(40);
+    expect(project?.highlights.length).toBeGreaterThan(3);
+  });
+
+  it("keeps project order aligned with the main portfolio content", () => {
+    expect(projects.map((project) => project.slug).slice(0, 4)).toEqual([
+      "readinggarden-kotlin-backend",
+      "nailtoctoc-backend",
+      "nailtoctoc-kiosk",
+      "arffy",
+    ]);
   });
 
   it("returns previous and next project links for detail pages", () => {

@@ -9,6 +9,7 @@ export type NavigationSection = {
 export type Project = {
   slug: string;
   title: string;
+  role: string;
   eyebrow: string;
   year: string;
   category: string;
@@ -17,16 +18,28 @@ export type Project = {
   featured: boolean;
   status: "Live" | "Case Study" | "WIP";
   tags: string[];
+  links?: Array<{
+    label: string;
+    url: string;
+  }>;
   liveUrl?: string;
   githubUrl?: string;
-  caseStudy: {
+  highlights: string[];
+  caseStudy?: {
     overview: string;
     challenge: string;
     solution: string;
     impact: string;
   };
-  screenshots: string[];
-  results: Array<{
+  screenshots: Array<
+    | string
+    | {
+        label: string;
+        src: string;
+        alt: string;
+      }
+  >;
+  results?: Array<{
     value: string;
     label: string;
   }>;
@@ -109,241 +122,349 @@ export const portfolio = {
 
 export const projects: Project[] = [
   {
-    slug: "nailtoctoc-backend",
-    title: "NailTocToc MSA Backend",
-    eyebrow: "Backend / DevOps",
+    slug: "readinggarden-kotlin-backend",
+    title: "ReadingGarden Kotlin Migration Backend",
+    role: "Backend Developer / DevOps",
+    eyebrow: "Backend Developer / DevOps",
     year: "2026",
-    category: "Kotlin MSA",
-    tagline: "MSA-based backend platform for a nail printing service.",
-    description:
-      "Designed and implemented a domain-driven MSA backend with AWS EKS, Terraform, ArgoCD GitOps, RabbitMQ, Redis, and PostgreSQL.",
+    category: "Kotlin Migration",
+    tagline: "Legacy-compatible migration project that replaced the Django backend of an existing Flutter reading log app with Kotlin/Spring Boot",
+    description: "Legacy-compatible migration project that replaced the Django backend of an existing Flutter reading log app with Kotlin/Spring Boot",
     featured: true,
     status: "Live",
-    tags: ["Kotlin", "Spring Boot 3", "PostgreSQL", "RabbitMQ", "AWS EKS", "Terraform", "ArgoCD"],
-    liveUrl: "https://apps.apple.com/kr/app/%EB%84%A4%EC%9D%BC%ED%86%A1%ED%86%A1/id6746323705",
-    caseStudy: {
-      overview:
-        "NailTocToc MSA Backend is the backend platform for a nail printing service, separated into seven microservices across Gateway, User, Product, Order, Payment, Admin, and Worker domains.",
-      challenge:
-        "The platform needed independent domain deployment, stable API routing, asynchronous processing, database read optimization, and infrastructure that could be reproduced across environments.",
-      solution:
-        "I implemented Spring Cloud Gateway based routing and auth flow, RabbitMQ asynchronous messaging, PostgreSQL Read/Write Replica separation, AWS EKS infrastructure, Terraform IaC, and ArgoCD Blue-Green deployment.",
-      impact:
-        "The system gained domain-based independent deployment, reduced service coupling, improved read scalability, and a GitOps deployment path with automatic rollback support.",
+    tags: [
+    "Kotlin",
+    "Spring Boot 4",
+    "Spring Security",
+    "PostgreSQL",
+    "Flyway",
+    "Firebase Admin SDK",
+    "SpringDoc OpenAPI",
+    "Docker",
+    "GitHub Actions",
+    "Oracle Cloud A1",
+    "Caddy",
+    "Prometheus",
+    "Grafana",
+    "Loki",
+    "Testcontainers"
+  ],
+    links: [
+    {
+      "label": "App Store",
+      "url": "https://apps.apple.com/kr/app/%EB%8F%85%EC%84%9C%EA%B0%80%EB%93%A0/id6762419765"
     },
-    screenshots: ["MSA Domains", "EKS Infrastructure", "GitOps Deployment"],
-    results: [
-      { value: "7", label: "Microservices" },
-      { value: "0", label: "Downtime deploy target" },
-      { value: "IaC", label: "Terraform managed" },
-    ],
+    {
+      "label": "Play Store",
+      "url": "https://play.google.com/store/apps/details?id=com.dokseogarden&pcampaignid=web_share"
+    }
+  ],
+    liveUrl: "https://apps.apple.com/kr/app/%EB%8F%85%EC%84%9C%EA%B0%80%EB%93%A0/id6762419765",
+    highlights: [
+    "**Legacy Migration**: Reimplemented Django-based APIs in Kotlin/Spring Boot while preserving the existing app contract",
+    "**Domain Modularization**: Split package structure into auth, book, garden, memo, push, scheduler, and app domains",
+    "**API Compatibility**: Verified compatibility for legacy response envelopes, snake_case fields, JWT authentication flow, and image upload/retrieval paths",
+    "**DB Migration**: Managed schema changes with PostgreSQL + Flyway and secured production schema stability with Hibernate validate",
+    "**Deployment Automation**: Built OCI A1 deployment with GitHub Actions and Docker images, including blue-green deployment through Caddy upstream switching",
+    "**Operational Observability**: Configured Actuator/Prometheus metrics, Grafana dashboards, Loki log collection, and health/docs/smoke check based operations",
+    "**Test Strategy**: Verified the full Controller-Service-Repository flow with Testcontainers PostgreSQL integration tests and legacy contract fixtures"
+  ],
+    screenshots: [
+    {
+      "label": "App Store Screenshot 01",
+      "src": "/projects/readinggarden-kotlin-backend/app-store-1.jpg",
+      "alt": "ReadingGarden App Store screenshot 1"
+    },
+    {
+      "label": "App Store Screenshot 02",
+      "src": "/projects/readinggarden-kotlin-backend/app-store-2.jpg",
+      "alt": "ReadingGarden App Store screenshot 2"
+    },
+    {
+      "label": "App Store Screenshot 03",
+      "src": "/projects/readinggarden-kotlin-backend/app-store-3.jpg",
+      "alt": "ReadingGarden App Store screenshot 3"
+    }
+  ],
+  },
+  {
+    slug: "nailtoctoc-backend",
+    title: "NailTocToc MSA Backend",
+    role: "Backend Developer / DevOps",
+    eyebrow: "Backend Developer / DevOps",
+    year: "2026",
+    category: "Kotlin MSA",
+    tagline: "MSA-based backend platform for nail printing service",
+    description: "MSA-based backend platform for nail printing service",
+    featured: true,
+    status: "Live",
+    tags: [
+    "Kotlin",
+    "Spring Boot 3",
+    "PostgreSQL",
+    "Redis",
+    "RabbitMQ",
+    "Docker",
+    "Kubernetes",
+    "AWS EKS, RDS, MQ, ElastiCache, EC2",
+    "Terraform",
+    "ArgoCD"
+  ],
+    links: [
+    {
+      "label": "App Store",
+      "url": "https://apps.apple.com/kr/app/%EB%84%A4%EC%9D%BC%ED%86%A1%ED%86%A1/id6746323705"
+    },
+    {
+      "label": "Play Store",
+      "url": "https://play.google.com/store/apps/details?id=com.nailtoctoc.nailtoctoc&pcampaignid=web_share"
+    }
+  ],
+    liveUrl: "https://apps.apple.com/kr/app/%EB%84%A4%EC%9D%BC%ED%86%A1%ED%86%A1/id6746323705",
+    highlights: [
+    "**MSA Architecture**: Domain-based separation into 7 microservices (Gateway, User, Product, Order, Payment, Admin, Worker)",
+    "**API Gateway**: Authentication/authorization, routing, load balancing via Spring Cloud Gateway",
+    "**Infrastructure**: AWS EKS Kubernetes cluster operation, codified with Terraform IaC",
+    "**CI/CD**: ArgoCD GitOps Blue-Green deployment with zero-downtime and automatic rollback",
+    "**Message Queue**: RabbitMQ async processing reducing inter-service coupling",
+    "**DB Optimization**: PostgreSQL Read/Write Replica separation for read load distribution"
+  ],
+    screenshots: [
+    {
+      "label": "App Store Screenshot 01",
+      "src": "/projects/nailtoctoc-backend/app-store-1.jpg",
+      "alt": "NailTocToc App Store screenshot 1"
+    },
+    {
+      "label": "App Store Screenshot 02",
+      "src": "/projects/nailtoctoc-backend/app-store-2.jpg",
+      "alt": "NailTocToc App Store screenshot 2"
+    },
+    {
+      "label": "App Store Screenshot 03",
+      "src": "/projects/nailtoctoc-backend/app-store-3.jpg",
+      "alt": "NailTocToc App Store screenshot 3"
+    }
+  ],
   },
   {
     slug: "nailtoctoc-kiosk",
     title: "NailTocToc Kiosk",
-    eyebrow: "Flutter Kiosk",
+    role: "Flutter Developer",
+    eyebrow: "Flutter Developer",
     year: "2026",
-    category: "Flutter App",
-    tagline: "Flutter Windows kiosk app for a nail printing workflow.",
-    description:
-      "Built a kiosk application for nail printing with camera control, OpenCV-based finger detection, multilingual support, payment integration, and hardware module coordination.",
+    category: "Flutter Kiosk",
+    tagline: "Flutter-based kiosk application for nail printing service",
+    description: "Flutter-based kiosk application for nail printing service",
     featured: true,
     status: "Case Study",
-    tags: ["Flutter", "Dart", "OpenCV", "Windows", "Payment", "Hardware"],
-    caseStudy: {
-      overview:
-        "NailTocToc Kiosk is a Windows desktop kiosk application that connects camera input, finger fixture modules, nail printer control, and payment flow into one customer-facing workflow.",
-      challenge:
-        "The application needed to behave like a polished kiosk while coordinating desktop hardware, camera modules, image processing, payment, and multiple languages.",
-      solution:
-        "I built the Flutter Windows app and integrated OpenCV-based finger detection, camera control, Korean/English/Japanese/Chinese language support, credit card payment, and nail printer fixture modules.",
-      impact:
-        "The kiosk became a complete front-of-house application that could guide users through the nail printing process while communicating with backend and hardware components.",
-    },
-    screenshots: ["Kiosk Flow", "Camera Module", "Printer Control"],
-    results: [
-      { value: "4", label: "Languages" },
-      { value: "Win", label: "Desktop target" },
-      { value: "HW", label: "Module integration" },
-    ],
+    tags: [
+    "Flutter",
+    "Dart",
+    "OpenCV",
+    "Windows"
+  ],
+    highlights: [
+    "**Windows Desktop App**: Flutter Windows-based kiosk application development",
+    "**Image Processing**: OpenCV-based finger detection and camera control module integration",
+    "**Multi-language**: Support for 4 languages (Korean, English, Japanese, Chinese)",
+    "**Payment Integration**: Credit card payment system integration",
+    "**Hardware Control**: Nail printer, finger fixture module integration"
+  ],
+    screenshots: [],
   },
   {
     slug: "arffy",
     title: "Arffy",
-    eyebrow: "Commerce Backend",
+    role: "Backend Developer",
+    eyebrow: "Backend Developer",
     year: "2023",
     category: "Kotlin Store",
-    tagline: "Online store for 20th century European vintage lighting and accessories.",
-    description:
-      "Designed and operated a vintage lighting commerce backend with inventory concurrency control, encrypted personal data, JWT/OAuth auth, and PortOne payments.",
+    tagline: "Online store selling 20th century European vintage lighting and accessories",
+    description: "Online store selling 20th century European vintage lighting and accessories",
     featured: true,
     status: "Live",
-    tags: ["Kotlin", "Spring Boot 2", "MySQL", "AWS EC2", "AWS S3", "Docker", "PortOne"],
+    tags: [
+    "Kotlin",
+    "Spring Boot 2",
+    "MySQL",
+    "AWS EC2/S3/RDS",
+    "Docker"
+  ],
+    links: [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/devonlyian/store"
+    }
+  ],
     githubUrl: "https://github.com/devonlyian/store",
-    caseStudy: {
-      overview:
-        "Arffy is an online store for vintage lighting and accessories, operated as a real service for nine months from December 2023 to August 2024.",
-      challenge:
-        "Commerce behavior needed to prevent duplicated payment and inventory deduction while keeping user data secure and authentication practical.",
-      solution:
-        "I applied pessimistic locking for inventory and payment duplication prevention, encrypted personal information through JPA Converter, implemented JWT and Kakao OAuth login, and integrated PortOne card/simple payments.",
-      impact:
-        "The service gained safer checkout behavior, production authentication, encrypted sensitive fields, and a complete payment flow suitable for real users.",
-    },
-    screenshots: ["Store Backend", "Payment Flow", "Security Layer"],
-    results: [
-      { value: "9mo", label: "Production run" },
-      { value: "JWT", label: "Auth flow" },
-      { value: "Lock", label: "Concurrency guard" },
-    ],
+    highlights: [
+    "**Production Service**: 9 months operation experience (2023.12 ~ 2024.08)",
+    "**Concurrency Control**: Pessimistic locking for inventory deduction and payment duplication prevention",
+    "**Security**: Encrypted personal information storage using JPA Converter",
+    "**Authentication**: JWT token auth + OAuth 2.0 Kakao social login",
+    "**Payment**: PortOne API integration for credit card/simple payment system"
+  ],
+    screenshots: [],
   },
   {
     slug: "amp-recommendation",
-    title: "AMP Recommendation",
-    eyebrow: "AI Matching",
+    title: "AMP Collaboration Recommendation System",
+    role: "Backend Developer",
+    eyebrow: "Backend Developer",
     year: "2025",
     category: "AI Backend",
-    tagline: "Collaboration recommendation and proposal generation system for AMP members.",
-    description:
-      "Built a backend that recommends collaboration partners using company information, Pinecone vector search, and OpenAI-powered proposal generation.",
-    featured: true,
+    tagline: "System that recommends companies with high collaboration potential based on AMP alumni company information and automatically generates collaboration proposals",
+    description: "System that recommends companies with high collaboration potential based on AMP alumni company information and automatically generates collaboration proposals",
+    featured: false,
     status: "Case Study",
-    tags: ["Kotlin", "Spring Boot 3", "Pinecone", "OpenAI API", "MySQL"],
-    caseStudy: {
-      overview:
-        "AMP Recommendation analyzes company information from AMP members to recommend companies with high collaboration potential and generate collaboration proposals.",
-      challenge:
-        "The system needed to transform business profile data into searchable embeddings and return recommendation results that could lead directly into a proposal document.",
-      solution:
-        "I implemented a Pinecone and cosine similarity based recommendation algorithm, integrated OpenAI API for proposal generation, designed schemas for company, matching result, and collaboration history data, and built REST APIs for CRUD and generation flows.",
-      impact:
-        "The system connected vector search and LLM generation into a practical workflow for finding collaboration candidates and drafting proposals.",
-    },
-    screenshots: ["Vector Search", "Proposal Generation", "Company Data"],
-    results: [
-      { value: "AI", label: "Proposal generation" },
-      { value: "Vec", label: "Similarity search" },
-      { value: "REST", label: "API surface" },
-    ],
+    tags: [
+    "Kotlin",
+    "Spring Boot 3",
+    "Pinecone",
+    "OpenAI API",
+    "MySQL"
+  ],
+    highlights: [
+    "**Vector Search**: Collaboration recommendation algorithm using Pinecone + cosine similarity",
+    "**LLM Integration**: Auto-generated collaboration proposals using OpenAI API",
+    "**Data Modeling**: Schema design for alumni company info, matching results, and collaboration records",
+    "**API Development**: Company info CRUD, recommendation results, proposal generation REST API"
+  ],
+    screenshots: [],
   },
   {
     slug: "onde",
     title: "ONDe",
-    eyebrow: "Travel Service",
+    role: "Backend Developer",
+    eyebrow: "Backend Developer",
     year: "2024",
     category: "Java Backend",
-    tagline: "Travel photo journey storage and sharing service.",
-    description:
-      "Built backend features for storing and sharing travel photos in journey order, including batch cleanup, dynamic search, image upload, bookmarks, and comments.",
+    tagline: "Service to save and share travel photos in journey order",
+    description: "Service to save and share travel photos in journey order",
     featured: false,
     status: "Case Study",
-    tags: ["Java 11", "Spring Boot 2.7", "Spring Batch", "QueryDSL", "MySQL", "Redis", "AWS S3"],
+    tags: [
+    "Java 11",
+    "Spring Boot 2.7",
+    "Spring Security",
+    "Spring Batch",
+    "Spring Data JPA",
+    "QueryDSL",
+    "MySQL",
+    "Redis",
+    "AWS EC2/S3/RDS",
+    "Docker",
+    "GitHub Actions"
+  ],
+    links: [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/devonlyian/tHere"
+    }
+  ],
     githubUrl: "https://github.com/devonlyian/tHere",
-    caseStudy: {
-      overview:
-        "ONDe is a travel service that lets users store and share photos in the order of a journey.",
-      challenge:
-        "The backend needed to support image storage, journey search, soft-deleted data cleanup, and social interactions such as bookmarks and comments.",
-      solution:
-        "I implemented Spring Batch cleanup for soft-deleted data, QueryDSL dynamic search, AWS S3 image upload and retrieval, and REST APIs for journey bookmarks and comments.",
-      impact:
-        "The project gained maintainable data cleanup, flexible search behavior, and core travel content APIs.",
-    },
-    screenshots: ["Journey API", "Batch Cleanup", "S3 Upload"],
-    results: [
-      { value: "Batch", label: "Cleanup flow" },
-      { value: "S3", label: "Image storage" },
-      { value: "REST", label: "Content APIs" },
-    ],
+    highlights: [
+    "**Batch Processing**: Spring Batch implementation for soft delete data cleanup",
+    "**Query Optimization**: Complex search conditions handled with QueryDSL dynamic queries",
+    "**File Storage**: AWS S3 integration for image upload/retrieval",
+    "**API Development**: Journey bookmark and comment REST API implementation",
+    "**CI/CD**: GitHub Actions automated build/deploy pipeline"
+  ],
+    screenshots: [],
   },
   {
     slug: "gokkan",
     title: "Gokkan",
-    eyebrow: "Auction Backend",
+    role: "Team Lead / Backend Developer",
+    eyebrow: "Team Lead / Backend Developer",
     year: "2024",
     category: "Java Auction",
-    tagline: "Vintage furniture auction service with realtime bidding.",
-    description:
-      "Led and implemented a backend for buying and selling vintage furniture through auctions, including realtime bidding, product review flow, payment, social login, and CI/CD.",
+    tagline: "Auction service for buying and selling vintage furniture",
+    description: "Auction service for buying and selling vintage furniture",
     featured: false,
     status: "Case Study",
-    tags: ["Java 11", "Spring Boot 2", "WebSocket", "STOMP", "MySQL", "Redis", "AWS", "Jenkins"],
+    tags: [
+    "Java 11",
+    "Spring Boot 2",
+    "WebSocket (SockJS, STOMP)",
+    "MySQL",
+    "Redis",
+    "AWS EC2/S3/RDS",
+    "Docker",
+    "Jenkins"
+  ],
+    links: [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/TEAM-GOKKAN/server"
+    }
+  ],
     githubUrl: "https://github.com/TEAM-GOKKAN/server",
-    caseStudy: {
-      overview:
-        "Gokkan is a vintage furniture auction service where users can buy and sell furniture through a realtime auction flow.",
-      challenge:
-        "The backend needed to support auction lifecycle design, realtime bidding, payment, social login, deployment automation, and team-level technical decisions.",
-      solution:
-        "As team lead and backend developer, I managed schedule and technical decisions, implemented WebSocket bidding with SockJS/STOMP, designed expert review to product registration to auction flow, integrated PortOne payment and OAuth social login, and built Jenkins deployment.",
-      impact:
-        "The service gained realtime auction behavior and a complete backend flow from product verification to bidding and payment.",
-    },
-    screenshots: ["Realtime Auction", "Product Review", "Jenkins Deploy"],
-    results: [
-      { value: "RT", label: "Realtime bidding" },
-      { value: "Lead", label: "Team role" },
-      { value: "CI/CD", label: "Jenkins deploy" },
-    ],
+    highlights: [
+    "**Team Leadership**: Project schedule management and technical decision-making as team leader",
+    "**Real-time Processing**: WebSocket(SockJS, STOMP) real-time auction bidding system",
+    "**Domain Design**: Expert inspection → product registration → auction process design",
+    "**Payment/Auth**: PortOne payment + OAuth 2.0 social login integration",
+    "**CI/CD**: Jenkins automated build/deploy pipeline"
+  ],
+    screenshots: [],
   },
   {
     slug: "document-approval",
-    title: "Document Approval",
-    eyebrow: "Workflow Automation",
+    title: "Document Approval System",
+    role: "Backend Developer",
+    eyebrow: "Backend Developer",
     year: "2025",
     category: "RPA Backend",
-    tagline: "School document approval workflow automation with RPA integration.",
-    description:
-      "Automated document approval requests, approval processing, email notifications, Redis caching, and final document number assignment through RPA integration.",
+    tagline: "System that automates document approval process by integrating RPA with server for approval requests, processing, and document number issuance",
+    description: "System that automates document approval process by integrating RPA with server for approval requests, processing, and document number issuance",
     featured: false,
     status: "Case Study",
-    tags: ["Kotlin", "Spring Boot 3", "Redis", "Thymeleaf", "MySQL", "JavaMail", "Brity RPA"],
-    caseStudy: {
-      overview:
-        "Document Approval automates a school document approval process by connecting server-side approval flow with Brity RPA.",
-      challenge:
-        "The workflow needed to manage approval metadata, notify the next approver, render email templates, and assign final document numbers through RPA.",
-      solution:
-        "I used Redis to cache document and approver information, JavaMail API with Thymeleaf for approval request emails, and Brity RPA integration for final document number assignment.",
-      impact:
-        "The approval process became more automated and less dependent on repetitive manual handling.",
-    },
-    screenshots: ["Approval Flow", "Mail Template", "RPA Numbering"],
-    results: [
-      { value: "RPA", label: "Numbering" },
-      { value: "Mail", label: "Approver notice" },
-      { value: "Redis", label: "Workflow cache" },
-    ],
+    tags: [
+    "Kotlin",
+    "Spring Boot 3",
+    "Redis",
+    "Thymeleaf",
+    "MySQL",
+    "JavaMail API",
+    "Brity RPA"
+  ],
+    highlights: [
+    "**Caching**: Document info and approver list storage/management using Redis",
+    "**Email Automation**: Automatic email notification to next approver during approval process",
+    "**Templates**: Approval request email templates using JavaMail API + Thymeleaf",
+    "**RPA Integration**: Brity RPA integration for automatic document number issuance upon final approval"
+  ],
+    screenshots: [],
   },
   {
     slug: "accounting-commission",
-    title: "Accounting Commission",
-    eyebrow: "OCR Automation",
+    title: "Accounting Commission System",
+    role: "Backend Developer",
+    eyebrow: "Backend Developer",
     year: "2025",
     category: "AI Automation",
-    tagline: "Travel agency commission matching and receipt automation system.",
-    description:
-      "Automated travel agency commission calculation, receipt creation, and matching reports for accounting operations using Clova OCR, OpenAI API, and Brity RPA.",
+    tagline: "System that automates travel agency commission calculation and receipt generation to support accounting firm bookkeeping",
+    description: "System that automates travel agency commission calculation and receipt generation to support accounting firm bookkeeping",
     featured: false,
     status: "Case Study",
-    tags: ["Kotlin", "Spring Boot 3", "Clova OCR", "OpenAI API", "Brity RPA"],
-    caseStudy: {
-      overview:
-        "Accounting Commission supports accounting work by automating travel agency commission calculation, receipt writing, and matching result generation.",
-      challenge:
-        "The process relied on manually reading passports, flight details, receipts, sales records, and matching commission data.",
-      solution:
-        "I used Clova OCR to extract text from passport, flight, and receipt images, OpenAI API to classify image types and structure JSON data, matching logic for sales and commission calculation, and Brity RPA for receipt generation.",
-      impact:
-        "The system reduced data processing time by 80% and made repetitive accounting support work more consistent.",
-    },
-    screenshots: ["OCR Pipeline", "Matching Logic", "RPA Receipt"],
-    results: [
-      { value: "80%", label: "Processing time cut" },
-      { value: "OCR", label: "Image extraction" },
-      { value: "AI", label: "Classification" },
-    ],
-  },
+    tags: [
+    "Kotlin",
+    "Spring Boot 3",
+    "Clova OCR",
+    "OpenAI API",
+    "Brity RPA"
+  ],
+    highlights: [
+    "**OCR Processing**: Text extraction from passport, flight, receipt photos using Clova OCR",
+    "**AI Classification**: Automatic photo classification and JSON structuring using OpenAI API",
+    "**Matching Logic**: Travel agency sales data matching and commission calculation",
+    "**RPA Integration**: Brity RPA integration for automatic receipt generation",
+    "**Result**: Reduced data processing time by 80%"
+  ],
+    screenshots: [],
+  }
 ];
 
 export const experiences: Experience[] = [

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, ExternalLink, Github } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -13,9 +14,27 @@ type ProjectDetailProps = {
   };
 };
 
+function parseHighlight(highlight: string) {
+  const match = highlight.match(/^\*\*(.+?)\*\*:\s*(.+)$/);
+
+  if (!match) {
+    return { label: "", body: highlight };
+  }
+
+  return { label: match[1], body: match[2] };
+}
+
 export function ProjectDetail({ project, adjacent }: ProjectDetailProps) {
   const { text } = useLanguage();
-  const localizedCaseStudy = text.projects.caseStudies[project.slug] ?? project.caseStudy;
+  const localizedDescription = text.projects.descriptions[project.slug] ?? project.description;
+  const localizedHighlights = text.projects.highlights[project.slug] ?? project.highlights;
+  const heroScreenshot = project.screenshots.find((screenshot) => typeof screenshot !== "string" && screenshot.src);
+  const links =
+    project.links ??
+    [
+      project.liveUrl ? { label: "View Live", url: project.liveUrl } : null,
+      project.githubUrl ? { label: "GitHub", url: project.githubUrl } : null,
+    ].filter((link): link is { label: string; url: string } => Boolean(link));
 
   return (
     <main>
@@ -37,29 +56,28 @@ export function ProjectDetail({ project, adjacent }: ProjectDetailProps) {
             {text.projects.taglines[project.slug] ?? project.tagline}
           </p>
           <p className="mt-8 max-w-2xl text-lg font-medium leading-relaxed text-muted-foreground md:text-xl">
-            {text.projects.descriptions[project.slug] ?? project.description}
+            {localizedDescription}
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
-            {project.liveUrl ? (
+            {links.map((link) => (
               <a
-                href={project.liveUrl}
-                className="inline-flex items-center gap-2 rounded-xl bg-brand px-6 py-3 text-sm font-black text-[#0A0A0A] transition-colors hover:bg-brand-light"
+                key={link.url}
+                href={link.url}
+                className={`inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-black transition-colors ${
+                  link.label === "App Store"
+                    ? "bg-brand text-[#0A0A0A] hover:bg-brand-light"
+                    : "border border-border text-foreground hover:border-foreground"
+                }`}
                 data-cursor="link"
               >
-                View Live
-                <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                {link.label}
+                {link.label === "GitHub" ? (
+                  <Github className="h-4 w-4" aria-hidden="true" />
+                ) : (
+                  <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                )}
               </a>
-            ) : null}
-            {project.githubUrl ? (
-              <a
-                href={project.githubUrl}
-                className="inline-flex items-center gap-2 rounded-xl border border-border px-6 py-3 text-sm font-black text-foreground transition-colors hover:border-foreground"
-                data-cursor="link"
-              >
-                GitHub
-                <Github className="h-4 w-4" aria-hidden="true" />
-              </a>
-            ) : null}
+            ))}
           </div>
           <div className="mt-12 flex flex-wrap gap-2">
             {project.tags.map((tag) => (
@@ -76,74 +94,109 @@ export function ProjectDetail({ project, adjacent }: ProjectDetailProps) {
 
         <div className="relative hidden min-h-[28rem] items-center justify-center md:flex">
           <div className="absolute h-56 w-72 rounded-full bg-brand/20 blur-3xl" aria-hidden="true" />
-          <div className="relative h-80 w-[31rem] rotate-[-3deg] overflow-hidden rounded-2xl border border-[#ffffff22] bg-[#111] shadow-[0_42px_90px_rgba(0,0,0,0.22)]">
-            <div className="flex h-12 items-center gap-2 bg-[#151515] px-5">
-              <span className="h-3 w-3 rounded-full bg-red-500" />
-              <span className="h-3 w-3 rounded-full bg-yellow-500" />
-              <span className="h-3 w-3 rounded-full bg-green-500" />
-              <div className="ml-5 h-5 flex-1 rounded bg-white/5" />
+          {heroScreenshot && typeof heroScreenshot !== "string" ? (
+            <div className="relative h-[34rem] w-[16rem] rotate-[-3deg] overflow-hidden rounded-[2.2rem] border-[10px] border-[#111] bg-[#111] shadow-[0_42px_90px_rgba(0,0,0,0.22)]">
+              <Image src={heroScreenshot.src} alt={heroScreenshot.alt} fill priority sizes="16rem" className="object-cover" />
             </div>
-            <div className="h-full bg-gradient-to-br from-sky-950 via-slate-950 to-orange-950 p-8">
-              <div className="mb-8 h-4 w-72 rounded bg-white/10" />
-              <div className="mb-4 h-3 w-56 rounded bg-white/10" />
-              <div className="grid grid-cols-3 gap-3">
-                <div className="h-16 rounded-xl bg-white/10" />
-                <div className="h-16 rounded-xl bg-white/10" />
-                <div className="h-16 rounded-xl bg-white/10" />
+          ) : (
+            <div className="relative h-80 w-[31rem] rotate-[-3deg] overflow-hidden rounded-2xl border border-[#ffffff22] bg-[#111] shadow-[0_42px_90px_rgba(0,0,0,0.22)]">
+              <div className="flex h-12 items-center gap-2 bg-[#151515] px-5">
+                <span className="h-3 w-3 rounded-full bg-red-500" />
+                <span className="h-3 w-3 rounded-full bg-yellow-500" />
+                <span className="h-3 w-3 rounded-full bg-green-500" />
+                <div className="ml-5 h-5 flex-1 rounded bg-white/5" />
               </div>
-              <div className="mt-8 h-3 w-80 rounded bg-white/10" />
-              <div className="mt-4 h-3 w-56 rounded bg-white/10" />
+              <div className="h-full bg-gradient-to-br from-sky-950 via-slate-950 to-orange-950 p-8">
+                <div className="mb-8 h-4 w-72 rounded bg-white/10" />
+                <div className="mb-4 h-3 w-56 rounded bg-white/10" />
+                <div className="grid grid-cols-3 gap-3">
+                  <div className="h-16 rounded-xl bg-white/10" />
+                  <div className="h-16 rounded-xl bg-white/10" />
+                  <div className="h-16 rounded-xl bg-white/10" />
+                </div>
+                <div className="mt-8 h-3 w-80 rounded bg-white/10" />
+                <div className="mt-4 h-3 w-56 rounded bg-white/10" />
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </section>
 
       <section className="relative mx-auto grid max-w-[90rem] gap-14 px-6 py-24 md:grid-cols-[0.35fr_1fr] md:px-12 lg:px-20">
         <div>
-          <p className="sticky top-28 text-[11px] font-black uppercase tracking-[0.35em] text-muted-foreground">Case Study</p>
+          <p className="sticky top-28 text-[11px] font-black uppercase tracking-[0.35em] text-muted-foreground">Project Details</p>
         </div>
         <div className="grid gap-10">
-          {[
-            ["01", "Overview", localizedCaseStudy.overview],
-            ["02", "The Challenge", localizedCaseStudy.challenge],
-            ["03", "The Solution", localizedCaseStudy.solution],
-            ["04", "Impact", localizedCaseStudy.impact],
-          ].map(([index, title, body]) => (
-            <article key={title} className="border-t border-border pt-8">
-              <span className="mb-4 block text-sm font-black text-brand tabular-nums">{index}</span>
-              <h2 className="mb-4 text-3xl font-black tracking-tight text-foreground md:text-5xl">{title}</h2>
-              <p className="max-w-4xl text-xl font-medium leading-relaxed text-muted-foreground">{body}</p>
-            </article>
-          ))}
+          <article className="border-t border-border pt-8">
+            <span className="mb-4 block text-sm font-black text-brand tabular-nums">01</span>
+            <h2 className="mb-4 text-3xl font-black tracking-tight text-foreground md:text-5xl">Overview</h2>
+            <p className="max-w-4xl text-xl font-medium leading-relaxed text-muted-foreground">{localizedDescription}</p>
+          </article>
+          <article className="border-t border-border pt-8">
+            <span className="mb-4 block text-sm font-black text-brand tabular-nums">02</span>
+            <h2 className="mb-8 text-3xl font-black tracking-tight text-foreground md:text-5xl">Highlights</h2>
+            <div className="grid gap-4">
+              {localizedHighlights.map((highlight) => {
+                const parsed = parseHighlight(highlight);
+
+                return (
+                  <div key={highlight} className="rounded-2xl border border-border bg-background/60 p-5">
+                    {parsed.label ? (
+                      <p className="mb-2 text-sm font-black uppercase tracking-widest text-brand">{parsed.label}</p>
+                    ) : null}
+                    <p className="text-lg font-medium leading-relaxed text-muted-foreground">{parsed.body}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </article>
         </div>
       </section>
 
-      <section className="border-y border-border bg-card/30 px-6 py-24 md:px-12 lg:px-20">
-        <p className="mb-8 text-[11px] font-black uppercase tracking-[0.35em] text-muted-foreground">Screenshots</p>
-        <div className="grid gap-4 md:grid-cols-3">
-          {project.screenshots.map((screenshot, index) => (
-            <div key={screenshot} className="flex aspect-[4/3] flex-col justify-between rounded-3xl border border-border bg-background p-6">
-              <span className="text-sm font-black text-muted-foreground/50 tabular-nums">{(index + 1).toString().padStart(2, "0")}</span>
-              <div>
-                <div className="mb-4 h-2 w-24 rounded-full bg-brand" />
-                <p className="text-2xl font-black tracking-tight text-foreground">{screenshot}</p>
+      {project.screenshots.length > 0 ? (
+        <section className="border-y border-border bg-card/30 px-6 py-24 md:px-12 lg:px-20">
+          <p className="mb-8 text-[11px] font-black uppercase tracking-[0.35em] text-muted-foreground">Screenshots</p>
+          <div className="grid gap-5 md:grid-cols-3">
+            {project.screenshots.map((screenshot, index) => {
+              const label = typeof screenshot === "string" ? screenshot : screenshot.label;
+
+              return (
+                <div key={label} className="overflow-hidden rounded-[2rem] border border-border bg-background p-4 shadow-soft">
+                  {typeof screenshot === "string" ? (
+                    <div className="flex aspect-[4/3] flex-col justify-between rounded-2xl bg-card p-6">
+                      <span className="text-sm font-black text-muted-foreground/50 tabular-nums">
+                        {(index + 1).toString().padStart(2, "0")}
+                      </span>
+                      <div>
+                        <div className="mb-4 h-2 w-24 rounded-full bg-brand" />
+                        <p className="text-2xl font-black tracking-tight text-foreground">{label}</p>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="relative aspect-[600/1299] overflow-hidden rounded-[1.45rem] bg-[#111]">
+                      <Image src={screenshot.src} alt={screenshot.alt} fill sizes="(min-width: 768px) 30vw, 90vw" className="object-cover" />
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      ) : null}
+
+      {project.results?.length ? (
+        <section className="px-6 py-28 md:px-12 lg:px-20">
+          <p className="mb-8 text-[11px] font-black uppercase tracking-[0.35em] text-muted-foreground">Results</p>
+          <div className="grid gap-4 md:grid-cols-3">
+            {project.results.map((result) => (
+              <div key={result.label} className="rounded-3xl border border-border p-8">
+                <p className="text-5xl font-black tracking-tight text-foreground md:text-7xl">{result.value}</p>
+                <p className="mt-4 text-sm font-black uppercase tracking-widest text-muted-foreground">{result.label}</p>
               </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="px-6 py-28 md:px-12 lg:px-20">
-        <p className="mb-8 text-[11px] font-black uppercase tracking-[0.35em] text-muted-foreground">Results</p>
-        <div className="grid gap-4 md:grid-cols-3">
-          {project.results.map((result) => (
-            <div key={result.label} className="rounded-3xl border border-border p-8">
-              <p className="text-5xl font-black tracking-tight text-foreground md:text-7xl">{result.value}</p>
-              <p className="mt-4 text-sm font-black uppercase tracking-widest text-muted-foreground">{result.label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       <section className="grid border-t border-border md:grid-cols-2">
         {adjacent.previous ? (
