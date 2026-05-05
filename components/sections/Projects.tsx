@@ -4,14 +4,15 @@ import Link from "next/link";
 import { ArrowUpRight, ChevronDown, Github } from "lucide-react";
 import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { getFeaturedProjects } from "@/lib/projects";
+import { getFeaturedProjects, getProjectDescription } from "@/lib/projects";
 
 export function Projects() {
   const featuredProjects = getFeaturedProjects();
   const { text } = useLanguage();
   const defaultSlug = featuredProjects[0]?.slug ?? "";
+  const [selectedSlug, setSelectedSlug] = useState(defaultSlug);
   const [hoverSlug, setHoverSlug] = useState("");
-  const activeSlug = hoverSlug || defaultSlug;
+  const activeSlug = hoverSlug || selectedSlug || defaultSlug;
 
   return (
     <section id="projects" className="overflow-hidden px-6 py-16 md:px-12 md:py-24 lg:px-20">
@@ -31,11 +32,12 @@ export function Projects() {
               onMouseEnter={() => setHoverSlug(project.slug)}
               onMouseLeave={() => setHoverSlug("")}
             >
-              <Link
-                href={`/projects/${project.slug}`}
-                className="group grid w-full min-h-44 gap-5 py-10 text-left transition-colors hover:bg-card/30 md:grid-cols-[3.5rem_1fr_auto_auto] md:items-center md:py-16"
+              <button
+                type="button"
+                className="group grid w-full min-h-36 gap-5 py-8 text-left transition-colors hover:bg-card/30 md:min-h-44 md:grid-cols-[3.5rem_1fr_auto_auto] md:items-center md:py-16"
                 aria-expanded={isOpen}
                 aria-controls={`project-panel-${project.slug}`}
+                onClick={() => setSelectedSlug(project.slug)}
                 data-cursor="link"
               >
                 <span className="font-serif text-sm italic text-muted-foreground/40 tabular-nums">
@@ -62,7 +64,7 @@ export function Projects() {
                 >
                   <ChevronDown className={`h-5 w-5 transition-transform ${isOpen ? "rotate-180" : ""}`} aria-hidden="true" />
                 </span>
-              </Link>
+              </button>
 
               <div
                 id={`project-panel-${project.slug}`}
@@ -81,7 +83,7 @@ export function Projects() {
                         </span>
                       </div>
                       <p className="max-w-4xl text-lg font-medium leading-relaxed text-muted-foreground md:text-xl">
-                        {text.projects.descriptions[project.slug] ?? project.description}
+                        {text.projects.descriptions[project.slug] ?? getProjectDescription(project)}
                       </p>
                       <div className="mt-8 flex flex-wrap gap-2">
                         {project.tags.map((tag) => (

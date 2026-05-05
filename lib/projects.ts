@@ -8,6 +8,10 @@ export function getProjectBySlug(slug: string): Project | undefined {
   return projects.find((project) => project.slug === slug);
 }
 
+export function getProjectDescription(project: Pick<Project, "tagline">): string {
+  return project.tagline;
+}
+
 export function getAdjacentProjects(slug: string): {
   previous: Project | undefined;
   next: Project | undefined;

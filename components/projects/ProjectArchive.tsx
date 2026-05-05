@@ -1,20 +1,25 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { projects } from "@/lib/portfolio-data";
 
 export function ProjectArchive() {
+  const { text } = useLanguage();
+
   return (
     <main className="min-h-screen px-6 pb-20 pt-28 md:px-12 lg:px-20">
       <div className="mb-16 flex flex-col gap-8 border-b border-border pb-12 md:flex-row md:items-end md:justify-between">
         <div>
           <Link href="/" className="mb-8 inline-flex items-center gap-2 text-sm font-bold text-muted-foreground hover:text-foreground" data-cursor="link">
             <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-            Home
+            {text.projects.archive.backHome}
           </Link>
-          <h1 className="display-lg text-foreground">Projects</h1>
+          <h1 className="display-lg text-foreground">{text.projects.archive.title}</h1>
         </div>
         <p className="max-w-xl text-xl font-medium leading-relaxed text-muted-foreground">
-          A fuller archive of backend, product, migration, and infrastructure work. Each item links to a compact case-study page.
+          {text.projects.archive.description}
         </p>
       </div>
 
@@ -34,7 +39,9 @@ export function ProjectArchive() {
                 <h2 className="text-3xl font-black tracking-tight text-foreground transition-colors group-hover:text-brand md:text-5xl">
                   {project.title}
                 </h2>
-                <p className="mt-2 text-sm font-bold text-muted-foreground">{project.tagline}</p>
+                <p className="mt-2 text-sm font-bold text-muted-foreground">
+                  {text.projects.taglines[project.slug] ?? project.tagline}
+                </p>
               </div>
             </div>
             <div className="flex items-center gap-6 pl-14 md:pl-0">

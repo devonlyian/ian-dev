@@ -13,7 +13,7 @@ export function Experience() {
       </h2>
       <div className="grid border-b border-border">
         {experiences.map((experience) => (
-          <article key={`${experience.period}-${experience.title}`} className="grid gap-8 border-t border-border py-14 md:grid-cols-[0.35fr_1fr]">
+          <article key={`${experience.period}-${experience.company}`} className="grid gap-8 border-t border-border py-14 md:grid-cols-[0.35fr_1fr]">
             <div className="space-y-2 text-sm font-bold uppercase tracking-widest text-muted-foreground">
               <p>{experience.period}</p>
               <p>{experience.location}</p>
@@ -27,7 +27,7 @@ export function Experience() {
               </div>
               <p className="mb-4 text-sm font-black uppercase tracking-[0.25em] text-muted-foreground">{experience.company}</p>
               <p className="max-w-3xl text-xl font-medium leading-relaxed text-muted-foreground">
-                {text.experiences[experience.title] ?? experience.summary}
+                {text.experiences[experience.translationKey] ?? experience.summary}
               </p>
               <div className="mt-6 flex flex-wrap gap-2">
                 {experience.stack.map((item) => (
