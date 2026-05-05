@@ -396,12 +396,12 @@ export const services: Service[] = [
     title: "Deployment and Operations",
     description:
       "Set up deploy flows, health checks, logs, and local docs so systems are easier to run after the first release.",
-    stack: ["Docker", "OCI", "Nginx"],
+    stack: ["Docker", "Kubernetes", "AWS"],
   },
   {
     title: "Product-Facing Backend Support",
     description:
       "Trace bugs across app and server boundaries, preserve intended behavior, and make fixes that survive real use.",
-    stack: ["Flutter APIs", "JWT", "Observability"],
+    stack: ["Flutter", "Prometheus", "Loki", "Grafana"],
   },
 ];

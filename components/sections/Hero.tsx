@@ -62,7 +62,7 @@ export function Hero() {
           {[0, 1, 2].map((line) => (
             <div key={line} className="overflow-hidden">
               <p
-                className={`hero-name hero-word whitespace-nowrap uppercase ${
+                className={`hero-name hero-word whitespace-nowrap text-center uppercase ${
                   line === 1 ? "hero-name-outline" : "text-foreground"
                 }`}
               >
