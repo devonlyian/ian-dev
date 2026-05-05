@@ -30,4 +30,21 @@ describe("ProjectDetail layout", () => {
     expect(heroTitle?.className).toContain("text-[clamp(1.95rem,8vw,2.8rem)]");
     expect(summaryOccurrences).toBe(1);
   });
+
+  it("renders app screenshots with explicit intrinsic dimensions", () => {
+    const project = getProjectBySlug("readinggarden-kotlin-backend");
+
+    if (!project) {
+      throw new Error("Expected ReadingGarden project fixture");
+    }
+
+    const { getAllByAltText } = render(
+      <LanguageProvider>
+        <ProjectDetail project={project} adjacent={getAdjacentProjects(project.slug)} />
+      </LanguageProvider>,
+    );
+
+    expect(getAllByAltText("ReadingGarden App Store screenshot 1").every((image) => image.getAttribute("width") === "600")).toBe(true);
+    expect(getAllByAltText("ReadingGarden App Store screenshot 1").every((image) => image.getAttribute("height") === "1299")).toBe(true);
+  });
 });

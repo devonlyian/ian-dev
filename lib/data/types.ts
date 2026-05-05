@@ -9,13 +9,11 @@ export type NavigationSection = {
 export type ProjectContent = {
   slug: string;
   title: string;
-  role: string;
   eyebrow: string;
   year: string;
   category: string;
   tagline: string;
   featured: boolean;
-  status: "Live" | "Case Study" | "WIP";
   tags: readonly string[];
   links?: readonly {
     label: string;
@@ -24,18 +22,14 @@ export type ProjectContent = {
   liveUrl?: string;
   githubUrl?: string;
   highlights: readonly string[];
-  caseStudy?: {
-    overview: string;
-    challenge: string;
-    solution: string;
-    impact: string;
-  };
   screenshots: readonly (
     | string
     | {
         label: string;
         src: string;
         alt: string;
+        width: number;
+        height: number;
       }
   )[];
   results?: readonly {

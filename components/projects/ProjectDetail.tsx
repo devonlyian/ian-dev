@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, ExternalLink, Github } from "lucide-react";
 import { LocalizedProjectCopy, ProjectHighlights } from "@/components/projects/ProjectLocalizedText";
@@ -82,9 +82,12 @@ export function ProjectDetail({ project, adjacent }: ProjectDetailProps) {
           <div className="absolute h-56 w-72 rounded-full bg-brand/20 blur-3xl" aria-hidden="true" />
           {heroScreenshot && typeof heroScreenshot !== "string" ? (
             <div className="relative h-[34rem] w-[16rem] rotate-[-3deg] overflow-hidden rounded-[2.2rem] border-[10px] border-[#111] bg-[#111] shadow-[0_42px_90px_rgba(0,0,0,0.22)]">
-              <img
+              <Image
                 src={heroScreenshot.src}
                 alt={heroScreenshot.alt}
+                width={heroScreenshot.width}
+                height={heroScreenshot.height}
+                priority
                 className="h-full w-full object-cover"
               />
             </div>
@@ -153,10 +156,13 @@ export function ProjectDetail({ project, adjacent }: ProjectDetailProps) {
                     </div>
                   ) : (
                     <div className="relative aspect-[600/1299] overflow-hidden rounded-[1rem] bg-[#111] md:rounded-[1.45rem]">
-                      <img
+                      <Image
                         src={screenshot.src}
                         alt={screenshot.alt}
+                        width={screenshot.width}
+                        height={screenshot.height}
                         loading="lazy"
+                        sizes="(min-width: 768px) 33vw, 100vw"
                         className="h-full w-full object-cover"
                       />
                     </div>

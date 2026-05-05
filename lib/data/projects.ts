@@ -4,13 +4,11 @@ export const projects = [
   {
     slug: "readinggarden-kotlin-backend",
     title: "ReadingGarden Kotlin Migration Backend",
-    role: "Backend Developer / DevOps",
     eyebrow: "Backend Developer / DevOps",
     year: "2026",
     category: "Kotlin Migration",
     tagline: "Legacy-compatible migration project that replaced the Django backend of an existing Flutter reading log app with Kotlin/Spring Boot",
     featured: true,
-    status: "Live",
     tags: [
     "Kotlin",
     "Spring Boot 4",
@@ -52,30 +50,34 @@ export const projects = [
     {
       "label": "App Store Screenshot 01",
       "src": "/projects/readinggarden-kotlin-backend/app-store-1.jpg",
-      "alt": "ReadingGarden App Store screenshot 1"
+      "alt": "ReadingGarden App Store screenshot 1",
+      "width": 600,
+      "height": 1299
     },
     {
       "label": "App Store Screenshot 02",
       "src": "/projects/readinggarden-kotlin-backend/app-store-2.jpg",
-      "alt": "ReadingGarden App Store screenshot 2"
+      "alt": "ReadingGarden App Store screenshot 2",
+      "width": 600,
+      "height": 1299
     },
     {
       "label": "App Store Screenshot 03",
       "src": "/projects/readinggarden-kotlin-backend/app-store-3.jpg",
-      "alt": "ReadingGarden App Store screenshot 3"
+      "alt": "ReadingGarden App Store screenshot 3",
+      "width": 600,
+      "height": 1299
     }
   ],
   },
   {
     slug: "nailtoctoc-backend",
     title: "NailTocToc MSA Backend",
-    role: "Backend Developer / DevOps",
     eyebrow: "Backend Developer / DevOps",
     year: "2026",
     category: "Kotlin MSA",
     tagline: "MSA-based backend platform for nail printing service",
     featured: true,
-    status: "Live",
     tags: [
     "Kotlin",
     "Spring Boot 3",
@@ -111,30 +113,34 @@ export const projects = [
     {
       "label": "App Store Screenshot 01",
       "src": "/projects/nailtoctoc-backend/app-store-1.jpg",
-      "alt": "NailTocToc App Store screenshot 1"
+      "alt": "NailTocToc App Store screenshot 1",
+      "width": 600,
+      "height": 1298
     },
     {
       "label": "App Store Screenshot 02",
       "src": "/projects/nailtoctoc-backend/app-store-2.jpg",
-      "alt": "NailTocToc App Store screenshot 2"
+      "alt": "NailTocToc App Store screenshot 2",
+      "width": 600,
+      "height": 1298
     },
     {
       "label": "App Store Screenshot 03",
       "src": "/projects/nailtoctoc-backend/app-store-3.jpg",
-      "alt": "NailTocToc App Store screenshot 3"
+      "alt": "NailTocToc App Store screenshot 3",
+      "width": 600,
+      "height": 1298
     }
   ],
   },
   {
     slug: "nailtoctoc-kiosk",
     title: "NailTocToc Kiosk",
-    role: "Flutter Developer",
     eyebrow: "Flutter Developer",
     year: "2026",
     category: "Flutter Kiosk",
     tagline: "Flutter-based kiosk application for nail printing service",
     featured: true,
-    status: "Case Study",
     tags: [
     "Flutter",
     "Dart",
@@ -153,13 +159,11 @@ export const projects = [
   {
     slug: "arffy",
     title: "Arffy",
-    role: "Backend Developer",
     eyebrow: "Backend Developer",
     year: "2023",
     category: "Kotlin Store",
     tagline: "Online store selling 20th century European vintage lighting and accessories",
     featured: true,
-    status: "Live",
     tags: [
     "Kotlin",
     "Spring Boot 2",
@@ -186,13 +190,11 @@ export const projects = [
   {
     slug: "gokkan",
     title: "Gokkan",
-    role: "Team Lead / Backend Developer",
     eyebrow: "Team Lead / Backend Developer",
     year: "2024",
     category: "Java Auction",
     tagline: "Auction service for buying and selling vintage furniture",
     featured: false,
-    status: "Case Study",
     tags: [
     "Java 11",
     "Spring Boot 2",
@@ -222,13 +224,11 @@ export const projects = [
   {
     slug: "onde",
     title: "ONDe",
-    role: "Backend Developer",
     eyebrow: "Backend Developer",
     year: "2024",
     category: "Java Backend",
     tagline: "Service to save and share travel photos in journey order",
     featured: false,
-    status: "Case Study",
     tags: [
     "Java 11",
     "Spring Boot 2.7",
@@ -261,13 +261,11 @@ export const projects = [
   {
     slug: "amp-recommendation",
     title: "AMP Collaboration Recommendation System",
-    role: "Backend Developer",
     eyebrow: "Backend Developer",
     year: "2025",
     category: "AI Backend",
     tagline: "System that recommends companies with high collaboration potential based on AMP alumni company information and automatically generates collaboration proposals",
     featured: false,
-    status: "Case Study",
     tags: [
     "Kotlin",
     "Spring Boot 3",
@@ -286,13 +284,11 @@ export const projects = [
   {
     slug: "document-approval",
     title: "Document Approval System",
-    role: "Backend Developer",
     eyebrow: "Backend Developer",
     year: "2025",
     category: "RPA Backend",
     tagline: "System that automates document approval process by integrating RPA with server for approval requests, processing, and document number issuance",
     featured: false,
-    status: "Case Study",
     tags: [
     "Kotlin",
     "Spring Boot 3",
@@ -313,13 +309,11 @@ export const projects = [
   {
     slug: "accounting-commission",
     title: "Accounting Commission System",
-    role: "Backend Developer",
     eyebrow: "Backend Developer",
     year: "2025",
     category: "AI Automation",
     tagline: "System that automates travel agency commission calculation and receipt generation to support accounting firm bookkeeping",
     featured: false,
-    status: "Case Study",
     tags: [
     "Kotlin",
     "Spring Boot 3",
