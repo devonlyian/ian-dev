@@ -45,6 +45,13 @@ describe("portfolio data contract", () => {
     ]);
   });
 
+  it("keeps project data limited to fields rendered by the portfolio", () => {
+    expect(projects.every((project) => !("role" in project))).toBe(true);
+    expect(projects.every((project) => !("status" in project))).toBe(true);
+    expect(projects.every((project) => !("caseStudy" in project))).toBe(true);
+    expect("caseStudies" in languageText.ko.projects).toBe(false);
+  });
+
   it("returns previous and next project links for detail pages", () => {
     const adjacent = getAdjacentProjects("arffy");
 
