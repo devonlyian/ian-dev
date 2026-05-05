@@ -7,10 +7,11 @@ import { services } from "@/lib/portfolio-data";
 
 export function Services() {
   const { text } = useLanguage();
-  const [pinnedTitle, setPinnedTitle] = useState(services[0]?.title ?? "");
+  const defaultTitle = services[0]?.title ?? "";
+  const [pinnedTitle, setPinnedTitle] = useState("");
   const [hoverTitle, setHoverTitle] = useState("");
   const hoverTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const activeTitle = hoverTitle || pinnedTitle;
+  const activeTitle = pinnedTitle || hoverTitle || defaultTitle;
 
   const clearHoverTimeout = () => {
     if (hoverTimeout.current) {
@@ -38,13 +39,22 @@ export function Services() {
           const panelId = `service-panel-${service.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
           const isOpen = activeTitle === service.title;
           const isPinned = pinnedTitle === service.title;
+          const canPreview = !pinnedTitle;
 
           return (
             <article
               key={service.title}
               className="border-t border-border"
-              onMouseEnter={() => scheduleHoverTitle(service.title, 140)}
-              onMouseLeave={() => scheduleHoverTitle("", 160)}
+              onMouseEnter={() => {
+                if (canPreview) {
+                  scheduleHoverTitle(service.title, 140);
+                }
+              }}
+              onMouseLeave={() => {
+                if (canPreview) {
+                  scheduleHoverTitle("", 160);
+                }
+              }}
             >
               <button
                 type="button"
@@ -53,10 +63,14 @@ export function Services() {
                 aria-controls={panelId}
                 onClick={() => {
                   clearHoverTimeout();
-                  setPinnedTitle(isPinned ? "" : service.title);
                   if (isPinned) {
+                    setPinnedTitle("");
                     setHoverTitle("");
+                    return;
                   }
+
+                  setPinnedTitle(service.title);
+                  setHoverTitle("");
                 }}
                 data-cursor="link"
               >
@@ -65,7 +79,7 @@ export function Services() {
                 </span>
                 <span
                   className={`col-start-1 row-start-2 text-3xl font-black uppercase leading-[0.95] tracking-[-0.045em] transition-colors duration-500 ease-out md:col-start-auto md:row-start-auto md:text-5xl ${
-                    isOpen ? "text-brand" : "text-foreground group-hover:text-brand"
+                    isOpen ? "text-brand" : canPreview ? "text-foreground group-hover:text-brand" : "text-foreground"
                   }`}
                 >
                   {service.title}
@@ -97,7 +111,9 @@ export function Services() {
                   className={`col-start-2 row-start-2 flex h-12 w-12 items-center justify-center rounded-full border text-foreground transition-all duration-500 ease-out md:col-start-auto md:row-start-auto ${
                     isOpen
                       ? "border-brand bg-brand text-[#0A0A0A]"
-                      : "border-border group-hover:border-brand group-hover:bg-brand group-hover:text-[#0A0A0A]"
+                      : canPreview
+                        ? "border-border group-hover:border-brand group-hover:bg-brand group-hover:text-[#0A0A0A]"
+                        : "border-border"
                   }`}
                 >
                   <ChevronDown

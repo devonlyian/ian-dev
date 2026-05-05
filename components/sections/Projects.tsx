@@ -9,9 +9,10 @@ import { getFeaturedProjects } from "@/lib/projects";
 export function Projects() {
   const featuredProjects = getFeaturedProjects();
   const { text } = useLanguage();
-  const [pinnedSlug, setPinnedSlug] = useState(featuredProjects[0]?.slug ?? "");
+  const defaultSlug = featuredProjects[0]?.slug ?? "";
+  const [pinnedSlug, setPinnedSlug] = useState("");
   const [hoverSlug, setHoverSlug] = useState("");
-  const activeSlug = hoverSlug || pinnedSlug;
+  const activeSlug = pinnedSlug || hoverSlug || defaultSlug;
 
   return (
     <section id="projects" className="overflow-hidden px-6 py-16 md:px-12 md:py-24 lg:px-20">
@@ -24,13 +25,22 @@ export function Projects() {
         {featuredProjects.map((project, index) => {
           const isOpen = activeSlug === project.slug;
           const isPinned = pinnedSlug === project.slug;
+          const canPreview = !pinnedSlug;
 
           return (
             <article
               key={project.slug}
               className="border-b border-border"
-              onMouseEnter={() => setHoverSlug(project.slug)}
-              onMouseLeave={() => setHoverSlug("")}
+              onMouseEnter={() => {
+                if (canPreview) {
+                  setHoverSlug(project.slug);
+                }
+              }}
+              onMouseLeave={() => {
+                if (canPreview) {
+                  setHoverSlug("");
+                }
+              }}
             >
               <button
                 type="button"
@@ -38,10 +48,14 @@ export function Projects() {
                 aria-expanded={isOpen}
                 aria-controls={`project-panel-${project.slug}`}
                 onClick={() => {
-                  setPinnedSlug(isPinned ? "" : project.slug);
                   if (isPinned) {
+                    setPinnedSlug("");
                     setHoverSlug("");
+                    return;
                   }
+
+                  setPinnedSlug(project.slug);
+                  setHoverSlug("");
                 }}
                 data-cursor="link"
               >
@@ -51,7 +65,7 @@ export function Projects() {
                 <span>
                   <span
                     className={`block max-w-5xl text-4xl font-black uppercase leading-[0.94] tracking-[-0.045em] transition-colors md:text-7xl ${
-                      isOpen ? "text-brand" : "text-foreground group-hover:text-brand"
+                      isOpen ? "text-brand" : canPreview ? "text-foreground group-hover:text-brand" : "text-foreground"
                     }`}
                   >
                     {project.title}
@@ -64,7 +78,9 @@ export function Projects() {
                   className={`flex h-14 w-14 items-center justify-center rounded-full border text-foreground transition-all ${
                     isOpen
                       ? "border-brand bg-brand text-[#0A0A0A]"
-                      : "border-border group-hover:border-brand group-hover:bg-brand group-hover:text-[#0A0A0A]"
+                      : canPreview
+                        ? "border-border group-hover:border-brand group-hover:bg-brand group-hover:text-[#0A0A0A]"
+                        : "border-border"
                   }`}
                 >
                   <ChevronDown className={`h-5 w-5 transition-transform ${isOpen ? "rotate-180" : ""}`} aria-hidden="true" />
