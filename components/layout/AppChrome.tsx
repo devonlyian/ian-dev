@@ -11,6 +11,7 @@ import { SmoothScroll } from "./SmoothScroll";
 export function AppChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isProjectDetail = pathname.startsWith("/projects/");
+  const isHome = pathname === "/";
 
   return (
     <>
@@ -19,7 +20,7 @@ export function AppChrome({ children }: { children: React.ReactNode }) {
       <SmoothCursor />
       <Preloader />
       <SiteHeader />
-      {!isProjectDetail ? <SectionIndicator /> : null}
+      {isHome && !isProjectDetail ? <SectionIndicator /> : null}
       {children}
       <Toaster position="bottom-right" richColors />
     </>
