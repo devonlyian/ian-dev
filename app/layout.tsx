@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { AppChrome } from "@/components/layout/AppChrome";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { portfolio } from "@/lib/portfolio-data";
+import { initialThemeScript } from "@/lib/theme-script";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
@@ -51,8 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html:
-              "(function(){try{document.documentElement.classList.remove('dark');localStorage.setItem('theme','light')}catch(e){document.documentElement.classList.remove('dark')}})()",
+            __html: initialThemeScript,
           }}
         />
       </head>

@@ -11,13 +11,33 @@ import { portfolio } from "@/lib/portfolio-data";
 export function SiteHeader() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const [theme, setTheme] = useState<"dark" | "light">("light");
   const { language, toggleLanguage, text } = useLanguage();
   const isProjectDetail = pathname.startsWith("/projects/");
 
   useEffect(() => {
-    const isDark = document.documentElement.classList.contains("dark");
-    setTheme(isDark ? "dark" : "light");
+    const syncThemeState = () => {
+      const isDark = document.documentElement.classList.contains("dark");
+      setTheme(isDark ? "dark" : "light");
+    };
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleSystemThemeChange = (event: MediaQueryListEvent) => {
+      const storedTheme = localStorage.getItem("theme");
+
+      if (storedTheme === "dark" || storedTheme === "light") {
+        return;
+      }
+
+      document.documentElement.classList.toggle("dark", event.matches);
+      setTheme(event.matches ? "dark" : "light");
+    };
+
+    syncThemeState();
+    mediaQuery.addEventListener("change", handleSystemThemeChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleSystemThemeChange);
+    };
   }, []);
 
   const toggleTheme = () => {

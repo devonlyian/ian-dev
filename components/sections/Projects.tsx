@@ -10,9 +10,8 @@ export function Projects() {
   const featuredProjects = getFeaturedProjects();
   const { text } = useLanguage();
   const defaultSlug = featuredProjects[0]?.slug ?? "";
-  const [pinnedSlug, setPinnedSlug] = useState("");
   const [hoverSlug, setHoverSlug] = useState("");
-  const activeSlug = hoverSlug || pinnedSlug || defaultSlug;
+  const activeSlug = hoverSlug || defaultSlug;
 
   return (
     <section id="projects" className="overflow-hidden px-6 py-16 md:px-12 md:py-24 lg:px-20">
@@ -24,7 +23,6 @@ export function Projects() {
         <div className="border-t border-border">
         {featuredProjects.map((project, index) => {
           const isOpen = activeSlug === project.slug;
-          const isPinned = pinnedSlug === project.slug;
 
           return (
             <article
@@ -33,21 +31,11 @@ export function Projects() {
               onMouseEnter={() => setHoverSlug(project.slug)}
               onMouseLeave={() => setHoverSlug("")}
             >
-              <button
-                type="button"
+              <Link
+                href={`/projects/${project.slug}`}
                 className="group grid w-full min-h-44 gap-5 py-10 text-left transition-colors hover:bg-card/30 md:grid-cols-[3.5rem_1fr_auto_auto] md:items-center md:py-16"
                 aria-expanded={isOpen}
                 aria-controls={`project-panel-${project.slug}`}
-                onClick={() => {
-                  if (isPinned) {
-                    setPinnedSlug("");
-                    setHoverSlug("");
-                    return;
-                  }
-
-                  setPinnedSlug(project.slug);
-                  setHoverSlug("");
-                }}
                 data-cursor="link"
               >
                 <span className="font-serif text-sm italic text-muted-foreground/40 tabular-nums">
@@ -74,7 +62,7 @@ export function Projects() {
                 >
                   <ChevronDown className={`h-5 w-5 transition-transform ${isOpen ? "rotate-180" : ""}`} aria-hidden="true" />
                 </span>
-              </button>
+              </Link>
 
               <div
                 id={`project-panel-${project.slug}`}
