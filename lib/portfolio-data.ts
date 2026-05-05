@@ -78,7 +78,6 @@ export const portfolio = {
     email: "devonlyian@gmail.com",
     location: "South Korea",
     github: "https://github.com/devonlyian",
-    linkedin: "https://www.linkedin.com/in/ian-kim-38b0582b0/",
     siteUrl: "https://ianonly.dev",
   },
   hero: {

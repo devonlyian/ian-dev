@@ -109,9 +109,6 @@ export function Hero() {
             <a href={portfolio.owner.github} className="hover:text-foreground" data-cursor="link">
               GitHub ↗
             </a>
-            <a href={portfolio.owner.linkedin} className="hover:text-foreground" data-cursor="link">
-              LinkedIn ↗
-            </a>
           </div>
         </div>
       </div>

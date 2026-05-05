@@ -1,6 +1,6 @@
 "use client";
 
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Mail } from "lucide-react";
 import { toast } from "sonner";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { portfolio } from "@/lib/portfolio-data";
@@ -41,10 +41,6 @@ export function Contact() {
           <a href={portfolio.owner.github} className="inline-flex items-center gap-2 hover:text-foreground" data-cursor="link">
             <Github className="h-4 w-4" aria-hidden="true" />
             GitHub
-          </a>
-          <a href={portfolio.owner.linkedin} className="inline-flex items-center gap-2 hover:text-foreground" data-cursor="link">
-            <Linkedin className="h-4 w-4" aria-hidden="true" />
-            LinkedIn
           </a>
           <a href={mailto} className="inline-flex items-center gap-2 hover:text-foreground" data-cursor="link">
             <Mail className="h-4 w-4" aria-hidden="true" />
