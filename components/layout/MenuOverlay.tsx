@@ -52,8 +52,7 @@ export function MenuOverlay({ open, onClose }: MenuOverlayProps) {
               <div className="mb-0.5 h-px w-full origin-left bg-border" aria-hidden="true" />
               <a
                 href={`/#${section.id}`}
-                className="group relative block overflow-hidden whitespace-nowrap font-black uppercase leading-[0.85] tracking-tighter"
-                style={{ fontSize: "clamp(2rem, 5vw, 4.5rem)" }}
+                className="group relative block overflow-hidden whitespace-nowrap text-[clamp(2rem,5vw,4.5rem)] font-black uppercase leading-[0.85] tracking-tighter"
                 onClick={onClose}
                 data-cursor="link"
               >

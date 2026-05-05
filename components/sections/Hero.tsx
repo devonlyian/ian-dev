@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { useRef } from "react";
@@ -46,13 +45,8 @@ export function Hero() {
       <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background to-transparent" />
 
       <div className="pointer-events-none absolute left-1/2 top-[22%] h-[34vh] min-h-64 w-[150vw] -translate-x-1/2 overflow-hidden opacity-75 [mask-image:linear-gradient(to_bottom,transparent_0%,black_14%,black_78%,transparent_100%)] md:top-[23%] md:h-[39vh]">
-        <Image
-          src="/hero-hands.png"
-          alt=""
-          fill
-          priority
-          sizes="150vw"
-          className="object-cover blur-[6px] saturate-125"
+        <div
+          className="absolute inset-0 bg-[url('/hero-hands.png')] bg-cover bg-center blur-[6px] saturate-125"
           aria-hidden="true"
         />
       </div>

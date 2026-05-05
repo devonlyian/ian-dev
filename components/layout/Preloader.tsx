@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { portfolio } from "@/lib/portfolio-data";
 
 export function Preloader() {
   const [progress, setProgress] = useState(0);
   const [done, setDone] = useState(false);
+  const progressBar = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let value = 0;
@@ -22,6 +23,14 @@ export function Preloader() {
     return () => window.clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    if (!progressBar.current) {
+      return;
+    }
+
+    progressBar.current.style.transform = `scaleX(${progress / 100})`;
+  }, [progress]);
+
   if (done) {
     return null;
   }
@@ -30,8 +39,8 @@ export function Preloader() {
     <div className="fixed inset-0 z-[9998] flex flex-col items-center justify-center overflow-hidden bg-[#0a0a0a] text-[#FEFAEF]">
       <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#FEFAEF]/10">
         <div
-          className="h-full origin-left bg-gradient-to-r from-amber-500 via-orange-400 to-yellow-400 transition-transform duration-150"
-          style={{ transform: `scaleX(${progress / 100})` }}
+          ref={progressBar}
+          className="h-full origin-left scale-x-0 bg-gradient-to-r from-amber-500 via-orange-400 to-yellow-400 transition-transform duration-150"
         />
       </div>
       <div className="absolute left-8 top-8 select-none text-[10px] font-medium uppercase tracking-[0.35em] text-[#FEFAEF]/25">

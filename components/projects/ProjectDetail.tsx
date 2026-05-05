@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, ExternalLink, Github } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -96,7 +96,7 @@ export function ProjectDetail({ project, adjacent }: ProjectDetailProps) {
           <div className="absolute h-56 w-72 rounded-full bg-brand/20 blur-3xl" aria-hidden="true" />
           {heroScreenshot && typeof heroScreenshot !== "string" ? (
             <div className="relative h-[34rem] w-[16rem] rotate-[-3deg] overflow-hidden rounded-[2.2rem] border-[10px] border-[#111] bg-[#111] shadow-[0_42px_90px_rgba(0,0,0,0.22)]">
-              <Image src={heroScreenshot.src} alt={heroScreenshot.alt} fill priority sizes="16rem" className="object-cover" />
+              <img src={heroScreenshot.src} alt={heroScreenshot.alt} className="h-full w-full object-cover" />
             </div>
           ) : (
             <div className="relative h-80 w-[31rem] rotate-[-3deg] overflow-hidden rounded-2xl border border-[#ffffff22] bg-[#111] shadow-[0_42px_90px_rgba(0,0,0,0.22)]">
@@ -174,7 +174,7 @@ export function ProjectDetail({ project, adjacent }: ProjectDetailProps) {
                     </div>
                   ) : (
                     <div className="relative aspect-[600/1299] overflow-hidden rounded-[1.45rem] bg-[#111]">
-                      <Image src={screenshot.src} alt={screenshot.alt} fill sizes="(min-width: 768px) 30vw, 90vw" className="object-cover" />
+                      <img src={screenshot.src} alt={screenshot.alt} loading="lazy" className="h-full w-full object-cover" />
                     </div>
                   )}
                 </div>
