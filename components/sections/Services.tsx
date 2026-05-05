@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { services } from "@/lib/portfolio-data";
 
@@ -9,7 +9,24 @@ export function Services() {
   const { text } = useLanguage();
   const [pinnedTitle, setPinnedTitle] = useState(services[0]?.title ?? "");
   const [hoverTitle, setHoverTitle] = useState("");
+  const hoverTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const activeTitle = hoverTitle || pinnedTitle;
+
+  const clearHoverTimeout = () => {
+    if (hoverTimeout.current) {
+      clearTimeout(hoverTimeout.current);
+      hoverTimeout.current = null;
+    }
+  };
+
+  const scheduleHoverTitle = (title: string, delay: number) => {
+    clearHoverTimeout();
+    hoverTimeout.current = setTimeout(() => {
+      setHoverTitle(title);
+    }, delay);
+  };
+
+  useEffect(() => clearHoverTimeout, []);
 
   return (
     <section id="services" className="px-6 py-16 md:px-12 md:py-[6.45rem] lg:px-[5.4rem]">
@@ -26,15 +43,16 @@ export function Services() {
             <article
               key={service.title}
               className="border-t border-border"
-              onMouseEnter={() => setHoverTitle(service.title)}
-              onMouseLeave={() => setHoverTitle("")}
+              onMouseEnter={() => scheduleHoverTitle(service.title, 140)}
+              onMouseLeave={() => scheduleHoverTitle("", 160)}
             >
               <button
                 type="button"
-                className="group grid w-full min-h-36 grid-cols-[1fr_auto] gap-x-6 gap-y-5 py-10 text-left transition-colors hover:bg-card/30 md:grid-cols-[4rem_0.9fr_1fr_auto] md:items-start md:py-14"
+                className="group grid w-full min-h-36 grid-cols-[1fr_auto] gap-x-6 gap-y-5 py-10 text-left transition-colors duration-500 ease-out hover:bg-card/30 md:grid-cols-[4rem_0.9fr_1fr_auto] md:items-start md:py-14"
                 aria-expanded={isOpen}
                 aria-controls={panelId}
                 onClick={() => {
+                  clearHoverTimeout();
                   setPinnedTitle(isPinned ? "" : service.title);
                   if (isPinned) {
                     setHoverTitle("");
@@ -46,7 +64,7 @@ export function Services() {
                   {(index + 1).toString().padStart(2, "0")}
                 </span>
                 <span
-                  className={`col-start-1 row-start-2 text-3xl font-black uppercase leading-[0.95] tracking-[-0.045em] transition-colors md:col-start-auto md:row-start-auto md:text-5xl ${
+                  className={`col-start-1 row-start-2 text-3xl font-black uppercase leading-[0.95] tracking-[-0.045em] transition-colors duration-500 ease-out md:col-start-auto md:row-start-auto md:text-5xl ${
                     isOpen ? "text-brand" : "text-foreground group-hover:text-brand"
                   }`}
                 >
@@ -55,8 +73,8 @@ export function Services() {
                 <span
                   id={panelId}
                   aria-hidden={!isOpen}
-                  className={`col-span-2 row-start-3 block overflow-hidden transition-[max-height,opacity,transform] duration-500 ease-out md:col-span-1 md:row-start-auto ${
-                    isOpen ? "max-h-96 translate-y-0 opacity-100" : "max-h-0 -translate-y-2 opacity-0"
+                  className={`col-span-2 row-start-3 block overflow-hidden transition-[max-height,opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] md:col-span-1 md:row-start-auto ${
+                    isOpen ? "max-h-96 translate-y-0 opacity-100" : "max-h-0 translate-y-3 opacity-0"
                   }`}
                 >
                   <span className="mb-8 block text-xl font-medium leading-relaxed text-muted-foreground">
@@ -74,13 +92,16 @@ export function Services() {
                   </span>
                 </span>
                 <span
-                  className={`col-start-2 row-start-2 flex h-12 w-12 items-center justify-center rounded-full border text-foreground transition-all md:col-start-auto md:row-start-auto ${
+                  className={`col-start-2 row-start-2 flex h-12 w-12 items-center justify-center rounded-full border text-foreground transition-all duration-500 ease-out md:col-start-auto md:row-start-auto ${
                     isOpen
                       ? "border-brand bg-brand text-[#0A0A0A]"
                       : "border-border group-hover:border-brand group-hover:bg-brand group-hover:text-[#0A0A0A]"
                   }`}
                 >
-                  <ChevronDown className={`h-5 w-5 transition-transform ${isOpen ? "rotate-180" : ""}`} aria-hidden="true" />
+                  <ChevronDown
+                    className={`h-5 w-5 transition-transform duration-500 ease-out ${isOpen ? "rotate-180" : ""}`}
+                    aria-hidden="true"
+                  />
                 </span>
               </button>
             </article>
