@@ -46,7 +46,7 @@ export function Hero() {
 
       <div className="pointer-events-none absolute left-1/2 top-[22%] h-[34vh] min-h-64 w-[150vw] -translate-x-1/2 overflow-hidden opacity-75 [mask-image:linear-gradient(to_bottom,transparent_0%,black_14%,black_78%,transparent_100%)] md:top-[23%] md:h-[39vh]">
         <div
-          className="absolute inset-0 bg-[url('/hero-hands.png')] bg-cover bg-center blur-[6px] saturate-125"
+          className="absolute inset-0 bg-[url('/hero-hands.png')] bg-cover bg-center blur-[6px] saturate-125 dark:bg-[url('/hero-hands-dark.png')]"
           aria-hidden="true"
         />
       </div>
