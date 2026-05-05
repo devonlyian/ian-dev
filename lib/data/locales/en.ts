@@ -10,11 +10,18 @@ export const enText: LanguageText = {
     },
     about: {
       paragraphs: [
-        "I work closest to backend systems, infrastructure, and the product edges where",
-        "reliability actually shows up.",
-        "Most of my recent work has involved",
-        "Claude Code, Codex, and harness engineering",
-        "I focus on tightening development automation and repeatable verification flows.",
+        {
+          lead: "I work closest to backend systems, infrastructure, and the product edges where",
+          emphasis: "reliability actually shows up.",
+          tail: "",
+          emphasisTone: "foreground",
+        },
+        {
+          lead: "Most of my recent work has involved",
+          emphasis: "Claude Code, Codex, and harness engineering",
+          tail: ". I focus on tightening development automation and repeatable verification flows.",
+          emphasisTone: "brand",
+        },
       ],
     },
     projects: {
@@ -27,7 +34,6 @@ export const enText: LanguageText = {
       taglines: {},
       descriptions: {},
       highlights: {},
-      caseStudies: {},
     },
     experiences: {},
     services: {},

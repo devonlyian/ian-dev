@@ -2,6 +2,13 @@ import type { ProjectSlug } from "../projects";
 
 export type Language = "en" | "ko";
 
+type AboutParagraph = {
+  lead: string;
+  emphasis: string;
+  tail: string;
+  emphasisTone: "foreground" | "brand";
+};
+
 export type LanguageText = {
   header: {
     switchToKorean: string;
@@ -10,7 +17,7 @@ export type LanguageText = {
     body: string;
   };
   about: {
-    paragraphs: [string, string, string, string, string];
+    paragraphs: [AboutParagraph, AboutParagraph];
   };
   projects: {
     archive: {
@@ -21,17 +28,6 @@ export type LanguageText = {
     taglines: Partial<Record<ProjectSlug, string>>;
     descriptions: Partial<Record<ProjectSlug, string>>;
     highlights: Partial<Record<ProjectSlug, string[]>>;
-    caseStudies: Partial<
-      Record<
-        ProjectSlug,
-      {
-        overview: string;
-        challenge: string;
-        solution: string;
-        impact: string;
-      }
-      >
-    >;
   };
   experiences: Record<string, string>;
   services: Record<string, string>;

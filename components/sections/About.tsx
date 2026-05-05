@@ -40,6 +40,11 @@ const technologyIcons: Record<string, TechnologyIconType> = {
   "Claude Code": siClaude,
 };
 
+const aboutEmphasisClasses = {
+  foreground: "font-black text-foreground",
+  brand: "font-black text-brand",
+} as const;
+
 function TechnologyIcon({ technology }: { technology: string }) {
   const icon = technologyIcons[technology];
 
@@ -83,7 +88,7 @@ function TechnologyIcon({ technology }: { technology: string }) {
 
 export function About() {
   const technologyTrack = [...portfolio.technologies, ...portfolio.technologies];
-  const { language, text } = useLanguage();
+  const { text } = useLanguage();
 
   return (
     <section id="about" className="overflow-hidden py-16 md:min-h-[46.5rem] md:py-24">
@@ -94,21 +99,13 @@ export function About() {
 
         <div className="flex flex-col justify-center gap-6">
           <div className="space-y-7 text-base font-medium leading-relaxed text-muted-foreground lg:text-xl">
-            {language === "ko" ? (
-              <p>
-                저는 백엔드 시스템과 인프라, 제품 경계에서 주로 일합니다.{" "}
-                <span className="font-black text-foreground">운영에서 안정성이 드러나는 지점</span>을 중요하게 봅니다.
+            {text.about.paragraphs.map((paragraph) => (
+              <p key={paragraph.emphasis}>
+                {paragraph.lead}{" "}
+                <span className={aboutEmphasisClasses[paragraph.emphasisTone]}>{paragraph.emphasis}</span>
+                {paragraph.tail}
               </p>
-            ) : (
-              <p>
-                {text.about.paragraphs[0]}{" "}
-                <span className="font-black text-foreground">{text.about.paragraphs[1]}</span>
-              </p>
-            )}
-            <p>
-              {text.about.paragraphs[2]}{" "}
-              <span className="font-black text-brand">{text.about.paragraphs[3]}</span>. {text.about.paragraphs[4]}
-            </p>
+            ))}
           </div>
         </div>
       </div>
