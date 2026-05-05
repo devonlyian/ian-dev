@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { navigationSections, portfolio, projects } from "@/lib/portfolio-data";
+import { languageText } from "@/lib/data/locales";
+import { experiences, navigationSections, portfolio, projects } from "@/lib/portfolio-data";
 import { getAdjacentProjects, getFeaturedProjects, getProjectBySlug } from "@/lib/projects";
 
 describe("portfolio data contract", () => {
@@ -34,11 +35,13 @@ describe("portfolio data contract", () => {
   });
 
   it("keeps project order aligned with the main portfolio content", () => {
-    expect(projects.map((project) => project.slug).slice(0, 4)).toEqual([
+    expect(projects.map((project) => project.slug).slice(0, 6)).toEqual([
       "readinggarden-kotlin-backend",
       "nailtoctoc-backend",
       "nailtoctoc-kiosk",
       "arffy",
+      "gokkan",
+      "onde",
     ]);
   });
 
@@ -46,11 +49,45 @@ describe("portfolio data contract", () => {
     const adjacent = getAdjacentProjects("arffy");
 
     expect(adjacent.previous?.slug).toBe("nailtoctoc-kiosk");
-    expect(adjacent.next?.slug).toBe("amp-recommendation");
+    expect(adjacent.next?.slug).toBe("gokkan");
   });
 
   it("contains owner identity separate from project data", () => {
     expect(portfolio.owner.initials).toBe("IK");
     expect(projects.every((project) => !project.title.includes(portfolio.owner.name))).toBe(true);
+  });
+
+  it("includes the ongoing NooooK Studio team work for ReadingGarden", () => {
+    expect(experiences[0]).toMatchObject({
+      period: "2026.03 — Present",
+      company: "NooooK Studio",
+      title: "Backend Developer",
+      status: "Team",
+      translationKey: "nooook-studio",
+    });
+    expect(experiences[0]?.summary).toContain("ReadingGarden");
+    expect(experiences[0]?.summary).toContain("dog and cat care management app");
+    expect(experiences[0]?.summary).not.toContain("dedicated dog and cat companion app");
+  });
+
+  it("uses Korea as the location and Team or Company as the experience badge", () => {
+    expect(experiences.every((experience) => experience.location === "Korea")).toBe(true);
+    expect(experiences.map((experience) => `${experience.company}:${experience.status}`)).toEqual([
+      "NooooK Studio:Team",
+      "NailTocToc:Company",
+      "Mining5000:Company",
+      "Arffy:Team",
+    ]);
+  });
+
+  it("keeps Korean experience summaries distinct when display titles repeat", () => {
+    expect(experiences.map((experience) => `${experience.company}:${experience.translationKey}`)).toEqual([
+      "NooooK Studio:nooook-studio",
+      "NailTocToc:nailtoctoc",
+      "Mining5000:mining5000",
+      "Arffy:arffy",
+    ]);
+    expect(languageText.ko.experiences["nooook-studio"]).toContain("독서가든");
+    expect(languageText.ko.experiences.arffy).toContain("빈티지 조명");
   });
 });

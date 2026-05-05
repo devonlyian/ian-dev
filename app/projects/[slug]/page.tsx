@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ProjectDetail } from "@/components/projects/ProjectDetail";
 import { portfolio, projects } from "@/lib/portfolio-data";
-import { getAdjacentProjects, getProjectBySlug } from "@/lib/projects";
+import { getAdjacentProjects, getProjectBySlug, getProjectDescription } from "@/lib/projects";
 
 type ProjectPageProps = {
   params: Promise<{
@@ -24,10 +24,10 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 
   return {
     title: project.title,
-    description: project.description,
+    description: getProjectDescription(project),
     openGraph: {
       title: `${project.title} | ${portfolio.owner.name}`,
-      description: project.description,
+      description: getProjectDescription(project),
       type: "article",
     },
   };
