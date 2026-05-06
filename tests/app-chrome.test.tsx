@@ -60,4 +60,17 @@ describe("AppChrome", () => {
 
     expect(screen.queryByRole("navigation", { name: "Section navigation" })).toBeNull();
   });
+
+  it("skips portfolio chrome on the local resume route", () => {
+    pathname.value = "/resume";
+
+    render(
+      <AppChrome>
+        <main>resume</main>
+      </AppChrome>,
+    );
+
+    expect(screen.getByText("resume")).toBeTruthy();
+    expect(screen.queryByRole("navigation", { name: "Section navigation" })).toBeNull();
+  });
 });
