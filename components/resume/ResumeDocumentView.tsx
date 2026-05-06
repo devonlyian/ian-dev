@@ -14,7 +14,7 @@ export function ResumeDocumentView({ resume }: { resume: ResumeDocument }) {
       <article className="resume-sheet">
         <header className="resume-header">
           <div>
-            <p className="resume-kicker">{resume.labels.role}</p>
+            {resume.labels.role ? <p className="resume-kicker">{resume.labels.role}</p> : null}
             <h1>{resume.name}</h1>
             <p className="resume-role">{resume.role}</p>
           </div>

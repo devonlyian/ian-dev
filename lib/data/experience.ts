@@ -42,7 +42,7 @@ export const experiences: Experience[] = [
     status: "Team",
     translationKey: "arffy",
     summary:
-      "Designed and implemented the full backend for a vintage lighting store, operated the live service for nine months, solved order concurrency issues with pessimistic locking, encrypted personal data with JPA Converter, and integrated JWT, Kakao OAuth, and PortOne payments.",
+      "Worked on the Arffy team project, designing and implementing the backend for a vintage lighting store, operating the live service for nine months, solving order concurrency issues with pessimistic locking, encrypting personal data with JPA Converter, and integrating JWT, Kakao OAuth, and PortOne payments.",
     stack: ["Kotlin", "Spring Boot 2", "MySQL", "AWS EC2", "AWS S3", "Docker", "PortOne"],
   },
 ];

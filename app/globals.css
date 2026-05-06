@@ -170,7 +170,17 @@ a {
   min-height: 100vh;
   background: #eef1f5;
   color: #111827;
+  cursor: auto !important;
   padding: 32px 16px;
+}
+
+.resume-page * {
+  cursor: auto !important;
+}
+
+.resume-page a,
+.resume-page button {
+  cursor: pointer !important;
 }
 
 .resume-language-switch {
@@ -358,6 +368,7 @@ a {
     margin: 0;
   }
 
+  html,
   body {
     background: #ffffff;
   }
@@ -373,6 +384,7 @@ a {
   }
 
   .resume-sheet {
+    background: #ffffff;
     width: 210mm;
     min-height: 297mm;
     box-shadow: none;

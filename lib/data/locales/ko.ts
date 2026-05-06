@@ -49,7 +49,7 @@ export const koText: LanguageText = {
         "nailtoctoc-backend":
           "네일 프린팅 서비스를 위한 MSA 기반 백엔드 플랫폼",
         "nailtoctoc-kiosk": "네일 프린팅 서비스를 위한 Flutter 기반 키오스크 애플리케이션",
-        arffy: "20세기 유럽의 빈티지 조명과 소품을 판매하는 온라인 스토어",
+        arffy: "팀 프로젝트로 진행한 20세기 유럽 빈티지 조명과 소품 온라인 스토어",
         "amp-recommendation":
           "AMP 원우들의 회사 정보를 기반으로 협업 가능성이 높은 회사를 추천하고, 협업 기획서를 자동 생성하는 시스템",
         onde: "여행하면서 찍은 사진을 여정 순서로 저장 및 공유할 수 있는 서비스",
@@ -85,7 +85,7 @@ export const koText: LanguageText = {
           "**하드웨어 제어**: 네일 프린터, 핑거 픽스처 모듈 연동",
         ],
         arffy: [
-          "**실 서비스 운영**: 2023.12 ~ 2024.08 (9개월) 운영 경험",
+          "**팀 프로젝트**: 빈티지 조명 스토어 백엔드 개발 및 2023.12 ~ 2024.08 (9개월) 운영",
           "**동시성 제어**: 비관적 락 적용으로 재고 차감 및 결제 중복 방지",
           "**보안**: JPA Converter 활용 개인정보 암호화 저장",
           "**인증**: JWT 토큰 인증 + OAuth 2.0 카카오 소셜 로그인",
@@ -134,7 +134,7 @@ export const koText: LanguageText = {
       mining5000:
         "3개 고객사 프로젝트의 백엔드 API를 설계하고 구현했으며, Clova OCR과 OpenAI API 기반 데이터 처리, Pinecone 협업 추천, RPA 자동화 솔루션을 납품했습니다.",
       arffy:
-        "빈티지 조명 스토어 백엔드를 전체 설계하고 9개월간 운영했으며, 비관적 락, 개인정보 암호화, JWT/Kakao OAuth, 포트원 결제를 구현했습니다.",
+        "Arffy 팀 프로젝트에서 빈티지 조명 스토어 백엔드를 설계하고 9개월간 운영했으며, 비관적 락, 개인정보 암호화, JWT/Kakao OAuth, 포트원 결제를 구현했습니다.",
     },
     services: {
       "Backend API Development":
