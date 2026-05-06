@@ -12,14 +12,20 @@ describe("resume model", () => {
     expect(ko).toMatchObject({
       language: "ko",
       filenameBase: "resume.ko",
-      name: "Ian Kim",
-      role: "백엔드 개발자",
+      name: "김이안",
+      role: "Backend Developer",
+      labels: {
+        role: "",
+      },
     });
     expect(en).toMatchObject({
       language: "en",
       filenameBase: "resume.en",
       name: "Ian Kim",
       role: "Backend Developer",
+      labels: {
+        role: "",
+      },
     });
 
     expect(ko.summary.length).toBeGreaterThan(0);
@@ -32,6 +38,20 @@ describe("resume model", () => {
     expect(en.experiences.length).toBeGreaterThan(0);
     expect(ko.projects.map((project) => project.title)).toContain("ReadingGarden Kotlin Migration Backend");
     expect(en.projects.map((project) => project.title)).toContain("ReadingGarden Kotlin Migration Backend");
+    expect(ko.projects.map((project) => project.title)).toEqual([
+      "ReadingGarden Kotlin Migration Backend",
+      "NailTocToc MSA Backend",
+      "NailTocToc Kiosk",
+      "Arffy",
+    ]);
+    expect(ko.skills.find((group) => group.title === "Infra")?.items).toContain("AWS");
+    expect(ko.skills.find((group) => group.title === "Infra")?.items).toContain("Oracle Cloud");
+    expect(ko.skills.find((group) => group.title === "Infra")?.items).not.toContain("AWS EKS");
+    expect(ko.skills.find((group) => group.title === "AI")?.items).toEqual(["Codex", "Claude Code", "Harness Engineering"]);
+    expect(ko.experiences.find((experience) => experience.company === "Arffy")?.summary).toContain("팀 프로젝트");
+    expect(en.experiences.find((experience) => experience.company === "Arffy")?.summary).toContain("team project");
+    expect(ko.projects.find((project) => project.title === "Arffy")?.description).toContain("팀 프로젝트");
+    expect(en.projects.find((project) => project.title === "Arffy")?.description).toContain("Team project");
   });
 
   it("keeps selected resume projects backed by portfolio projects", () => {

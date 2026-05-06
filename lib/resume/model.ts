@@ -45,7 +45,7 @@ export function buildResumeDocument(language: ResumeLanguage): ResumeDocument {
   return {
     language,
     filenameBase: resumeLanguage.filenameBase,
-    name: portfolio.owner.name,
+    name: resumeLanguage.name,
     role: resumeLanguage.role,
     location: portfolio.owner.location,
     summary: resumeLanguage.summary,

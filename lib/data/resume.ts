@@ -3,6 +3,7 @@ import type { ResumeLabels, ResumeLanguage, ResumeSkillGroup } from "@/lib/resum
 
 type ResumeLanguageData = {
   filenameBase: string;
+  name: string;
   role: string;
   labels: ResumeLabels;
   summary: readonly string[];
@@ -12,9 +13,10 @@ type ResumeLanguageData = {
 export const resumeLanguages = {
   ko: {
     filenameBase: "resume.ko",
-    role: "백엔드 개발자",
+    name: "김이안",
+    role: "Backend Developer",
     labels: {
-      role: "직무",
+      role: "",
       summary: "요약",
       contact: "연락처",
       skills: "기술",
@@ -23,20 +25,21 @@ export const resumeLanguages = {
     },
     summary: [
       "Kotlin/Spring 기반 백엔드 개발자로, MSA 설계, 인프라 구축, 배포 자동화, 운영 검증 흐름을 함께 다룹니다.",
-      "기존 앱 계약을 유지하는 마이그레이션, 운영 중 장애 원인 추적, 반복 가능한 테스트와 배포 흐름 정리에 강점이 있습니다.",
+      "기존 앱 계약을 유지하는 마이그레이션, 반복 가능한 테스트와 배포 흐름 정리에 강점이 있습니다.",
     ],
     skillGroups: [
       { title: "Backend", items: ["Kotlin", "Java", "Spring Boot", "Spring Security", "Spring Batch", "JPA", "QueryDSL"] },
       { title: "Data", items: ["PostgreSQL", "MySQL", "Redis", "RabbitMQ", "Flyway"] },
-      { title: "Infra", items: ["Docker", "Kubernetes", "AWS EKS", "Oracle Cloud A1", "Terraform", "ArgoCD", "GitHub Actions"] },
-      { title: "AI & Automation", items: ["OpenAI API", "Pinecone", "Clova OCR", "Brity RPA", "Codex", "Claude Code"] },
+      { title: "Infra", items: ["Docker", "Kubernetes", "AWS", "Oracle Cloud", "Terraform", "ArgoCD", "GitHub Actions"] },
+      { title: "AI", items: ["Codex", "Claude Code", "Harness Engineering"] },
     ],
   },
   en: {
     filenameBase: "resume.en",
+    name: "Ian Kim",
     role: "Backend Developer",
     labels: {
-      role: "Role",
+      role: "",
       summary: "Summary",
       contact: "Contact",
       skills: "Skills",
@@ -45,13 +48,13 @@ export const resumeLanguages = {
     },
     summary: [
       "Backend developer focused on Kotlin/Spring systems, MSA design, infrastructure, deployment automation, and production verification.",
-      "Experienced in legacy-compatible migrations, production issue diagnosis, and repeatable test and deployment workflows.",
+      "Experienced in legacy-compatible migrations and repeatable test and deployment workflows.",
     ],
     skillGroups: [
       { title: "Backend", items: ["Kotlin", "Java", "Spring Boot", "Spring Security", "Spring Batch", "JPA", "QueryDSL"] },
       { title: "Data", items: ["PostgreSQL", "MySQL", "Redis", "RabbitMQ", "Flyway"] },
-      { title: "Infra", items: ["Docker", "Kubernetes", "AWS EKS", "Oracle Cloud A1", "Terraform", "ArgoCD", "GitHub Actions"] },
-      { title: "AI & Automation", items: ["OpenAI API", "Pinecone", "Clova OCR", "Brity RPA", "Codex", "Claude Code"] },
+      { title: "Infra", items: ["Docker", "Kubernetes", "AWS", "Oracle Cloud", "Terraform", "ArgoCD", "GitHub Actions"] },
+      { title: "AI", items: ["Codex", "Claude Code", "Harness Engineering"] },
     ],
   },
 } as const satisfies Record<ResumeLanguage, ResumeLanguageData>;
@@ -61,5 +64,4 @@ export const resumeProjectSlugs = [
   "nailtoctoc-backend",
   "nailtoctoc-kiosk",
   "arffy",
-  "accounting-commission",
 ] as const satisfies readonly ProjectSlug[];

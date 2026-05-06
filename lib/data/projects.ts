@@ -162,7 +162,7 @@ export const projects = [
     eyebrow: "Backend Developer",
     year: "2023",
     category: "Kotlin Store",
-    tagline: "Online store selling 20th century European vintage lighting and accessories",
+    tagline: "Team project for an online store selling 20th century European vintage lighting and accessories",
     featured: true,
     tags: [
     "Kotlin",
@@ -179,7 +179,7 @@ export const projects = [
   ],
     githubUrl: "https://github.com/devonlyian/store",
     highlights: [
-    "**Production Service**: 9 months operation experience (2023.12 ~ 2024.08)",
+    "**Team Project**: Backend development for a live vintage lighting store operated for 9 months (2023.12 ~ 2024.08)",
     "**Concurrency Control**: Pessimistic locking for inventory deduction and payment duplication prevention",
     "**Security**: Encrypted personal information storage using JPA Converter",
     "**Authentication**: JWT token auth + OAuth 2.0 Kakao social login",
