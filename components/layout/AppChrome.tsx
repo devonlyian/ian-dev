@@ -12,6 +12,11 @@ export function AppChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isProjectDetail = pathname.startsWith("/projects/");
   const isHome = pathname === "/";
+  const isResume = pathname.startsWith("/resume");
+
+  if (isResume) {
+    return <>{children}</>;
+  }
 
   return (
     <>
